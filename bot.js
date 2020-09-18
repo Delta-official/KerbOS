@@ -59,6 +59,7 @@ client.on('message', message =>{
         )
             
         message.channel.send(examEmbed);
+        message.react(U+FE0F);
     }
     if(command === ''){
         message.channel.send('');
