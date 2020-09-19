@@ -60,31 +60,27 @@ client.on('message', message =>{
             
         message.channel.send(examEmbed);
     }
-    if(command === ''){
-        message.channel.send('');
-    }
-    if(command === 'help'){
-        client.on('message', message =>{
-            if(message.author.user) return;
-            if(message.content === '``css\n.Loading_Information\n``') message.delete();
-        message.channel.send('``css\n.Loading_Information\n``')
-        setTimeout(deleteMes,3000);
-        const exam1Embed = new Discord.MessageEmbed()
-        }
+    if (command === 'help') {
+        if (message.author.user) return;
+        const infoMessage = await message.channel.send('``css\n.Loading_Information\n``')
 
-        .setColor('#008000')
-        .setTitle('List of commands')
-        .addFields(
-            { name: 'help', value: 'You are reading it right now',inline: true},
-            { name: 'infomods', value: 'Lists information mods',inline: true},
-            { name: 'transfer', value: 'Gives you a link to interplanetary transfer calculator',inline: true},
-            { name: 'map', value: 'Gives you a link to website containing maps of all bodies in KSP',inline: true},
-            { name: 'dvmap', value: 'Gives you a ∆v map',inline: true},
-            { name: 'resorbcalc', value: 'Links to resonant orbit calulator',inline: true},
-        )
+        await client.setTimeout(() => {
+            infoMessage.delete()
+        }, 3000)
+        const exam1Embed = new Discord.MessageEmbed()
+            .setColor('#008000')
+            .setTitle('List of commands')
+            .addFields(
+                { name: 'help', value: 'You are reading it right now', inline: true },
+                { name: 'infomods', value: 'Lists information mods', inline: true },
+                { name: 'transfer', value: 'Gives you a link to interplanetary transfer calculator', inline: true }, 
+                { name: 'map', value: 'Gives you a link to website containing maps of all bodies in KSP', inline: true }, 
+                { name: 'dvmap', value: 'Gives you a ∆v map', inline: true }, 
+                { name: 'resorbcalc', value: 'Links to resonant orbit calulator', inline: true }, )
         message.channel.send(exam1Embed);
+
     }
-    
+
 }
 
 });
