@@ -68,7 +68,6 @@ client.on('message', message =>{
             if(message.author.user) return;
             if(message.content === '```css\n.Loading_Information\n```') message.delete();
         }
-
         message.channel.send('```css\n.Loading_Information\n```')
         setTimeout(deleteMes,3000);
         const exam1Embed = new Discord.MessageEmbed()
