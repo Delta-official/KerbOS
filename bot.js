@@ -64,6 +64,8 @@ client.on('message', message =>{
         message.channel.send('');
     }
     if(command === 'help'){
+        message.channel.send('Loading information')
+        message.delete()
         const exam1Embed = new Discord.MessageEmbed()
         .setColor('#008000')
         .setTitle('List of commands')
