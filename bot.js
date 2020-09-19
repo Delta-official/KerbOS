@@ -64,11 +64,6 @@ client.on('message', message =>{
         message.channel.send('');
     }
     if(command === 'help'){
-        const loadingmessage = message.channel.send("```css\n.Loading_Information\n```")
-        client.setTimeout(() => {
-        loadingmessage.delete()
-        }, 3000)
-
         const exam1Embed = new Discord.MessageEmbed()
         .setColor('#008000')
         .setTitle('List of commands')
@@ -80,6 +75,10 @@ client.on('message', message =>{
             { name: 'dvmap', value: 'Gives you a ∆v map',inline: true},
             { name: 'resorbcalc', value: 'Links to resonant orbit calulator',inline: true},
         )
+        const loadingmessage = message.channel.send("```css\nLoading_Information\n```")
+        client.setTimeout(() => {
+        loadingmessage.delete()
+        }, 3000)
         message.channel.send(exam1Embed);
     }
     
