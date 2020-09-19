@@ -69,7 +69,6 @@ client.on('message', message =>{
         loadingmessage.delete()
         }, 3000)
 
-        message.channel.send(embed)
         const exam1Embed = new Discord.MessageEmbed()
         .setColor('#008000')
         .setTitle('List of commands')
