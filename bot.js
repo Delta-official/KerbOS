@@ -66,10 +66,10 @@ client.on('message', message =>{
     if(command === 'help'){
         function deleteMes() {
             if(message.author.user) return;
-            if(message.content === '```diff\n- Loading information...\n```') message.delete();
+            if(message.content === '```json\n"Loading information..."\n```') message.delete();
         }
 
-        message.channel.send('```diff\n- Loading information...\n```')
+        message.channel.send('```json\n"Loading information..."\n```')
         setTimeout(deleteMes,3000);
         const exam1Embed = new Discord.MessageEmbed()
         .setColor('#008000')
