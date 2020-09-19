@@ -69,7 +69,7 @@ client.on('message', async(message) => {
 
 
         }
-        if (command === '.') {
+        if (command === '_;') {
             message.channel.send("i'm trying to distribute my time between working on my bot and this station,ok? i will start tomorrow, i promise");
         }
     }
