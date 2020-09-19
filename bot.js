@@ -64,12 +64,12 @@ client.on('message', message =>{
         message.channel.send('');
     }
     if(command === 'help'){
-        function deleteMes() {
-            if(message.author.user) return;
-            if(message.content === '```css\n.Loading_Information\n```') message.delete();
-        }
-        message.channel.send('```css\n.Loading_Information\n```')
-        setTimeout(deleteMes,3000);
+        const loadingmessage = message.channel.send("```css\n.Loading_Information\n```")
+        client.setTimeout(() => {
+        loadingmessage.delete()
+        }, 3000)
+
+        message.channel.send(embed)
         const exam1Embed = new Discord.MessageEmbed()
         .setColor('#008000')
         .setTitle('List of commands')
