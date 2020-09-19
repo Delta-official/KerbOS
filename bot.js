@@ -65,7 +65,8 @@ client.on('message', message =>{
     }
     if(command === 'help'){
         function deleteMes() {
-            if(message.author.bot) message.delete()
+            if(message.author.user) return;
+            if(message.author.bot) message.delete();
         }
 
         message.channel.send('Loading information...')
