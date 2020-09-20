@@ -57,7 +57,13 @@ client.on('message', async(message) => {
             const exam1Embed = new Discord.MessageEmbed()
                 .setColor('#008000')
                 .setTitle('List of commands')
-                .addFields({ name: 'help', value: 'You are reading it right now', inline: true }, { name: 'infomods', value: 'Lists information mods', inline: true }, { name: 'transfer', value: 'Gives you a link to interplanetary transfer calculator', inline: true }, { name: 'map', value: 'Gives you a link to website containing maps of all bodies in KSP', inline: true }, { name: 'dvmap', value: 'Gives you a ∆v map', inline: true }, { name: 'resorbcalc', value: 'Links to resonant orbit calulator', inline: true });
+                .addFields(
+                    { name: 'help', value: 'You are reading it right now', inline: true },
+                    { name: 'infomods', value: 'Lists information mods', inline: true }, 
+                    { name: 'transfer', value: 'Gives you a link to interplanetary transfer calculator', inline: true }, 
+                    { name: 'map', value: 'Gives you a link to website containing maps of all bodies in KSP', inline: true }, 
+                    { name: 'dvmap', value: 'Gives you a ∆v map', inline: true }, 
+                    { name: 'resorbcalc', value: 'Links to resonant orbit calulator', inline: true });
             const infoMessage = await message.channel.send("\`\`\`css\n.Loading_Information\n\`\`\`")
 
             async function doMessageThing() {
