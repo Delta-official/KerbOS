@@ -72,6 +72,27 @@ client.on('message', async(message) => {
         if (command === '-;') {
             message.channel.send("i'm trying to distribute my time between working on my bot and this station,ok? i will start tomorrow, i promise");
         }
+        if (command === 'c') {
+            message.channel.send('u\nm');
+        }    
+/*         if (command === '') {
+            message.channel.send('');
+        }
+         if (command === '') {
+            message.channel.send('');
+        }
+         if (command === '') {
+            message.channel.send('');
+        }
+        if (command === '') {
+            message.channel.send('');
+        }
+         if (command === '') {
+            message.channel.send('');
+        }
+         if (command === '') {
+            message.channel.send('');
+        } */
     }
 
 });
