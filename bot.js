@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 client.on('ready', () => {
-    console.log('KerbAI.V1 is online!');
+    console.log('Booting up KerbOS.V1...\nWelcome User01, please enter password:');
     client.user.setActivity('with maneuver nodes | ;help')
 });
 
