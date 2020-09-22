@@ -65,13 +65,12 @@ client.on('message', async(message) => {
                     { name: 'map', value: 'Gives you a link to website containing maps of all bodies in KSP', inline: true }, 
                     { name: 'dvmap', value: 'Gives you a ∆v map', inline: true }, 
                     { name: 'resorbcalc', value: 'Links to resonant orbit calulator', inline: true });
-                    ) 
                     
                 async function doMessageThing() {
                     await infoMessage.edit(null, exam1Embed)
-                    }
+                }
 
-            client.setTimeout(doMessageThing, 1500)
+            client.setTimeout(doMessageThing, 3000)
         }
         if (command === '-;') {
             message.channel.send("i'm trying to distribute my time between working on my bot and this station,ok? i will start tomorrow, i promise");
