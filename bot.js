@@ -32,24 +32,30 @@ client.on('message', async(message) => {
             const examEmbed = new Discord.MessageEmbed()
                 .setColor('#63b835')
                 .setTitle('List of information mods')
-                .addFields({ name: 'Kerbal Wind Tunnel', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/177302-19x-kerbal-wind-tunnel-124/', inline: true }, { name: 'MechJeb', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/154834-110x-anatid-robotics-mumech-mechjeb-autopilot-2110-20th-august-2020/', inline: true }, { name: 'Kerbal Engineer Redux', value: 'https://www.curseforge.com/kerbal/ksp-mods/kerbal-engineer-redux/files', inline: true }, { name: 'Kerbal Alarm Clock', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/22809-19x-kerbal-alarm-clock-v31300-april-26/', inline: true }, { name: 'Trajectories', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/162324-131-110x-trajectories-v234-2020-07-13-atmospheric-predictions/', inline: true }, { name: 'RCS Build Aid', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/166546-19x-rcs-build-aid-continued-new-dependencies/', inline: true }, { name: 'Editor Extensions Redux', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/127378-19x-editor-extensions-redux-released-with-selectroot-merge-stripsymmetry-nooffsetlimits/', inline: true },
-                    /*             { name: '', value: ''},
-                                { name: '', value: ''},
-                                { name: '', value: ''},
-                                { name: '', value: ''},
-                                { name: '', value: ''},
-                                { name: '', value: ''},
-                                { name: '', value: ''},
-                                { name: '', value: ''},
-                                { name: '', value: ''},
-                                { name: '', value: ''},
-                                { name: '', value: ''},
-                                { name: '', value: ''},
-                                { name: '', value: ''},
-                                { name: '', value: ''},
-                                { name: '', value: ''},
-                                { name: '', value: ''}, */
-
+                .addFields({ name: 'Kerbal Wind Tunnel', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/177302-19x-kerbal-wind-tunnel-124/', inline: true }, 
+                { name: 'MechJeb', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/154834-110x-anatid-robotics-mumech-mechjeb-autopilot-2110-20th-august-2020/', inline: true }, 
+                { name: 'Kerbal Engineer Redux', value: 'https://www.curseforge.com/kerbal/ksp-mods/kerbal-engineer-redux/files', inline: true }, 
+                { name: 'Kerbal Alarm Clock', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/22809-19x-kerbal-alarm-clock-v31300-april-26/', inline: true }, 
+                { name: 'Trajectories', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/162324-131-110x-trajectories-v234-2020-07-13-atmospheric-predictions/', inline: true }, 
+                { name: 'RCS Build Aid', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/166546-19x-rcs-build-aid-continued-new-dependencies/', inline: true }, 
+                { name: 'Editor Extensions Redux', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/127378-19x-editor-extensions-redux-released-with-selectroot-merge-stripsymmetry-nooffsetlimits/', inline: true },
+                { name: 'Better Time Warp', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/154935-15-bettertimewarpcontinued-customizable-time-warp-and-lossless-physics-warp/', inline: true},
+                { name: 'Hangar Extender Extended', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/162790-151-hangar-extender-extended/', inline: true},
+                { name: 'Docking Port Alignment Indicator', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/40423-181-docking-port-alignment-indicator-version-685-updated-121419/', inline: true},
+                { name: 'KIS and KAS', value: 'KIS: https://forum.kerbalspaceprogram.com/index.php?/topic/149848-minimum-ksp-version-18-kerbal-inventory-system-kis-v126/, KAS: https://forum.kerbalspaceprogram.com/index.php?/topic/142594-minimum-ksp-version-18-kerbal-attachment-system-kas-v17/', inline: true},
+                { name: '', value: '', inline: true},
+                /*{ name: '', value: '', inline: true},
+                { name: '', value: '', inline: true},
+                { name: '', value: '', inline: true},
+                { name: '', value: '', inline: true},
+                { name: '', value: '', inline: true},
+                { name: '', value: '', inline: true},
+                { name: '', value: '', inline: true},
+                { name: '', value: '', inline: true},
+                { name: '', value: '', inline: true},
+                { name: '', value: '', inline: true},
+                { name: '', value: '', inline: true},
+                { name: '', value: '', inline: true},*/
                 )
 
             message.channel.send(examEmbed);
@@ -64,9 +70,9 @@ client.on('message', async(message) => {
                     { name: 'transfer', value: 'Gives you a link to interplanetary transfer calculator', inline: true }, 
                     { name: 'map', value: 'Gives you a link to website containing maps of all bodies in KSP', inline: true }, 
                     { name: 'dvmap', value: 'Gives you a ∆v map', inline: true }, 
-                    { name: 'resorbcalc', value: 'Links to resonant orbit calulator', inline: true });
-                   
-                    const infoMessage = await message.channel.send("\`\`\`css\n.Loading_Information\n\`\`\`")
+                    { name: 'resorbcalc', value: 'Links to resonant orbit calulator', inline: true },
+                    { name: 'invite', value: "Gives you bot's invite link", inline: true});
+                const infoMessage = await message.channel.send("\`\`\`css\n.Loading_Information\n\`\`\`")
 
                 async function doMessageThing() {
                     await infoMessage.edit(null, exam1Embed)
@@ -74,19 +80,19 @@ client.on('message', async(message) => {
 
             client.setTimeout(doMessageThing, 1500)
         }
-        if (command === '-;') {
-            message.channel.send("i'm trying to distribute my time between working on my bot and this station,ok? i will start tomorrow, i promise");
+        if (command === '') {
+            message.channel.send("");
         }
         if (command === 'c') {
             message.channel.send('u\nm');
         }    
-/*         if (command === '') {
-            message.channel.send('');
+         if (command === 'invite') {
+            message.channel.send("Here's an invite link!\nhttps://discord.com/api/oauth2/authorize?client_id=718879704601329778&permissions=68672&scope=bot");
         }
          if (command === '') {
             message.channel.send('');
         }
-         if (command === '') {
+    /*     if (command === '') {
             message.channel.send('');
         }
         if (command === '') {
