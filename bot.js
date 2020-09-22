@@ -31,7 +31,7 @@ client.on('message', async(message) => {
         if (command === 'utilitymods') {
             const examEmbed = new Discord.MessageEmbed()
                 .setColor('#63b835')
-                .setTitle('List of information mods')
+                .setTitle('List of utility mods')
                 .addFields({ name: 'Kerbal Wind Tunnel', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/177302-19x-kerbal-wind-tunnel-124/', inline: true }, 
                 { name: 'MechJeb', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/154834-110x-anatid-robotics-mumech-mechjeb-autopilot-2110-20th-august-2020/', inline: true }, 
                 { name: 'Kerbal Engineer Redux', value: 'https://www.curseforge.com/kerbal/ksp-mods/kerbal-engineer-redux/files', inline: true }, 
@@ -59,6 +59,7 @@ client.on('message', async(message) => {
                 )
 
             message.channel.send(examEmbed);
+            message.react(`:arrow_backward:`)
         }
         if (command === 'help') {
             const exam1Embed = new Discord.MessageEmbed()
