@@ -72,7 +72,7 @@ client.on('message', async(message) => {
                     await infoMessage.edit(null, exam1Embed)
                 }
 
-            client.setTimeout(doMessageThing, 3000)
+            client.setTimeout(doMessageThing, 1500)
         }
         if (command === '-;') {
             message.channel.send("i'm trying to distribute my time between working on my bot and this station,ok? i will start tomorrow, i promise");
