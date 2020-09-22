@@ -59,7 +59,7 @@ client.on('message', async(message) => {
                 )
 
             message.channel.send(examEmbed);
-            message.react(":arrow_backward:")
+            message.react("arrow_backward")
         }
         if (command === 'help') {
             const exam1Embed = new Discord.MessageEmbed()
