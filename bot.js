@@ -28,7 +28,7 @@ client.on('message', async(message) => {
         if (command === 'transfer') {
             message.channel.send('https://ksp.olex.biz');
         }
-        if (command === 'infomods') {
+        if (command === 'utilitymods') {
             const examEmbed = new Discord.MessageEmbed()
                 .setColor('#63b835')
                 .setTitle('List of information mods')
@@ -43,7 +43,7 @@ client.on('message', async(message) => {
                 { name: 'Hangar Extender Extended', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/162790-151-hangar-extender-extended/', inline: true},
                 { name: 'Docking Port Alignment Indicator', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/40423-181-docking-port-alignment-indicator-version-685-updated-121419/', inline: true},
                 { name: 'KIS and KAS', value: 'KIS: https://forum.kerbalspaceprogram.com/index.php?/topic/149848-minimum-ksp-version-18-kerbal-inventory-system-kis-v126/, KAS: https://forum.kerbalspaceprogram.com/index.php?/topic/142594-minimum-ksp-version-18-kerbal-attachment-system-kas-v17/', inline: true},
-                { name: '', value: '', inline: true},
+                { name: 'FMRS', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/157214-19x-flight-manager-for-reusable-stages-fmrs-now-with-recoverycontroller-integration/', inline: true},
                 /*{ name: '', value: '', inline: true},
                 { name: '', value: '', inline: true},
                 { name: '', value: '', inline: true},
