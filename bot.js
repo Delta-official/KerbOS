@@ -59,7 +59,7 @@ client.on('message', async(message) => {
             )
             const embedreact2 = await message.channel.send(utilitypage2)
             embedreact2.react("⬅️") 
-            .then(embedreact1.react("➡️"))
+            .then(embedreact2.react("➡️"))
         }
         if (command === 'help') {
             const exam1Embed = new Discord.MessageEmbed()
