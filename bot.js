@@ -85,7 +85,7 @@ client.on('message', async(message) => {
                     { name: 'map', value: 'Gives you a link to website containing maps of all bodies in KSP', inline: true }, 
                     { name: 'dvmap', value: 'Gives you a ∆v map', inline: true }, 
                     { name: 'resorbcalc', value: 'Links to resonant orbit calulator', inline: true },
-                    { name: 'feedback', value: "Give me feedback about my bot! I want to improve this bot, any commands would also be appreciated!", inline: true },
+                    { name: '~~feedback~~', value: "~~Give me feedback about my bot! I want to improve this bot, any commands would also be appreciated!~~ WIP", inline: true },
                     { name: 'invite', value: "Gives you bot's invite link", inline: true});
                 const infoMessage = await message.channel.send("\`\`\`css\n.Loading_Information\n\`\`\`")
 
@@ -104,8 +104,9 @@ client.on('message', async(message) => {
          if (command === 'invite') {
             message.channel.send("Here's an invite link!\nhttps://discord.com/api/oauth2/authorize?client_id=718879704601329778&permissions=68672&scope=bot");
         }
-         if (command === '') {
+         if (command === 'feedback') {
             message.channel.send('');
+
         }
     /*     if (command === '') {
             message.channel.send('');
