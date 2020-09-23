@@ -57,7 +57,7 @@ client.on('message', async(message) => {
                 { name: 'FMRS', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/157214-19x-flight-manager-for-reusable-stages-fmrs-now-with-recoverycontroller-integration/', inline: true},
             )
             const embedreact2 = await message.channel.send(utilitypage2)
-            embedreact2.react("⬅️").then(embedreact1.react("➡️"))
+            embedreact2.react("⬅️") .then(embedreact1.react("➡️"))
         }
         if (command === 'help') {
             const exam1Embed = new Discord.MessageEmbed()
