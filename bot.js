@@ -29,7 +29,7 @@ client.on('message', async(message) => {
             message.channel.send('https://ksp.olex.biz');
         }
         if (command === 'utilitymods') {
-            const examEmbed = new Discord.MessageEmbed()
+            const utilitypage1 = new Discord.MessageEmbed()
                 .setColor('#63b835')
                 .setTitle('List of utility mods')
                 .addFields({ name: 'Kerbal Wind Tunnel', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/177302-19x-kerbal-wind-tunnel-124/', inline: true }, 
@@ -57,8 +57,8 @@ client.on('message', async(message) => {
                 { name: '', value: '', inline: true},
                 { name: '', value: '', inline: true},*/
                 )
-            const embedreact = await message.channel.send(examEmbed)
-            embedreact.react("➡️").then(embedreact.react("⬅️"))
+            const embedreact = await message.channel.send(utilitypage1)
+            embedreact.react("➡️")
         }
         if (command === 'help') {
             const exam1Embed = new Discord.MessageEmbed()
