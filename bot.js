@@ -59,13 +59,13 @@ client.on('message', async(message) => {
                 )
 
             message.channel.send(examEmbed);
-            message.react("arrow_backward")
+            examEmbed.react(":arrow_right:")
         }
         if (command === 'help') {
             const exam1Embed = new Discord.MessageEmbed()
                 .setColor('#008000')
                 .setTitle('List of commands')
-                .setAuthor("Bot created by Darkuss")
+                .setAuthor("Bot created by Darkuss#9279")
                 .addFields(
                     { name: 'help', value: 'You are reading it right now', inline: true },
                     { name: 'infomods', value: 'Lists information mods', inline: true }, 
