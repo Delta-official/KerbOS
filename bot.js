@@ -65,6 +65,7 @@ client.on('message', async(message) => {
             const exam1Embed = new Discord.MessageEmbed()
                 .setColor('#008000')
                 .setTitle('List of commands')
+                .setAuthor("Bot created by Darkuss")
                 .addFields(
                     { name: 'help', value: 'You are reading it right now', inline: true },
                     { name: 'infomods', value: 'Lists information mods', inline: true }, 
