@@ -80,7 +80,7 @@ client.on('message', async(message) => {
                 .setAuthor("Bot created by Darkuss#9279")
                 .addFields(
                     { name: 'help', value: 'You are reading it right now', inline: true },
-                    { name: 'infomods', value: 'Lists information mods', inline: true }, 
+                    { name: 'utilitymods', value: 'Lists utility mods', inline: true }, 
                     { name: 'transfer', value: 'Gives you a link to interplanetary transfer calculator', inline: true }, 
                     { name: 'map', value: 'Gives you a link to website containing maps of all bodies in KSP', inline: true }, 
                     { name: 'dvmap', value: 'Gives you a ∆v map', inline: true }, 
