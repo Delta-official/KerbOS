@@ -59,6 +59,19 @@ client.on('message', async(message) => {
                 )
             const embedreact = await message.channel.send(examEmbed)
             embedreact.react("➡️")
+            const filter = (reaction, user) => {
+                return reaction.emoji.name === '➡️' && user.id === message.author.id;
+            };
+            
+            const collector = message.createReactionCollector(filter, { time: 600000 });
+            
+            collector.on('collect', (reaction, user) => {
+                console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
+            });
+            
+            collector.on('end', collected => {
+                console.log(`Collected ${collected.size} items`);
+            });
         }
         if (command === 'help') {
             const exam1Embed = new Discord.MessageEmbed()
