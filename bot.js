@@ -43,7 +43,6 @@ client.on('message', async(message) => {
                 { name: 'Editor Extensions Redux', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/127378-19x-editor-extensions-redux-released-with-selectroot-merge-stripsymmetry-nooffsetlimits/', inline: true },
                 { name: 'Better Time Warp', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/154935-15-bettertimewarpcontinued-customizable-time-warp-and-lossless-physics-warp/', inline: true},
                 { name: 'Hangar Extender Extended', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/162790-151-hangar-extender-extended/', inline: true},
-                { name: 'Docking Port Alignment Indicator', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/40423-181-docking-port-alignment-indicator-version-685-updated-121419/', inline: true},
                 )
             const embedreact1 = await message.channel.send(utilitypage1)
             embedreact1.react("➡️")
@@ -53,11 +52,14 @@ client.on('message', async(message) => {
             .setTitle('List of utility mods')
             .setDescription('Page 2')
             .addFields(
-                { name: 'KIS and KAS', value: 'KIS: https://forum.kerbalspaceprogram.com/index.php?/topic/149848-minimum-ksp-version-18-kerbal-inventory-system-kis-v126/, KAS: https://forum.kerbalspaceprogram.com/index.php?/topic/142594-minimum-ksp-version-18-kerbal-attachment-system-kas-v17/', inline: true},
+                { name: 'KIS', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/149848-minimum-ksp-version-18-kerbal-inventory-system-kis-v126/', inline: true},
+                { name: 'KAS', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/142594-minimum-ksp-version-18-kerbal-attachment-system-kas-v17/', inline: true},
+                { name: 'Docking Port Alignment Indicator', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/40423-181-docking-port-alignment-indicator-version-685-updated-121419/', inline: true},
                 { name: 'FMRS', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/157214-19x-flight-manager-for-reusable-stages-fmrs-now-with-recoverycontroller-integration/', inline: true},
             )
             const embedreact2 = await message.channel.send(utilitypage2)
-            embedreact2.react("⬅️") .then(embedreact1.react("➡️"))
+            embedreact2.react("⬅️") 
+            .then(embedreact1.react("➡️"))
         }
         if (command === 'help') {
             const exam1Embed = new Discord.MessageEmbed()
@@ -71,7 +73,7 @@ client.on('message', async(message) => {
                     { name: 'map', value: 'Gives you a link to website containing maps of all bodies in KSP', inline: true }, 
                     { name: 'dvmap', value: 'Gives you a ∆v map', inline: true }, 
                     { name: 'resorbcalc', value: 'Links to resonant orbit calulator', inline: true },
-                    { name: '~~feedback~~', value: "~~Give me feedback about my bot! I want to improve this bot, any commands would also be appreciated!~~ WIP ", inline: true },
+                    { name: '~~feedback~~', value: "~~Give me feedback about my bot! I want to improve this bot, any suggestions would also be appreciated!~~ **WIP** ", inline: true },
                     { name: 'invite', value: "Gives you bot's invite link", inline: true});
                 const infoMessage = await message.channel.send("\`\`\`css\n.Loading_Information\n\`\`\`")
 
