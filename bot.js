@@ -58,20 +58,7 @@ client.on('message', async(message) => {
                 { name: '', value: '', inline: true},*/
                 )
             const embedreact = await message.channel.send(examEmbed)
-            embedreact.react("➡️")
-            const filter = (reaction, user) => {
-                return reaction.emoji.name === '➡️' && user.id === message.author.id;
-            };
-            
-            const collector = message.createReactionCollector(filter, { time: 600000 });
-            
-            collector.on('collect', (reaction, user) => {
-                console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
-            });
-            
-            collector.on('end', collected => {
-                console.log(`Collected ${collected.size} items`);
-            });
+            embedreact.react("➡️").then(embedreact.react("⬅️"))
         }
         if (command === 'help') {
             const exam1Embed = new Discord.MessageEmbed()
@@ -85,7 +72,7 @@ client.on('message', async(message) => {
                     { name: 'map', value: 'Gives you a link to website containing maps of all bodies in KSP', inline: true }, 
                     { name: 'dvmap', value: 'Gives you a ∆v map', inline: true }, 
                     { name: 'resorbcalc', value: 'Links to resonant orbit calulator', inline: true },
-                    { name: '~~feedback~~', value: "~~Give me feedback about my bot! I want to improve this bot, any commands would also be appreciated!~~ WIP", inline: true },
+                    { name: '~~feedback~~', value: "~~Give me feedback about my bot! I want to improve this bot, any commands would also be appreciated!~~ WIP ", inline: true },
                     { name: 'invite', value: "Gives you bot's invite link", inline: true});
                 const infoMessage = await message.channel.send("\`\`\`css\n.Loading_Information\n\`\`\`")
 
@@ -101,10 +88,12 @@ client.on('message', async(message) => {
         if (command === 'c') {
             message.channel.send('u\nm');
         }    
-         if (command === 'invite') {
+        if (command === 'invite') {
             message.channel.send("Here's an invite link!\nhttps://discord.com/api/oauth2/authorize?client_id=718879704601329778&permissions=68672&scope=bot");
         }
-         if (command === 'feedback') {
+        if (command === 'feedback') {
+        if (!args.length)
+
             message.channel.send('');
 
         }
