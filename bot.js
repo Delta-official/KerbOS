@@ -30,9 +30,11 @@ client.on('message', async(message) => {
         }
         if (command === 'utilitymods') {
             const utilitypage1 = new Discord.MessageEmbed()
-                .setColor('#63b835')
-                .setTitle('List of utility mods')
-                .addFields({ name: 'Kerbal Wind Tunnel', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/177302-19x-kerbal-wind-tunnel-124/', inline: true }, 
+            .setColor('#63b835')
+            .setTitle('List of utility mods')
+            .setDescription('Page 1')
+            .addFields(
+                { name: 'Kerbal Wind Tunnel', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/177302-19x-kerbal-wind-tunnel-124/', inline: true }, 
                 { name: 'MechJeb', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/154834-110x-anatid-robotics-mumech-mechjeb-autopilot-2110-20th-august-2020/', inline: true }, 
                 { name: 'Kerbal Engineer Redux', value: 'https://www.curseforge.com/kerbal/ksp-mods/kerbal-engineer-redux/files', inline: true }, 
                 { name: 'Kerbal Alarm Clock', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/22809-19x-kerbal-alarm-clock-v31300-april-26/', inline: true }, 
@@ -42,23 +44,20 @@ client.on('message', async(message) => {
                 { name: 'Better Time Warp', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/154935-15-bettertimewarpcontinued-customizable-time-warp-and-lossless-physics-warp/', inline: true},
                 { name: 'Hangar Extender Extended', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/162790-151-hangar-extender-extended/', inline: true},
                 { name: 'Docking Port Alignment Indicator', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/40423-181-docking-port-alignment-indicator-version-685-updated-121419/', inline: true},
+                )
+            const embedreact1 = await message.channel.send(utilitypage1)
+            embedreact1.react("➡️")
+
+            const utilitypage2 = new Discord.MessageEmbed()
+            .setColor('#63b835')
+            .setTitle('List of utility mods')
+            .setDescription('Page 2')
+            .addFields(
                 { name: 'KIS and KAS', value: 'KIS: https://forum.kerbalspaceprogram.com/index.php?/topic/149848-minimum-ksp-version-18-kerbal-inventory-system-kis-v126/, KAS: https://forum.kerbalspaceprogram.com/index.php?/topic/142594-minimum-ksp-version-18-kerbal-attachment-system-kas-v17/', inline: true},
                 { name: 'FMRS', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/157214-19x-flight-manager-for-reusable-stages-fmrs-now-with-recoverycontroller-integration/', inline: true},
-                /*{ name: '', value: '', inline: true},
-                { name: '', value: '', inline: true},
-                { name: '', value: '', inline: true},
-                { name: '', value: '', inline: true},
-                { name: '', value: '', inline: true},
-                { name: '', value: '', inline: true},
-                { name: '', value: '', inline: true},
-                { name: '', value: '', inline: true},
-                { name: '', value: '', inline: true},
-                { name: '', value: '', inline: true},
-                { name: '', value: '', inline: true},
-                { name: '', value: '', inline: true},*/
-                )
-            const embedreact = await message.channel.send(utilitypage1)
-            embedreact.react("➡️")
+            )
+            const embedreact2 = await message.channel.send(utilitypage2)
+            embedreact2.react("⬅️").then(embedreact1.react("➡️"))
         }
         if (command === 'help') {
             const exam1Embed = new Discord.MessageEmbed()
