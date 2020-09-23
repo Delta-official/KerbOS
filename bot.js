@@ -57,8 +57,7 @@ client.on('message', async(message) => {
                 { name: '', value: '', inline: true},
                 { name: '', value: '', inline: true},*/
                 )
-            const embedreact = examEmbed
-            message.channel.send(examEmbed)
+            const embedreact = await message.channel.send(examEmbed)
             embedreact.react("➡️")
         }
         if (command === 'help') {
