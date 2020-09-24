@@ -75,11 +75,11 @@ client.on('message', async(message) => {
 
             embedreact2.react('⬅️').then(() => embedreact2.react('➡️'));
 
-            const filter = (reaction, user) => {
+            const filter2 = (reaction, user) => {
                 return ['⬅️', '➡️'].includes(reaction.emoji.name) && user.id === message.author.id;
             };
             
-            embedreact2.awaitReactions(filter, { max: 1, time: 600000, errors: ['time'] })
+            embedreact2.awaitReactions(filter2, { max: 1, time: 600000, errors: ['time'] })
                 .then(collected => {
                     const reaction = collected.first();
             
