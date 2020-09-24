@@ -45,7 +45,20 @@ client.on('message', async(message) => {
                 { name: 'Hangar Extender Extended', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/162790-151-hangar-extender-extended/', inline: true},
                 )
             const embedreact1 = await message.channel.send(utilitypage1)
-            embedreact1.react("➡️")
+            embedreact1.react('➡️');
+
+            const filter = (reaction, user) => {
+                return ['➡️'].includes(reaction.emoji.name) && user.id === message.author.id;
+            };
+            
+            embedreact1.awaitReactions(filter, { max: 1, time: 600000, errors: ['time'] })
+                .then(collected => {
+                    const reaction = collected.first();
+            
+                    if (reaction.emoji.name === '➡️') {
+                      embedreact2.edit(embedreact1)
+                    }
+                })
 
             const utilitypage2 = new Discord.MessageEmbed()
             .setColor('#63b835')
@@ -57,9 +70,26 @@ client.on('message', async(message) => {
                 { name: 'Docking Port Alignment Indicator', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/40423-181-docking-port-alignment-indicator-version-685-updated-121419/', inline: true},
                 { name: 'FMRS', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/157214-19x-flight-manager-for-reusable-stages-fmrs-now-with-recoverycontroller-integration/', inline: true},
             )
-            const embedreact2 = await message.channel.send(utilitypage2)
-            embedreact2.react("⬅️") 
-            .then(embedreact2.react("➡️"))
+            const embedreact2 = utilitypage2
+
+
+            embedreact2.react('⬅️').then(() => embedreact2.react('➡️'));
+
+            const filter = (reaction, user) => {
+                return ['⬅️', '➡️'].includes(reaction.emoji.name) && user.id === message.author.id;
+            };
+            
+            embedreact2.awaitReactions(filter, { max: 1, time: 600000, errors: ['time'] })
+                .then(collected => {
+                    const reaction = collected.first();
+            
+                    if (reaction.emoji.name === '⬅️') {
+                      embedreact2.edit(embedreact1)
+                    }
+                    else {
+                        embedreact2.edit()
+                    }
+                })
         }
         if (command === 'help') {
             const exam1Embed = new Discord.MessageEmbed()
@@ -73,7 +103,6 @@ client.on('message', async(message) => {
                     { name: 'map', value: 'Gives you a link to website containing maps of all bodies in KSP', inline: true }, 
                     { name: 'dvmap', value: 'Gives you a ∆v map', inline: true }, 
                     { name: 'resorbcalc', value: 'Links to resonant orbit calulator', inline: true },
-                    { name: '~~feedback~~', value: "~~Give me feedback about my bot! I want to improve this bot, any suggestions would also be appreciated!~~ **WIP** ", inline: true },
                     { name: 'invite', value: "Gives you bot's invite link", inline: true});
                 const infoMessage = await message.channel.send("\`\`\`css\n.Loading_Information\n\`\`\`")
 
@@ -86,17 +115,11 @@ client.on('message', async(message) => {
         if (command === '') {
             message.channel.send("");
         }
-        if (command === 'c') {
-            message.channel.send('u\nm');
+        if (command === '') {
+            message.channel.send('');
         }    
         if (command === 'invite') {
             message.channel.send("Here's an invite link!\nhttps://discord.com/api/oauth2/authorize?client_id=718879704601329778&permissions=68672&scope=bot");
-        }
-        if (command === 'feedback') {
-        if (!args.length)
-
-            message.channel.send('');
-
         }
     /*     if (command === '') {
             message.channel.send('');
