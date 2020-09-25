@@ -44,7 +44,19 @@ client.on('message', async(message) => {
                 { name: 'Better Time Warp', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/154935-15-bettertimewarpcontinued-customizable-time-warp-and-lossless-physics-warp/', inline: true},
                 { name: 'Hangar Extender Extended', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/162790-151-hangar-extender-extended/', inline: true},
                 )
+
+            const utilitypage2 = new Discord.MessageEmbed()
+            .setColor('#63b835')
+            .setTitle('List of utility mods')
+            .setDescription('Page 2')
+            .addFields(
+                    { name: 'KIS', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/149848-minimum-ksp-version-18-kerbal-inventory-system-kis-v126/', inline: true},
+                    { name: 'KAS', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/142594-minimum-ksp-version-18-kerbal-attachment-system-kas-v17/', inline: true},
+                    { name: 'Docking Port Alignment Indicator', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/40423-181-docking-port-alignment-indicator-version-685-updated-121419/', inline: true},
+                    { name: 'FMRS', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/157214-19x-flight-manager-for-reusable-stages-fmrs-now-with-recoverycontroller-integration/', inline: true},
+                )
             const embedreact1 = await message.channel.send(utilitypage1)
+            const embedreact2 = embedreact1.edit(null, utilitypage2)
             embedreact1.react('➡️');
 
             const filter = (reaction, user) => {
@@ -59,19 +71,6 @@ client.on('message', async(message) => {
                       embedreact2.edit(embedreact1)
                     }
                 })
-
-            const utilitypage2 = new Discord.MessageEmbed()
-            .setColor('#63b835')
-            .setTitle('List of utility mods')
-            .setDescription('Page 2')
-            .addFields(
-                { name: 'KIS', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/149848-minimum-ksp-version-18-kerbal-inventory-system-kis-v126/', inline: true},
-                { name: 'KAS', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/142594-minimum-ksp-version-18-kerbal-attachment-system-kas-v17/', inline: true},
-                { name: 'Docking Port Alignment Indicator', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/40423-181-docking-port-alignment-indicator-version-685-updated-121419/', inline: true},
-                { name: 'FMRS', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/157214-19x-flight-manager-for-reusable-stages-fmrs-now-with-recoverycontroller-integration/', inline: true},
-            )
-            const embedreact2 = embedreact1.edit(null, utilitypage2)
-
 
             embedreact2.react('⬅️').then(() => embedreact2.react('➡️'));
 
