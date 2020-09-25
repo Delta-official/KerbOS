@@ -70,7 +70,7 @@ client.on('message', async(message) => {
                 { name: 'Docking Port Alignment Indicator', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/40423-181-docking-port-alignment-indicator-version-685-updated-121419/', inline: true},
                 { name: 'FMRS', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/157214-19x-flight-manager-for-reusable-stages-fmrs-now-with-recoverycontroller-integration/', inline: true},
             )
-            const embedreact2 = utilitypage1.edit(utilitypage2)
+            const embedreact2 = utilitypage1.edit(null, utilitypage2)
 
 
             embedreact2.react('⬅️').then(() => embedreact2.react('➡️'));
@@ -84,7 +84,7 @@ client.on('message', async(message) => {
                     const reaction = collected.first();
             
                     if (reaction.emoji.name === '⬅️') {
-                      embedreact2.edit(embedreact1)
+                      embedreact2.edit(null, embedreact1)
                     }
                     else {
                         embedreact2.edit()
