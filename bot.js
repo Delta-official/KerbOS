@@ -56,8 +56,7 @@ client.on('message', async(message) => {
                     { name: 'FMRS', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/157214-19x-flight-manager-for-reusable-stages-fmrs-now-with-recoverycontroller-integration/', inline: true},
                 )
             const loadingutility = await message.channel.send(utilitypage1)
-            const embedreact1 = embedreact2.edit(utilitypage1)
-            const embedreact2 = embedreact1.edit(utilitypage2)
+            const embedreact1 = embedreact2.edit(utilitypage1), embedreact2 = embedreact1.edit(utilitypage2)
             embedreact1.react('➡️');
 
             const filter = (reaction, user) => {
