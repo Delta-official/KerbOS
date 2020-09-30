@@ -72,7 +72,7 @@ client.on('message', async(message) => {
                     }
                 })
 
-            embedreact2.react('⬅️').then(() => embedreact2.react('➡️'));
+            embedreact2.react('⬅️') .then( embedreact2.react('➡️'));
 
             const filter2 = (reaction, user) => {
                 return ['⬅️', '➡️'].includes(reaction.emoji.name) && user.id === message.author.id;
