@@ -112,8 +112,8 @@ client.on('message', async(message) => {
 
             client.setTimeout(doMessageThing, 1500) //what should i do with this code???
         }
-        if (command === '') {
-            message.channel.send("");
+        if (command === 'start') {
+            message.channel.send("hello world");
         }
         if (command === 'rank') {
             message.channel.send("https://tenor.com/view/timotainment-tim-entertainment-rank-discord-gif-18070842");
