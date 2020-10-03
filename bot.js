@@ -102,7 +102,6 @@ client.on('message', async(message) => {
                     { name: 'map', value: 'Gives you a link to website containing maps of all bodies in KSP', inline: true }, 
                     { name: 'dvmap', value: 'Gives you a ∆v map', inline: true }, 
                     { name: 'resorbcalc', value: 'Links to resonant orbit calulator', inline: true },
-                    { name: `rank`, value: 'Shows your rank', inline: true },
                     { name: 'invite', value: "Gives you bot's invite link", inline: true});
                 const infoMessage = await message.channel.send("\`\`\`css\n.Loading_Information\n\`\`\`")
 
@@ -115,9 +114,6 @@ client.on('message', async(message) => {
         if (command === 'start') {
             message.channel.send("hello world");
         }
-        if (command === 'rank') {
-            message.channel.send("https://tenor.com/view/timotainment-tim-entertainment-rank-discord-gif-18070842");
-        }    
         if (command === 'invite') {
             message.channel.send("Here's an invite link!\nhttps://discord.com/api/oauth2/authorize?client_id=718879704601329778&permissions=68672&scope=bot");
         }
