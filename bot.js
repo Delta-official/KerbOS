@@ -114,6 +114,9 @@ client.on('message', async(message) => {
         if (command === 'start') {
             message.channel.send("hello world");
         }
+        if (command === "rank") {
+            message.channel.send("https://tenor.com/view/timotainment-tim-entertainment-rank-discord-gif-18070842")
+        }
         if (command === 'invite') {
             message.channel.send("Here's an invite link!\nhttps://discord.com/api/oauth2/authorize?client_id=718879704601329778&permissions=68672&scope=bot");
         }
