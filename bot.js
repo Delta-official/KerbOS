@@ -115,7 +115,21 @@ client.on('message', async(message) => {
             message.channel.send("Oh come on, i've said that it's WIP!");
         }
         if (command === "rank") {
-            message.channel.send("https://tenor.com/view/timotainment-tim-entertainment-rank-discord-gif-18070842")
+            function Random(max) {
+                return Math.floor(Math.random() * Math.floor(max));
+            }
+            if(Random(1) = 0) {
+                message.channel.send("https://tenor.com/view/rank-talk-selfie-man-eyeglasses-gif-17817029")
+            }
+            if(Random(2) = 1) {
+                message.channel.send("https://tenor.com/view/timotainment-tim-entertainment-rank-discord-gif-18070842")
+            }
+            if(Random(3) = 2) {
+                message.channel.send("https://tenor.com/view/rank-funny-face-black-man-gif-18421232")
+            }
+            if(Random(4) = 3) {
+                message.channel.send("https://tenor.com/view/rank-funny-talking-long-hair-gif-17102943")
+            }
         }
         if (command === 'invite') {
             message.channel.send("Here's an invite link!\nhttps://discord.com/api/oauth2/authorize?client_id=718879704601329778&permissions=68672&scope=bot");
