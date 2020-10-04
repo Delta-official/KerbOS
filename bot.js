@@ -17,20 +17,11 @@ client.on('message', async(message) => {
         const args = message.content.toLowerCase().split(' ');
         const command = args.shift().slice(rankPRF.length);
         if (command === "rank") {
-            function Random(max) {
-                return Math.floor(Math.random() * Math.floor(max));
-            }
-            if(Random(4) === 0) {
-                message.channel.send("https://tenor.com/view/rank-talk-selfie-man-eyeglasses-gif-17817029")
-            }
-            if(Random(4) === 1) {
-                message.channel.send("https://tenor.com/view/timotainment-tim-entertainment-rank-discord-gif-18070842")
-            }
-            if(Random(4) === 2) {
-                message.channel.send("https://tenor.com/view/rank-funny-face-black-man-gif-18421232")
-            }
-            if(Random(4) === 3) {
-                message.channel.send("https://tenor.com/view/rank-funny-talking-long-hair-gif-17102943")
+            let array = ["link 1", "link 2", "link 3"];
+
+            for (let i = 0; i < 100; i++) {
+              let randomLink = array[Math.floor(Math.random() * array.length)];
+              message.channel.send(randomLink);
             }
         }
     }
