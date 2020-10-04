@@ -148,7 +148,7 @@ client.on('message', async(message) => {
         if (command === 'invite') {
             message.channel.send("Here's an invite link!\nhttps://discord.com/api/oauth2/authorize?client_id=718879704601329778&permissions=68672&scope=bot");
         }
-         if (command === 'Kill') {
+         if (command === 'kill') {
         process.exit
         }
     /*    if (command === '') {
