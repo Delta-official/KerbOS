@@ -16,7 +16,7 @@ client.on('message', async(message) => {
     if (message.content.startsWith(rankPRF)) {
         const args = message.content.toLowerCase().split(' ');
         const command = args.shift().slice(rankPRF.length);
-        if (command === "BTrank") {
+        if (command === "trank") {
             let array = ["link 1", "link 2", "link 3"];
 
             for (let i = 0; i < 100; i++) {
