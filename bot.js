@@ -28,7 +28,7 @@ client.on('message', async(message) => {
         if (command === 'transfer') {
             message.channel.send('https://ksp.olex.biz');
         }
-        if (command === 'utilitymods') {
+        if (command === 'BTutilitymods') {
             const utilitypage1 = new Discord.MessageEmbed()
             .setColor('#63b835')
             .setTitle('List of utility mods')
@@ -111,8 +111,8 @@ client.on('message', async(message) => {
 
             client.setTimeout(doMessageThing, 1500) //what should i do with this code???
         }
-        if (command === 'start') {
-            message.channel.send("hello world");
+        if (command === 'utilitymods') {
+            message.channel.send("Oh come on, i've said that it's WIP!");
         }
         if (command === "rank") {
             message.channel.send("https://tenor.com/view/timotainment-tim-entertainment-rank-discord-gif-18070842")
