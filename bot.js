@@ -21,7 +21,7 @@ client.on('message', async(message) => {
 
             for (let i = 0; i < 100; i++) {
               let randomLink = array[Math.floor(Math.random() * array.length)];
-              message.channelsend(randomLink);
+              message.channel.send(randomLink);
             }
         }
     }
