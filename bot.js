@@ -20,13 +20,13 @@ client.on('message', async(message) => {
             function Random(max) {
                 return Math.floor(Math.random() * Math.floor(max));
             }
-            if(Random(1) === 0) {
+            if(Random(4) === 0) {
                 message.channel.send("https://tenor.com/view/rank-talk-selfie-man-eyeglasses-gif-17817029")
             }
-            if(Random(2) === 1) {
+            if(Random(4) === 1) {
                 message.channel.send("https://tenor.com/view/timotainment-tim-entertainment-rank-discord-gif-18070842")
             }
-            if(Random(3) === 2) {
+            if(Random(4) === 2) {
                 message.channel.send("https://tenor.com/view/rank-funny-face-black-man-gif-18421232")
             }
             if(Random(4) === 3) {
