@@ -17,7 +17,10 @@ client.on('message', async(message) => {
         const args = message.content.toLowerCase().split(' ');
         const command = args.shift().slice(rankPRF.length);
         if (command === "rank") {
-        message.channel.send("How many times do i need to say that it's fucking broken!")
+        message.channel.send("It's broken, just don't use it till i say it's fixed")
+        }
+        if(command === "trank") {
+
         }
     }
     if (message.content.startsWith(prefix)) {
@@ -126,7 +129,7 @@ client.on('message', async(message) => {
             message.channel.send("Here's an invite link!\nhttps://discord.com/api/oauth2/authorize?client_id=718879704601329778&permissions=68672&scope=bot");
         }
          if (command === 'rank') {
-        message.channel.send("How many times do i need to say that it's fucking broken!")
+        message.channel.send("It's broken, just don't use it till i say it's fixed")
         }
     /*    if (command === '') {
             message.channel.send('');
