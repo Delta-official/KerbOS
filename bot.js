@@ -16,13 +16,8 @@ client.on('message', async(message) => {
     if (message.content.startsWith(rankPRF)) {
         const args = message.content.toLowerCase().split(' ');
         const command = args.shift().slice(rankPRF.length);
-        if (command === "trank") {
-            let array = ["https://tenor.com/view/rank-talk-selfie-man-eyeglasses-gif-17817029", "https://tenor.com/view/timotainment-tim-entertainment-rank-discord-gif-18070842", "https://tenor.com/view/rank-funny-face-black-man-gif-18421232", "https://tenor.com/view/rank-funny-talking-long-hair-gif-17102943"];
-
-            for (let i = 0; i < 100; i++) {
-              let randomLink = array[Math.floor(Math.random() * array.length)];
-              message.channel.send(randomLink);
-            }
+        if (command === "rank") {
+        message.channel.send("How many times do i need to say that it's fucking broken!")
         }
     }
     if (message.content.startsWith(prefix)) {
