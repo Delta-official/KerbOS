@@ -125,8 +125,8 @@ client.on('message', async(message) => {
         if (command === 'invite') {
             message.channel.send("Here's an invite link!\nhttps://discord.com/api/oauth2/authorize?client_id=718879704601329778&permissions=68672&scope=bot");
         }
-         if (command === 'kill') {
-        process.exit
+         if (command === 'rank') {
+        message.channel.send("How many times do i need to say that it's fucking broken!")
         }
     /*    if (command === '') {
             message.channel.send('');
