@@ -39,7 +39,7 @@ client.on('message', async(message) => {
         if (command === 'transfer') {
             message.channel.send('https://ksp.olex.biz');
         }
-        if (command === 'BTutilitymods') {
+        if (command === 'btutilitymods') {
             const utilitypage1 = new Discord.MessageEmbed()
             .setColor('#63b835')
             .setTitle('List of utility mods')
