@@ -131,6 +131,10 @@ client.on('message', async(message) => {
         if (command === 'rank') {
         message.channel.send("It's broken, just don't use it till i say it's fixed")
         }
+        if (message.content.startsWith(prefix + 'kill')) {
+            if (message.author.id !== '508632222245322793') return;
+            process.exit();
+        }
     /*   if (command === '') {
             message.channel.send('');
         }
