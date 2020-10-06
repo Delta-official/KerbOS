@@ -126,7 +126,7 @@ client.on('message', async(message) => {
             message.channel.send("Oh come on, i've said that it's WIP!");
         }
         if (command === 'invite') {
-            message.channel.send("Here's an invite link!\nhttps://discord.com/api/oauth2/authorize?client_id=718879704601329778&permissions=68672&scope=bot");
+            message.channel.send("Here's ~~your blood~~ an invite link!\nhttps://discord.com/api/oauth2/authorize?client_id=718879704601329778&permissions=68672&scope=bot");
         }
         if (command === 'rank') {
         message.channel.send("It's broken, just don't use it till i say it's fixed")
