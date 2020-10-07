@@ -4,7 +4,6 @@ const client = new Discord.Client();
 
 client.on('ready', () => {
     console.log('Booting up KerbOS.V1...\nWelcome User01, please enter password:');
-    console.log(client.guilds)
     client.user.setActivity('with RCS | ;help')
 });
 
