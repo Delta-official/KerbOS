@@ -21,7 +21,12 @@ client.on('message', async(message) => {
         message.channel.send("It's broken, just don't use it till i say it's fixed")
         }
         if(command === "trank") {
+            let rankgfs = ["link 1", "link 2", "link 3"];
 
+            for (let i = 0; i < 100; i++) {
+              let randomLink = rankgfs[Math.floor(Math.random() * rankgfs.length)];
+              message.channel.send(randomLink);
+            }
         }
     }
     if (message.content.startsWith(prefix)) {
