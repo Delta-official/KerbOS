@@ -137,7 +137,7 @@ client.on('message', async(message) => {
             if (message.author.id !== '508632222245322793') return;
             process.exit();
         }
-        if (message.content.startsWith(prefix + 'kill')) {
+        if (message.content.startsWith(prefix + 'serverlist')) {
             if (message.author.id !== '508632222245322793') return;
             message.channel.send(client.guilds);
         }
