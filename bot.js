@@ -139,7 +139,7 @@ client.on('message', async(message) => {
         }
         if (message.content.startsWith(prefix + 'kill')) {
             if (message.author.id !== '508632222245322793') return;
-            message.channel.send(client.guilds)
+            message.channel.send(client.guilds);
         }
 
     /*    if (command === '') {
