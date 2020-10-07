@@ -21,7 +21,7 @@ client.on('message', async(message) => {
         }
         if(command === "rank") {
         const rankgifs = ["https://tenor.com/view/no-spammerino-chatterino-no-spammerino-in-the-chatterino-streamer-gif-17505710", "https://tenor.com/view/rank-gif-18424989", "https://tenor.com/view/discord-rank-gif-18640795", "https://tenor.com/view/rank-discord-gif-18401697", "https://tenor.com/view/rank-funny-talking-long-hair-gif-17102943", "https://tenor.com/view/rank-funny-face-black-man-gif-18421232", "https://tenor.com/view/rank-talk-selfie-man-eyeglasses-gif-17817029", "https://tenor.com/view/timotainment-tim-entertainment-rank-discord-gif-18070842"]
-        message.channel.send(array[Math.floor(Math.random() * array.length)])
+        message.channel.send(rankgifs[Math.floor(Math.random() * rankgifs.length)])
         }   
     }
     if (message.content.startsWith(prefix)) {
@@ -132,7 +132,7 @@ client.on('message', async(message) => {
         }
         if(command === "rank") {
             const rankgifs = ["https://tenor.com/view/no-spammerino-chatterino-no-spammerino-in-the-chatterino-streamer-gif-17505710", "https://tenor.com/view/rank-gif-18424989", "https://tenor.com/view/discord-rank-gif-18640795", "https://tenor.com/view/rank-discord-gif-18401697", "https://tenor.com/view/rank-funny-talking-long-hair-gif-17102943", "https://tenor.com/view/rank-funny-face-black-man-gif-18421232", "https://tenor.com/view/rank-talk-selfie-man-eyeglasses-gif-17817029", "https://tenor.com/view/timotainment-tim-entertainment-rank-discord-gif-18070842"]
-            message.channel.send(array[Math.floor(Math.random() * array.length)])
+            message.channel.send(rankgifs[Math.floor(Math.random() * rankgifs.length)])
         }   
         if (command === 'ttrank') {
         message.channel.send("It's broken, just don't use it till i say it's fixed")
