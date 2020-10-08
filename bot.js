@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 
 const TESTING_CHANNEL_ID = '763575108069359668';
 const GOOD_POSTER_RANK_ID = '614147636135723021';
+const STRATZ_SERVER_ID = "425119272713322497";
 
 const ADMIN_PERMISSIONS = [
     'MANAGE_ROLES', 
@@ -39,10 +40,12 @@ client.on('message', async(message) => {
         }
 
         if (command === "addrank") {
-            // We need a way to test this in our dev server first
-            // Going to do a little refactoring as well 
-            if (message.channel.id === TESTING_CHANNEL_ID
-                /*message.author.roles.cache.has(GOOD_POSTER_RANK_ID)*/) {
+            if (message.guild.id === STRATZ_SERVER_ID) {
+                message.author.roles.cache.has(GOOD_POSTER_RANK_ID)
+            }
+            if (message.channel.id === TESTING_CHANNEL_ID) {
+
+            
                 console.log(`[INF] got addrank message from ${message.member.displayName}`);
                 for (let attachment of message.attachments.array()) {
                     rankgifs.push(attachment.url);
