@@ -41,7 +41,21 @@ client.on('message', async(message) => {
         // hi bread, i've addded STRATZ_SERVER_ID so we can limit certain functions to stratz's server as shown below VVV
         if (command === "addrank") {
             if (message.guild.id === STRATZ_SERVER_ID) {
-                message.author.roles.cache.has(GOOD_POSTER_RANK_ID)
+                if (message.author.roles.cache.has(GOOD_POSTER_RANK_ID)) {
+                    console.log(`[INF] got addrank message from ${message.member.displayName}`);
+                    for (let attachment of message.attachments.array()) {
+                        rankgifs.push(attachment.url);
+                        console.log(`[INF] added ${attachment.url}`);
+                    }
+    
+                    for (let embed of message.embeds) {
+                        rankgifs.push(embed.url)
+                        console.log(`[INF] added ${embed.url}`);
+                    }
+                } else {
+                    message.channel.send("Only good posters are allowed to add rank gifs, so post good stuff in order to add gifs")
+                    message.react("❌")
+                }
             }
             if (message.channel.id === TESTING_CHANNEL_ID) {
 
