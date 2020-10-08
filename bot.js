@@ -38,7 +38,7 @@ client.on('message', async(message) => {
         if (command === "trank") {
         message.channel.send("It's broken, just don't use it till i say it's fixed")
         }
-
+        // hi bread, i've addded STRATZ_SERVER_ID so we can limit certain functions to stratz's server as shown below VVV
         if (command === "addrank") {
             if (message.guild.id === STRATZ_SERVER_ID) {
                 message.author.roles.cache.has(GOOD_POSTER_RANK_ID)
@@ -59,8 +59,6 @@ client.on('message', async(message) => {
             } else {
                 message.channel.send("Only good posters are allowed to add rank gifs, so post good stuff in order to add gifs")
                 message.react("❌")
-                // thank you for teaching me magic tricks
-                // damn i would kill for auto push it would be so useful
             }
         }
 
@@ -190,18 +188,7 @@ client.on('message', async(message) => {
                 message.channel.send(client.guilds);
             }
         }  // this doesn't work because it can't send empty messages, it says this in console log when i call this command
-        /* Manage channels
-           Manage roles
-           View Audit log
-           Kick members
-           Ban members
-           Manage messages
-           /// Below here is probably unncessecary
-           Manage nicknames
-           Mention @everyone, @here and All Roles
-           Mute members
-           Deafen members
-    /*    if (command === '') {
+   /*     if (command === '') {
             message.channel.send('');
         }
         if (command === '') {
