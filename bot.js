@@ -3,8 +3,17 @@ const Discord = require('discord.js');
 const TESTING_CHANNEL_ID = '763575108069359668';
 const GOOD_POSTER_RANK_ID = '614147636135723021';
 
-let rankgifs = ["https://tenor.com/view/no-spammerino-chatterino-no-spammerino-in-the-chatterino-streamer-gif-17505710", "https://tenor.com/view/rank-gif-18424989", "https://tenor.com/view/discord-rank-gif-18640795", "https://tenor.com/view/rank-discord-gif-18401697", "https://tenor.com/view/rank-funny-talking-long-hair-gif-17102943", "https://tenor.com/view/rank-funny-face-black-man-gif-18421232", "https://tenor.com/view/rank-talk-selfie-man-eyeglasses-gif-17817029", "https://tenor.com/view/timotainment-tim-entertainment-rank-discord-gif-18070842", "https://cdn.discordapp.com/attachments/624983172387569695/744758538299113472/rank.gif", "https://thumbs.gfycat.com/PlumpClassicBrownbutterfly-size_restricted.gif"]
+const ADMIN_PERMISSIONS = [
+    'MANAGE_ROLES', 
+    'MANAGE_CHANNELS', 
+    'BAN_MEMBERS', 
+    'KICK_MEMBERS',
+    'MANAGE_GUILD',
+    'VIEW_AUDIT_LOG',
+    'MANAGE_MESSAGES',
+];
 
+let rankgifs = ["https://tenor.com/view/no-spammerino-chatterino-no-spammerino-in-the-chatterino-streamer-gif-17505710", "https://tenor.com/view/rank-gif-18424989", "https://tenor.com/view/discord-rank-gif-18640795", "https://tenor.com/view/rank-discord-gif-18401697", "https://tenor.com/view/rank-funny-talking-long-hair-gif-17102943", "https://tenor.com/view/rank-funny-face-black-man-gif-18421232", "https://tenor.com/view/rank-talk-selfie-man-eyeglasses-gif-17817029", "https://tenor.com/view/timotainment-tim-entertainment-rank-discord-gif-18070842", "https://cdn.discordapp.com/attachments/624983172387569695/744758538299113472/rank.gif", "https://thumbs.gfycat.com/PlumpClassicBrownbutterfly-size_restricted.gif"]
 const client = new Discord.Client();
 
 client.on('ready', () => {
@@ -34,16 +43,28 @@ client.on('message', async(message) => {
             // Going to do a little refactoring as well 
             if (message.channel.id === TESTING_CHANNEL_ID
                 /*message.author.roles.cache.has(GOOD_POSTER_RANK_ID)*/) {
-                console.log(`got addrank message from ${message.member.displayName}`);
+                console.log(`[INF] got addrank message from ${message.member.displayName}`);
                 for (let attachment of message.attachments.array()) {
                     rankgifs.push(attachment.url);
-                    console.log(`added ${attachment.url}`);
+                    console.log(`[INF] added ${attachment.url}`);
+                }
+
+                for (let embed of message.embeds) {
+                    rankgifs.push(embed.url)
+                    console.log(`[INF] added ${embed.url}`);
                 }
             } else {
                 message.channel.send("Only good posters are allowed to add rank gifs, so post good stuff in order to add gifs")
                 message.react("❌")
                 // thank you for teaching me magic tricks
                 // damn i would kill for auto push it would be so useful
+            }
+        }
+
+        if (command === "showall") {
+            message.channel.send("Showing all current rankgifs.")
+            for (let gif of rankgifs) {
+                message.channel.send(gif);
             }
         }
     }
@@ -157,14 +178,26 @@ client.on('message', async(message) => {
         message.channel.send("It's broken, just don't use it till i say it's fixed")
         }
         if (message.content.startsWith(prefix + 'kill')) {
-            if (message.author.id !== '508632222245322793') return;
-            process.exit();
-        }
+            if (isStaff(message.member)) {
+                process.exit();
+            }
+        } // Put console.log dumps in discord pls
         if (message.content.startsWith(prefix + 'serverlist')) {
-            if (message.author.id !== '508632222245322793') return;
-            message.channel.send(client.guilds);
-        }
-
+            if (isStaff(message.member)) {
+                message.channel.send(client.guilds);
+            }
+        }  // this doesn't work because it can't send empty messages, it says this in console log when i call this command
+        /* Manage channels
+           Manage roles
+           View Audit log
+           Kick members
+           Ban members
+           Manage messages
+           /// Below here is probably unncessecary
+           Manage nicknames
+           Mention @everyone, @here and All Roles
+           Mute members
+           Deafen members
     /*    if (command === '') {
             message.channel.send('');
         }
@@ -174,4 +207,13 @@ client.on('message', async(message) => {
     }
 
 });
+
+function isStaff(member) {
+    return member.hasPermission(ADMIN_PERMISSIONS);
+}
+
+function addRankGif(gif) {
+    rankgifs.push(gif);
+}
+
 client.login(process.env.token); //I want to say thank you to Unknown#9817 and Breadcrumbs#7818 for helping me with this code!
