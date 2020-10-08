@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 
+const TESTING_CHANNEL_ID = '763575108069359668';
 const GOOD_POSTER_RANK_ID = '614147636135723021';
 
 const client = new Discord.Client();
@@ -30,14 +31,15 @@ client.on('message', async(message) => {
         if (command === "addrank") {
             // We need a way to test this in our dev server first
             // Going to do a little refactoring as well 
-            if (message.author.roles.cache.has(GOOD_POSTER_RANK_ID)) {
+            if (message.channel.id === TESTING_CHANNEL_ID // this right?
+                /*message.author.roles.cache.has(GOOD_POSTER_RANK_ID)*/) {
                 for (let attachment of message.attachments.array()) {
                     rankgifs.push(attachment.url);
                 }
             } else {
                 message.channel.send("Only good posters are allowed to add rank gifs, so post good stuff in order to add gifs")
                 message.react("❌")
-                // pushing it
+                // i think yes
             }
         }
     }
