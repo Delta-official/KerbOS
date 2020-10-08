@@ -12,6 +12,11 @@ const rankPRF = "!";
 
 client.on('message', async(message) => {
     if (message.author.bot) return;
+    
+    if (message.content.match(/^[^\w\s0-9]rank/)) {
+        const rankgifs = ["https://tenor.com/view/no-spammerino-chatterino-no-spammerino-in-the-chatterino-streamer-gif-17505710", "https://tenor.com/view/rank-gif-18424989", "https://tenor.com/view/discord-rank-gif-18640795", "https://tenor.com/view/rank-discord-gif-18401697", "https://tenor.com/view/rank-funny-talking-long-hair-gif-17102943", "https://tenor.com/view/rank-funny-face-black-man-gif-18421232", "https://tenor.com/view/rank-talk-selfie-man-eyeglasses-gif-17817029", "https://tenor.com/view/timotainment-tim-entertainment-rank-discord-gif-18070842"]
+        message.channel.send(rankgifs[Math.floor(Math.random() * rankgifs.length)])
+      }
 
     if (message.content.startsWith(rankPRF)) {
         const args = message.content.toLowerCase().split(' ');
@@ -19,10 +24,6 @@ client.on('message', async(message) => {
         if (command === "trank") {
         message.channel.send("It's broken, just don't use it till i say it's fixed")
         }
-        if(command === "rank") {
-        const rankgifs = ["https://tenor.com/view/no-spammerino-chatterino-no-spammerino-in-the-chatterino-streamer-gif-17505710", "https://tenor.com/view/rank-gif-18424989", "https://tenor.com/view/discord-rank-gif-18640795", "https://tenor.com/view/rank-discord-gif-18401697", "https://tenor.com/view/rank-funny-talking-long-hair-gif-17102943", "https://tenor.com/view/rank-funny-face-black-man-gif-18421232", "https://tenor.com/view/rank-talk-selfie-man-eyeglasses-gif-17817029", "https://tenor.com/view/timotainment-tim-entertainment-rank-discord-gif-18070842"]
-        message.channel.send(rankgifs[Math.floor(Math.random() * rankgifs.length)])
-        }   
     }
     if (message.content.startsWith(prefix)) {
         const args = message.content.toLowerCase().split(' ');
@@ -130,10 +131,6 @@ client.on('message', async(message) => {
         if (command === 'invite') {
             message.channel.send("Here's ~~your blood~~ an invite link!\nhttps://discord.com/api/oauth2/authorize?client_id=718879704601329778&permissions=68672&scope=bot");
         }
-        if(command === "rank") {
-            const rankgifs = ["https://tenor.com/view/no-spammerino-chatterino-no-spammerino-in-the-chatterino-streamer-gif-17505710", "https://tenor.com/view/rank-gif-18424989", "https://tenor.com/view/discord-rank-gif-18640795", "https://tenor.com/view/rank-discord-gif-18401697", "https://tenor.com/view/rank-funny-talking-long-hair-gif-17102943", "https://tenor.com/view/rank-funny-face-black-man-gif-18421232", "https://tenor.com/view/rank-talk-selfie-man-eyeglasses-gif-17817029", "https://tenor.com/view/timotainment-tim-entertainment-rank-discord-gif-18070842"]
-            message.channel.send(rankgifs[Math.floor(Math.random() * rankgifs.length)])
-        }   
         if (command === 'ttrank') {
         message.channel.send("It's broken, just don't use it till i say it's fixed")
         }
