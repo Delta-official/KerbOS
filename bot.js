@@ -32,9 +32,9 @@ client.on('message', async(message) => {
         if (command === "addrank") {
             // We need a way to test this in our dev server first
             // Going to do a little refactoring as well 
-            if (message.channel.id === TESTING_CHANNEL_ID // this right?
+            if (message.channel.id === TESTING_CHANNEL_ID
                 /*message.author.roles.cache.has(GOOD_POSTER_RANK_ID)*/) {
-                console.log(`got addrank message from ${message.author.displayName}`);
+                console.log(`got addrank message from ${message.member.displayName}`);
                 for (let attachment of message.attachments.array()) {
                     rankgifs.push(attachment.url);
                     console.log(`added ${attachment.url}`);
