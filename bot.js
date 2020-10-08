@@ -3,6 +3,8 @@ const Discord = require('discord.js');
 const TESTING_CHANNEL_ID = '763575108069359668';
 const GOOD_POSTER_RANK_ID = '614147636135723021';
 
+let rankgifs = ["https://tenor.com/view/no-spammerino-chatterino-no-spammerino-in-the-chatterino-streamer-gif-17505710", "https://tenor.com/view/rank-gif-18424989", "https://tenor.com/view/discord-rank-gif-18640795", "https://tenor.com/view/rank-discord-gif-18401697", "https://tenor.com/view/rank-funny-talking-long-hair-gif-17102943", "https://tenor.com/view/rank-funny-face-black-man-gif-18421232", "https://tenor.com/view/rank-talk-selfie-man-eyeglasses-gif-17817029", "https://tenor.com/view/timotainment-tim-entertainment-rank-discord-gif-18070842", "https://cdn.discordapp.com/attachments/624983172387569695/744758538299113472/rank.gif", "https://thumbs.gfycat.com/PlumpClassicBrownbutterfly-size_restricted.gif"]
+
 const client = new Discord.Client();
 
 client.on('ready', () => {
@@ -17,9 +19,8 @@ client.on('message', async(message) => {
     if (message.author.bot) return;
     
     if (message.content.match(/^[^\w\s0-9]rank/)) {
-        const rankgifs = ["https://tenor.com/view/no-spammerino-chatterino-no-spammerino-in-the-chatterino-streamer-gif-17505710", "https://tenor.com/view/rank-gif-18424989", "https://tenor.com/view/discord-rank-gif-18640795", "https://tenor.com/view/rank-discord-gif-18401697", "https://tenor.com/view/rank-funny-talking-long-hair-gif-17102943", "https://tenor.com/view/rank-funny-face-black-man-gif-18421232", "https://tenor.com/view/rank-talk-selfie-man-eyeglasses-gif-17817029", "https://tenor.com/view/timotainment-tim-entertainment-rank-discord-gif-18070842", "https://cdn.discordapp.com/attachments/624983172387569695/744758538299113472/rank.gif", "https://thumbs.gfycat.com/PlumpClassicBrownbutterfly-size_restricted.gif"]
         message.channel.send(rankgifs[Math.floor(Math.random() * rankgifs.length)])
-      }
+    }
 
     if (message.content.startsWith(rankPRF)) {
         const args = message.content.toLowerCase().split(' ');
@@ -42,6 +43,7 @@ client.on('message', async(message) => {
                 message.channel.send("Only good posters are allowed to add rank gifs, so post good stuff in order to add gifs")
                 message.react("❌")
                 // thank you for teaching me magic tricks
+                // damn i would kill for auto push it would be so useful
             }
         }
     }
