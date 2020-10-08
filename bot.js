@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
 
+const GOOD_POSTER_RANK_ID = '614147636135723021';
+
 const client = new Discord.Client();
 
 client.on('ready', () => {
@@ -14,7 +16,7 @@ client.on('message', async(message) => {
     if (message.author.bot) return;
     
     if (message.content.match(/^[^\w\s0-9]rank/)) {
-        const rankgifs = ["https://tenor.com/view/no-spammerino-chatterino-no-spammerino-in-the-chatterino-streamer-gif-17505710", "https://tenor.com/view/rank-gif-18424989", "https://tenor.com/view/discord-rank-gif-18640795", "https://tenor.com/view/rank-discord-gif-18401697", "https://tenor.com/view/rank-funny-talking-long-hair-gif-17102943", "https://tenor.com/view/rank-funny-face-black-man-gif-18421232", "https://tenor.com/view/rank-talk-selfie-man-eyeglasses-gif-17817029", "https://tenor.com/view/timotainment-tim-entertainment-rank-discord-gif-18070842"]
+        const rankgifs = ["https://tenor.com/view/no-spammerino-chatterino-no-spammerino-in-the-chatterino-streamer-gif-17505710", "https://tenor.com/view/rank-gif-18424989", "https://tenor.com/view/discord-rank-gif-18640795", "https://tenor.com/view/rank-discord-gif-18401697", "https://tenor.com/view/rank-funny-talking-long-hair-gif-17102943", "https://tenor.com/view/rank-funny-face-black-man-gif-18421232", "https://tenor.com/view/rank-talk-selfie-man-eyeglasses-gif-17817029", "https://tenor.com/view/timotainment-tim-entertainment-rank-discord-gif-18070842", "https://cdn.discordapp.com/attachments/624983172387569695/744758538299113472/rank.gif", "https://thumbs.gfycat.com/PlumpClassicBrownbutterfly-size_restricted.gif"]
         message.channel.send(rankgifs[Math.floor(Math.random() * rankgifs.length)])
       }
 
@@ -23,6 +25,20 @@ client.on('message', async(message) => {
         const command = args.shift().slice(rankPRF.length);
         if (command === "trank") {
         message.channel.send("It's broken, just don't use it till i say it's fixed")
+        }
+
+        if (command === "addrank") {
+            // We need a way to test this in our dev server first
+            // Going to do a little refactoring as well 
+            if (message.author.roles.cache.has(GOOD_POSTER_RANK_ID)) {
+                for (let attachment of message.attachments.array()) {
+                    rankgifs.push(attachment.url);
+                }
+            } else {
+                message.channel.send("Only good posters are allowed to add rank gifs, so post good stuff in order to add gifs")
+                message.react("❌")
+                // pushing it
+            }
         }
     }
     if (message.content.startsWith(prefix)) {
@@ -152,4 +168,4 @@ client.on('message', async(message) => {
     }
 
 });
-client.login(process.env.token); //I want to say thank you to Unknown#9817 for helping me with this code!
+client.login(process.env.token); //I want to say thank you to Unknown#9817 and Breadcrumbs#7818 for helping me with this code!
