@@ -57,6 +57,7 @@ client.on('message', async(message) => {
                     message.react("❌")
                 }
             }
+            // we need to have deletegif command, in case of nsfw shit or something like that
             if (message.channel.id === TESTING_CHANNEL_ID) {
 
             
@@ -174,7 +175,8 @@ client.on('message', async(message) => {
                     { name: 'map', value: 'Gives you a link to website containing maps of all bodies in KSP', inline: true }, 
                     { name: 'dvmap', value: 'Gives you a ∆v map', inline: true }, 
                     { name: 'resorbcalc', value: 'Links to resonant orbit calulator', inline: true },
-                    { name: 'invite', value: "Gives you bot's invite link", inline: true});
+                    { name: 'invite', value: "Gives you bot's invite link", inline: true},
+                    { name: "rank", value: "shows your rank, use with ! as prefix", inline: true });
                 const infoMessage = await message.channel.send("\`\`\`css\n.Loading_Information\n\`\`\`")
 
                 async function doMessageThing() {
