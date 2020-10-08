@@ -33,13 +33,15 @@ client.on('message', async(message) => {
             // Going to do a little refactoring as well 
             if (message.channel.id === TESTING_CHANNEL_ID // this right?
                 /*message.author.roles.cache.has(GOOD_POSTER_RANK_ID)*/) {
+                console.log(`got addrank message from ${message.author.displayName}`);
                 for (let attachment of message.attachments.array()) {
                     rankgifs.push(attachment.url);
+                    console.log(`added ${attachment.url}`);
                 }
             } else {
                 message.channel.send("Only good posters are allowed to add rank gifs, so post good stuff in order to add gifs")
                 message.react("❌")
-                // i think yes
+                // thank you for teaching me magic tricks
             }
         }
     }
