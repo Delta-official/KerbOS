@@ -39,6 +39,7 @@ client.on('message', async(message) => {
         message.channel.send("It's broken, just don't use it till i say it's fixed")
         }
         // hi bread, i've addded STRATZ_SERVER_ID so we can limit certain functions to stratz's server as shown below VVV
+        // also i like how we pair programm, it's very fun!
         if (command === "addrank") {
             if (message.guild.id === STRATZ_SERVER_ID) {
                 if (message.author.roles.cache.has(GOOD_POSTER_RANK_ID)) {
