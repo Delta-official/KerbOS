@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 const TESTING_CHANNEL_ID = '763575108069359668';
 const GOOD_POSTER_RANK_ID = '614147636135723021';
 const STRATZ_SERVER_ID = "425119272713322497";
+const OWNER_ID = "508632222245322793"
 
 const ADMIN_PERMISSIONS = [
     'MANAGE_ROLES', 
@@ -220,7 +221,7 @@ client.on('message', async(message) => {
 });
 
 function isStaff(member) {
-    return member.hasPermission(ADMIN_PERMISSIONS);
+    return member.hasPermission(ADMIN_PERMISSIONS) || member.id === OWNER_ID;
 }
 
 function addRankGif(gif) {
