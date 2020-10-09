@@ -98,6 +98,7 @@ client.on('message', async(message) => {
         if (command === 'map') {
             message.channel.send('https://kerbal-maps.finitemonkeys.org');
         }
+        // don't mind me, i'm just leaving those comments because i'm bored af
         if (command === 'transfer') {
             message.channel.send('https://ksp.olex.biz');
         }
@@ -222,5 +223,5 @@ function isStaff(member) {
 function addRankGif(gif) {
     rankgifs.push(gif);
 }
-
+// to people who got source code of my bot, congrats you are hackers! (or i just gave it to you for some reason)
 client.login(process.env.token); //I want to say thank you to Unknown#9817 and Breadcrumbs#7818 for helping me with this code!
