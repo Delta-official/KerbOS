@@ -79,10 +79,13 @@ client.on('message', async(message) => {
         }
 
         if (command === "showall") {
+            if (isStaff(message.member)) {
             message.channel.send("Showing all current rankgifs.")
             for (let gif of rankgifs) {
                 message.channel.send(gif);
+                // we forgot to protect it!!!
             }
+        }
         }
     }
     if (message.content.startsWith(prefix)) {
