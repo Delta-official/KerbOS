@@ -221,7 +221,7 @@ client.on('message', async(message) => {
 });
 
 function isStaff(member) {
-    return member.hasPermission(ADMIN_PERMISSIONS) || member.id === OWNEW_ID
+    return member.hasPermission(ADMIN_PERMISSIONS) || member.id === OWNER_ID;
 }
 
 function addRankGif(gif) {
