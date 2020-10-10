@@ -103,7 +103,7 @@ client.on('message', async(message) => {
             message.channel.send('https://kerbal-maps.finitemonkeys.org');
         }
         // don't mind me, i'm just leaving those comments because i'm bored af
-        if (command === 'transfer') {
+        if (command === 'transfercalc') {
             message.channel.send('https://ksp.olex.biz');
         }
         if (command === 'btutilitymods') {
@@ -177,12 +177,13 @@ client.on('message', async(message) => {
                 .addFields(
                     { name: 'help', value: 'You are reading it right now', inline: true },
                     { name: '~~utilitymods~~', value: '~~Lists utility mods~~\nCurrently upgrading', inline: true }, 
-                    { name: 'transfer', value: 'Gives you a link to interplanetary transfer calculator', inline: true }, 
+                    { name: 'transfercalc', value: 'Gives you a link to interplanetary transfer calculator', inline: true }, 
                     { name: 'map', value: 'Gives you a link to website containing maps of all bodies in KSP', inline: true }, 
                     { name: 'dvmap', value: 'Gives you a ∆v map', inline: true }, 
                     { name: 'resorbcalc', value: 'Links to resonant orbit calulator', inline: true },
                     { name: 'invite', value: "Gives you bot's invite link", inline: true},
-                    { name: "rank", value: "shows your rank, use with ! as prefix", inline: true });
+                    { name: "rank", value: "Shows your rank, use with ! as prefix", inline: true },
+                    { name: "transfer", value: "Gives you transfer window map", inline: true });
                 const infoMessage = await message.channel.send("\`\`\`css\n.Loading_Information\n\`\`\`")
 
                 async function doMessageThing() {
@@ -210,10 +211,10 @@ client.on('message', async(message) => {
                 message.channel.send(client.guilds);
             }
         }  // this doesn't work because it can't send empty messages, it says this in console log when i call this command
-   /*     if (command === '') {
-            message.channel.send('');
+        if (command === 'transfer') {
+            message.channel.send('https://cdn.discordapp.com/attachments/586948600009981970/764341001854648340/upZStSY.png');
         }
-        if (command === '') {
+    /*    if (command === '') {
             message.channel.send('');
         } */
     }
