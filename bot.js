@@ -214,9 +214,22 @@ client.on('message', async(message) => {
         if (command === 'transfer') {
             message.channel.send('https://cdn.discordapp.com/attachments/586948600009981970/764341001854648340/upZStSY.png');
         }
-    /*    if (command === '') {
+        if (command === 'ksphelp') {
+            // i will create list of links here in an array, but i need them to check if ;ksphelp has docking
+            // or orbit at the same time
+            
+            
             message.channel.send('');
-        } */
+        }
+        if (command === '') {
+            message.channel.send('');
+        }
+        if (command === '') {
+            message.channel.send('');
+        }
+        if (command === '') {
+            message.channel.send('');
+        }
     }
 
 });
