@@ -122,7 +122,7 @@ client.on('message', async(message) => {
                 { name: 'Better Time Warp', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/154935-15-bettertimewarpcontinued-customizable-time-warp-and-lossless-physics-warp/', inline: true},
                 { name: 'Hangar Extender Extended', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/162790-151-hangar-extender-extended/', inline: true},
                 )
-
+            // currently this is broken af, let's fix this when we finish !addrank ok?
             const utilitypage2 = new Discord.MessageEmbed()
             .setColor('#63b835')
             .setTitle('List of utility mods')
