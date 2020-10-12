@@ -156,7 +156,7 @@ client.on('message', async(message) => {
             const filter2 = (reaction, user) => {
                 return ['⬅️', '➡️'].includes(reaction.emoji.name) && user.id === message.author.id;
             };
-            
+            // i hate this shit
             embedreact2.awaitReactions(filter2, { max: 1, time: 600000, errors: ['time'] })
                 .then(collected => {
                     const reaction = collected.first();
@@ -221,7 +221,7 @@ client.on('message', async(message) => {
             
             message.channel.send('');
         }
-        if (command === '') {
+ /*       if (command === '') {
             message.channel.send('');
         }
         if (command === '') {
@@ -229,7 +229,7 @@ client.on('message', async(message) => {
         }
         if (command === '') {
             message.channel.send('');
-        }
+        } */
     }
 
 });
@@ -237,7 +237,8 @@ client.on('message', async(message) => {
 function isStaff(member) {
     return member.hasPermission(ADMIN_PERMISSIONS) || member.id === OWNER_ID;
 }
-
+// so like function above is broken, it only works if i type in the command but not the staff, we should fix this 
+// (yes i know i break everything)
 function addRankGif(gif) {
     rankgifs.push(gif);
 }
