@@ -21,7 +21,7 @@ let rankgifs = ["https://tenor.com/view/no-spammerino-chatterino-no-spammerino-i
 const client = new Discord.Client();
 
 client.on('ready', () => {
-    console.log('Booting up KerbOS.V1...\nWelcome User01, please enter password:');
+    console.log('Booting up KerbOS.V1...\nWelcome User01, please enter password:\n Bread_is_cool12345');
     client.user.setActivity('with RCS | ;help')
 });
 
