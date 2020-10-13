@@ -199,6 +199,21 @@ client.on('message', async(message) => {
             // no no it works perfectly, let me try something
             // also don't delete these comments // K
             // pushing rn
+
+            // Uh, problem: embedreact is a MessageEmbed, 
+            // but message embeds _don't_ have a react method
+
+            // look at the docs
+            // if you want to, I just want to point out - 
+            // embedreact1 is a Message since it returned from a .send
+            // embedreact2 is a MessageEmbed since it was made from a new MessageEmbed
+            // What about this: every time we .react, it should be on embedreact1, since that's the
+            // actual message
+            // Ok, cya then, this was fun you too :)
+            // this is a fucking hell... maybe we'll debug this later, maybe we should end?
+            // i tried making embedreact2 a message too but they just sended at the same time
+            // if you think about it's logical
+            // but anyway see you later, that was a good time, have a good day :)
             embedreact2.react('⬅️') .then( embedreact2.react('➡️'));
 
             const filter2 = (reaction, user) => {
