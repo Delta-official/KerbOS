@@ -172,7 +172,20 @@ client.on('message', async(message) => {
                     const reaction = collected.first();
             
                     if (reaction.emoji.name === '➡️') {
-                      embedreact1.edit(embedreact2) .then(() => {embedreact2.reaction.remove()})
+                        // v This line is probably where the second error is coming from
+                        // What is embedreact2.reaction, exactly? That could be a mistake
+                        // Did we mean to just say reaction.remove()? instead of embedreact2.reaction.remove()?
+                        // Are you sure? The MessageReaction class knows what message it is attached to.
+                        // Plus since this one came from the promise, it obviously knows where it was assigned to
+                        // In any case, the error told us that embedreact2.reaction doesn't exist
+                        // Oh, so this is a lost cause anyway? Since reaction is the user's reaction, right?
+                        // but then code won't know where exactly does it need to remove reactions and crash
+                        // i've found that in order to remove reactions we need manage messages but we don't need that
+                        // because bot can delete his reactions
+                        // true
+                        // i'm gonna update bot's permissions and invite
+                        // embedreact2 isn't exactly a embed but rather a const, maybe that'll help you
+                      embedreact1.edit(embedreact2) .then(() => {embedreact2.reaction.removeAll()})
                     }
                 })
             // question: why doesn't this place a <- on the second embed?
@@ -184,7 +197,8 @@ client.on('message', async(message) => {
             // because it's supposed to place it in order <- first then ->
             // but maybe code can't because of order?
             // no no it works perfectly, let me try something
-            // also don't delete these comments
+            // also don't delete these comments // K
+            // pushing rn
             embedreact2.react('⬅️') .then( embedreact2.react('➡️'));
 
             const filter2 = (reaction, user) => {
