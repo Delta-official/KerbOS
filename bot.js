@@ -2,6 +2,22 @@ const Discord = require('discord.js');
 const Json = require('jsonfile');
 const Token = require('./token.js');
 
+// oh wait then we also need to update deletegif
+// ok
+// Let's start up here
+// We need to load a .json file that has all the rank gifs in it
+// I added a library for loading JSON files 
+
+// (need this to be above the json code)
+let rankgifs = ["https://tenor.com/view/no-spammerino-chatterino-no-spammerino-in-the-chatterino-streamer-gif-17505710", "https://tenor.com/view/rank-gif-18424989", "https://tenor.com/view/discord-rank-gif-18640795", "https://tenor.com/view/rank-discord-gif-18401697", "https://tenor.com/view/rank-funny-talking-long-hair-gif-17102943", "https://tenor.com/view/rank-funny-face-black-man-gif-18421232", "https://tenor.com/view/rank-talk-selfie-man-eyeglasses-gif-17817029", "https://tenor.com/view/timotainment-tim-entertainment-rank-discord-gif-18070842", "https://cdn.discordapp.com/attachments/624983172387569695/744758538299113472/rank.gif", "https://thumbs.gfycat.com/PlumpClassicBrownbutterfly-size_restricted.gif"]
+
+// (We'll call the file "rankgifs.json", seems sensible)
+// Yes good point
+// We'll have an array that holds the loaded gifs and whenever it changes
+// (add or delete), we can write it back to the file
+// Hmm actually this should be in the onstart callback
+
+
 const TESTING_CHANNEL_ID = '763575108069359668';
 const GOOD_POSTER_RANK_ID = '614147636135723021';
 const STRATZ_SERVER_ID = "425119272713322497";
@@ -17,12 +33,15 @@ const ADMIN_PERMISSIONS = [
     'MANAGE_MESSAGES',
 ];
 
-let rankgifs = ["https://tenor.com/view/no-spammerino-chatterino-no-spammerino-in-the-chatterino-streamer-gif-17505710", "https://tenor.com/view/rank-gif-18424989", "https://tenor.com/view/discord-rank-gif-18640795", "https://tenor.com/view/rank-discord-gif-18401697", "https://tenor.com/view/rank-funny-talking-long-hair-gif-17102943", "https://tenor.com/view/rank-funny-face-black-man-gif-18421232", "https://tenor.com/view/rank-talk-selfie-man-eyeglasses-gif-17817029", "https://tenor.com/view/timotainment-tim-entertainment-rank-discord-gif-18070842", "https://cdn.discordapp.com/attachments/624983172387569695/744758538299113472/rank.gif", "https://thumbs.gfycat.com/PlumpClassicBrownbutterfly-size_restricted.gif"]
 const client = new Discord.Client();
 
 client.on('ready', () => {
     console.log('Booting up KerbOS.V1...\nWelcome User01, please enter password:\n Bread_is_cool12345');
-    client.user.setActivity('with RCS | ;help')
+    client.user.setActivity('with RCS | ;help');
+
+    Json.readfile("./rankgifs.json")
+    .then((obj) => { rankgifs = obj.gifs })
+    .catch((error) => { console.error(`[ERR] Failed to load gifs. ${error}`)});
 });
 
 const prefix = ';';
@@ -92,6 +111,12 @@ client.on('message', async(message) => {
 
         if (command === "removegif") {
             if (isStaff(message.member)) {
+                // So... the guy who types his message puts in a link
+                // after the !removegif part, and we search for that link
+                // in the array and remove it, yes?
+                // correct
+                // I think this will work to get the link out but let me test it rq
+                let link = message.content.substring("!removegif".length + 1);
                 
             }
         }
