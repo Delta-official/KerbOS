@@ -20,7 +20,7 @@ let rankgifs = ["https://tenor.com/view/no-spammerino-chatterino-no-spammerino-i
 
 const TESTING_CHANNEL_ID = '763575108069359668';
 const GOOD_POSTER_RANK_ID = '614147636135723021';
-const STRATZ_SERVER_ID = "425119272713322497";
+const STRATZ_SERVER_ID = "425119272713322497"; 
 const OWNER_ID = "508632222245322793"
 
 const ADMIN_PERMISSIONS = [
@@ -38,9 +38,11 @@ const client = new Discord.Client();
 client.on('ready', () => {
     console.log('Booting up KerbOS.V1...\nWelcome User01, please enter password:\n Bread_is_cool12345');
     client.user.setActivity('with RCS | ;help');
-
-    // This was wrong
-    // push it again
+    // so i fucked up code when i added STRATZ_SERVER_ID
+    // We maybe should have a list of approved servers
+    // And add the testing one to it
+    // i made it so it checks if this is stratz's server
+    // maybe, let's go to addrank
     Json.readFile("./rankgifs.json")
     .then((obj) => { rankgifs = obj.gifs })
     .catch((error) => { console.error(`[ERR] Failed to load gifs. ${error}`)});
@@ -72,10 +74,9 @@ client.on('message', async(message) => {
                         rankgifs.push(attachment.url);
                         console.log(`[INF] added ${attachment.url}`);
                     }
-                    
-                    // Last time we tested this it didn't work
-                    // It's time to figure out how to use databases with heroku then isn't it
-                    // *puts hacker glasses on* yeah
+                    // nah, i'm just dumb
+                    // So we want to add an approve message to this as well huh
+                    // fair enough
                     for (let embed of message.embeds) {
                         rankgifs.push(embed.url)
                         console.log(`[INF] added ${embed.url}`);
@@ -85,13 +86,6 @@ client.on('message', async(message) => {
                     message.react("❌")
                 }
             }
-            // above, i'm not sure i've done it correctly
-            // maybe we can work on this part?
-            // So perhaps the way this should work is the user gives a link
-            // that they want removed from the options
-            // then we find that link in the array and get rid of it
-            // ok, but that user should be staff so remember to put isStaff in there
-            // we need to have deletegif command, in case of nsfw shit or something like that
             if (message.channel.id === TESTING_CHANNEL_ID) {
 
             
@@ -105,17 +99,22 @@ client.on('message', async(message) => {
                     rankgifs.push(embed.url)
                     console.log(`[INF] added ${embed.url}`);
                 }
-            } else {
-                message.channel.send("Only good posters are allowed to add rank gifs, so post good stuff in order to add gifs")
-                message.react("❌")
-            }
+            } 
         }
 
         if (command === "removegif") {
             if (isStaff(message.member)) {
                 const approve = message.reply(`Are you sure?`);
-                
-                message.channel.send(approve) .then (() => { approve.react(`✅`)})
+                // Back to this then, since i'm not sure it actually worked
+                // then let's test
+                // something's fucked up
+                // the reaction didn't add it
+                // Got an error - "can't send an empty message"
+                // *brain cells proceed to die*
+                // I think i know what's wrong...
+                // Use the callback variable instead of the capture
+                // give this one another push
+                message.channel.send(approve) .then ((message) => { message.react(`✅`)})
                     .then((message) => {
                         console.log(`[INF] Sent approval message`);
                         const filter = (reaction, reactor) => { return reaction.emoji.name === `✅`};
@@ -131,23 +130,6 @@ client.on('message', async(message) => {
                             });
                         });
                     });
-                    // Let's try it !!
-                    // I think I messed up a function name
-                // (we'll need this later)
-                // So I THINK this massive monstrosity will do what it's supposed to
-                // then let's test, create json file
-                // happens to me sometimes
-                // let's fucking gooo!
-                // k i pushed, now you pull
-                // where?
-                // So now we need a reaction collector i suppose
-                // Going to put some extra console.logs in here for sanity's sake
-                // holy shit i can't type today god damn
-                // You're totally right
-                // earning your pay :P
-                // well that's my work as a observer
-                // syntax :P
-                // wait we also should update showall so it also shows gifs from .json file too
             }
         }
         // it's broken? so should we fix it?
