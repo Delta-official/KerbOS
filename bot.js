@@ -1,4 +1,6 @@
 const Discord = require('discord.js');
+const Json = require('jsonfile');
+const Token = require('./token.js');
 
 const TESTING_CHANNEL_ID = '763575108069359668';
 const GOOD_POSTER_RANK_ID = '614147636135723021';
@@ -309,4 +311,4 @@ function addRankGif(gif) {
     rankgifs.push(gif);
 }
 // to people who got source code of my bot, congrats you are hackers! (or i just gave it to you for some reason)
-client.login(process.env.token); //I want to say thank you to Unknown#9817 and Breadcrumbs#7818 for helping me with this code!
+client.login(Token.auth); //I want to say thank you to Unknown#9817 and Breadcrumbs#7818 for helping me with this code!

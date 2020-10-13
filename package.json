@@ -2,7 +2,7 @@
   "name": "KerbAI",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "bot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +10,8 @@
   "author": "Darkuss",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^12.3.1"
+    "discord.js": "^12.3.1",
+    "json": "^10.0.0",
+    "jsonfile": "^6.0.1"
   }
 }

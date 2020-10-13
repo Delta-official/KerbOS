@@ -1,0 +1,5 @@
+# Don't let the secret out!
+token.js
+
+# Don't need to keep this
+.DS_STORE
