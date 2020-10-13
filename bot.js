@@ -5,7 +5,7 @@ const GOOD_POSTER_RANK_ID = '614147636135723021';
 const STRATZ_SERVER_ID = "425119272713322497";
 const OWNER_ID = "508632222245322793"
 
-const ADMIN_PERMISSIONS = [
+const ADMIN_PERMISSIONS = new Permissions([
     'MANAGE_ROLES', 
     'MANAGE_CHANNELS', 
     'BAN_MEMBERS', 
@@ -13,7 +13,7 @@ const ADMIN_PERMISSIONS = [
     'MANAGE_GUILD',
     'VIEW_AUDIT_LOG',
     'MANAGE_MESSAGES',
-];
+]);
 
 let rankgifs = ["https://tenor.com/view/no-spammerino-chatterino-no-spammerino-in-the-chatterino-streamer-gif-17505710", "https://tenor.com/view/rank-gif-18424989", "https://tenor.com/view/discord-rank-gif-18640795", "https://tenor.com/view/rank-discord-gif-18401697", "https://tenor.com/view/rank-funny-talking-long-hair-gif-17102943", "https://tenor.com/view/rank-funny-face-black-man-gif-18421232", "https://tenor.com/view/rank-talk-selfie-man-eyeglasses-gif-17817029", "https://tenor.com/view/timotainment-tim-entertainment-rank-discord-gif-18070842", "https://cdn.discordapp.com/attachments/624983172387569695/744758538299113472/rank.gif", "https://thumbs.gfycat.com/PlumpClassicBrownbutterfly-size_restricted.gif"]
 const client = new Discord.Client();
@@ -49,7 +49,10 @@ client.on('message', async(message) => {
                         rankgifs.push(attachment.url);
                         console.log(`[INF] added ${attachment.url}`);
                     }
-    
+                    
+                    // Last time we tested this it didn't work
+                    // It's time to figure out how to use databases with heroku then isn't it
+                    // *puts hacker glasses on* yeah
                     for (let embed of message.embeds) {
                         rankgifs.push(embed.url)
                         console.log(`[INF] added ${embed.url}`);
@@ -59,6 +62,12 @@ client.on('message', async(message) => {
                     message.react("❌")
                 }
             }
+            // above, i'm not sure i've done it correctly
+            // maybe we can work on this part?
+            // So perhaps the way this should work is the user gives a link
+            // that they want removed from the options
+            // then we find that link in the array and get rid of it
+            // ok, but that user should be staff so remember to put isStaff in there
             // we need to have deletegif command, in case of nsfw shit or something like that
             if (message.channel.id === TESTING_CHANNEL_ID) {
 
@@ -79,6 +88,14 @@ client.on('message', async(message) => {
             }
         }
 
+        if (command === "removegif") {
+            if (isStaff(message.member)) {
+                
+            }
+        }
+        // it's broken? so should we fix it?
+        // also isStaff is a bit broken, i've also added my id so it checks it through XOR gate
+        // def
         if (command === "showall") {
             if (isStaff(message.member)) {
             message.channel.send("Showing all current rankgifs.")
@@ -156,7 +173,8 @@ client.on('message', async(message) => {
             const filter2 = (reaction, user) => {
                 return ['⬅️', '➡️'].includes(reaction.emoji.name) && user.id === message.author.id;
             };
-            // i hate this shit
+            // ok
+            // let's go from top to bottom
             embedreact2.awaitReactions(filter2, { max: 1, time: 600000, errors: ['time'] })
                 .then(collected => {
                     const reaction = collected.first();
@@ -234,9 +252,12 @@ client.on('message', async(message) => {
 
 });
 
+// We must be using hasPermission wrong then?
+// ..
 function isStaff(member) {
     return member.hasPermission(ADMIN_PERMISSIONS) || member.id === OWNER_ID;
 }
+// yep
 // so like function above is broken, it only works if i type in the command but not the staff, we should fix this 
 // (yes i know i break everything)
 function addRankGif(gif) {
