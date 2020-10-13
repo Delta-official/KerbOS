@@ -104,7 +104,45 @@ client.on('message', async(message) => {
 
         if (command === "removegif") {
             if (isStaff(message.member)) {
-                const approve = message.reply(`Are you sure?`);
+                // hmm
+                // approve might be a promise here instead of a message
+                // ya know, maybe we should make so that errors are DMed to me?
+                // time for A D D I T I O N A L  N E S T I N G
+                // Good idea but i'm not totally sure how to do that?
+                // message.OWNER_ID.send(${error})?
+                message.reply(`Are you sure?`).then((approve) => {
+                    message.channel.send(approve).then((msg) => { msg.react(`✅`)})
+                    .then((msg) => {
+                        console.log(`[INF] Sent approval message`);
+                        const filter = (reaction, reactor) => { return reaction.emoji.name === `✅`};
+                        const collector = msg.createReactionCollector(filter, { time: 100000 /*?*/ });
+                        collector.on('collect', (reaction) => {
+                            console.log(`[INF] Collected reaction ${reaction.name}`);
+                            
+                            const link = msg.content.substring("!removegif".length + 1);
+                            rankgifs = rankgifs.filter((item) => { link.trim() !== item.trim() });
+
+                            Json.writeFile('./rankgifs.json', { gifs: rankgifs }, (error) => {
+                                console.error(`Failed to write rankgifs file: ${error}`)
+                            });
+                        });
+                    })
+                    .catch((error) => {
+                        // According to google, this is something
+                        // until it does :P
+                        client.users.cache.get(OWNER_ID).send(`${error}`); //? // but anyone can send it, so let's try 
+                        // google never lies, also pushing en
+                        // through onwer_id
+                        // How do we get a user given only an ID?
+                        // right, but how do we go from an ID to a user
+                        // We obviously need a user object to call .send(), so how get that
+                        // users have ids?
+                        // idk i remember reading same question on stack and it said that we can use ids for .send()
+                    });
+                })
+                .catch((error) => {
+                    client.users.cache.get(OWNER_ID).send(`${error}`); //?
+                });
                 // Back to this then, since i'm not sure it actually worked
                 // then let's test
                 // something's fucked up
@@ -114,22 +152,12 @@ client.on('message', async(message) => {
                 // I think i know what's wrong...
                 // Use the callback variable instead of the capture
                 // give this one another push
-                message.channel.send(approve) .then ((message) => { message.react(`✅`)})
-                    .then((message) => {
-                        console.log(`[INF] Sent approval message`);
-                        const filter = (reaction, reactor) => { return reaction.emoji.name === `✅`};
-                        const collector = message.createReactionCollector(filter, { time: 100000 /*?*/ });
-                        collector.on('collect', (reaction) => {
-                            console.log(`[INF] Collected reaction ${reaction.name}`);
-                            
-                            const link = message.content.substring("!removegif".length + 1);
-                            rankgifs = rankgifs.filter((item) => { link.trim() !== item.trim() });
-
-                            Json.writeFile('./rankgifs.json', { gifs: rankgifs }, (error) => {
-                                console.error(`Failed to write rankgifs file: ${error}`)
-                            });
-                        });
-                    });
+                // It's back up
+                // same error >_<
+                // puuuuuushed
+                // errors?
+                // >:(
+                
             }
         }
         // it's broken? so should we fix it?
