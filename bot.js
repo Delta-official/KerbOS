@@ -39,7 +39,9 @@ client.on('ready', () => {
     console.log('Booting up KerbOS.V1...\nWelcome User01, please enter password:\n Bread_is_cool12345');
     client.user.setActivity('with RCS | ;help');
 
-    Json.readfile("./rankgifs.json")
+    // This was wrong
+    // push it again
+    Json.readFile("./rankgifs.json")
     .then((obj) => { rankgifs = obj.gifs })
     .catch((error) => { console.error(`[ERR] Failed to load gifs. ${error}`)});
 });
@@ -130,11 +132,14 @@ client.on('message', async(message) => {
                         });
                     });
                     // Let's try it !!
+                    // I think I messed up a function name
                 // (we'll need this later)
                 // So I THINK this massive monstrosity will do what it's supposed to
                 // then let's test, create json file
                 // happens to me sometimes
                 // let's fucking gooo!
+                // k i pushed, now you pull
+                // where?
                 // So now we need a reaction collector i suppose
                 // Going to put some extra console.logs in here for sanity's sake
                 // holy shit i can't type today god damn
