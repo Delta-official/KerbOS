@@ -1,5 +1,6 @@
 # Don't let the secret out!
 token.js
 
-# Don't need to keep this
+# Useless to be in the repo
 .DS_STORE
+node_modules
