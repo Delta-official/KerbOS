@@ -155,26 +155,42 @@ client.on('message', async(message) => {
             const embedreact2 = utilitypage2
             embedreact1.react('➡️');
 
+            // So this filter reduces all the reactions on the message to only
+            // -> emojis that came from the bot itself?
+            // Oooh, that's what the user.id === message.author.id is for 
+            // That actually makes a lot of sense
+            // look i don't know how this works i just copied it, 
+            // but i know it's making so filter only reacts to user who sent command
+            // i know right
             const filter = (reaction, user) => {
                 return ['➡️'].includes(reaction.emoji.name) && user.id === message.author.id;
             };
-            
+            // yes, also check my discord message
+            // Perhaps the reason this only works once is the collected.first()?
             embedreact1.awaitReactions(filter, { max: 1, time: 600000, errors: ['time'] })
                 .then(collected => {
                     const reaction = collected.first();
             
                     if (reaction.emoji.name === '➡️') {
-                      embedreact1.edit(embedreact2)
+                      embedreact1.edit(embedreact2) .then(() => {embedreact2.reaction.remove()})
                     }
                 })
-
+            // question: why doesn't this place a <- on the second embed?
+            // Sure, but when the second embed shows up the only reaction on it
+            // is the ->, there isn't a <- at all, and it seems like this code
+            // should add it
+            // Maybe it's because the embed hasn't been placed on a message yet?
+            // Should it be added above ^ after we do embedreact1.edit()?
+            // because it's supposed to place it in order <- first then ->
+            // but maybe code can't because of order?
+            // no no it works perfectly, let me try something
+            // also don't delete these comments
             embedreact2.react('⬅️') .then( embedreact2.react('➡️'));
 
             const filter2 = (reaction, user) => {
                 return ['⬅️', '➡️'].includes(reaction.emoji.name) && user.id === message.author.id;
             };
-            // ok
-            // let's go from top to bottom
+            
             embedreact2.awaitReactions(filter2, { max: 1, time: 600000, errors: ['time'] })
                 .then(collected => {
                     const reaction = collected.first();
@@ -183,7 +199,7 @@ client.on('message', async(message) => {
                       embedreact2.edit(utilitypage1)
                     }
                     else {
-                        embedreact2.edit()
+                        embedreact2.edit() .then()
                     }
                 })
         }
