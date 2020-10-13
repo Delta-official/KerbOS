@@ -111,13 +111,38 @@ client.on('message', async(message) => {
 
         if (command === "removegif") {
             if (isStaff(message.member)) {
-                // So... the guy who types his message puts in a link
-                // after the !removegif part, and we search for that link
-                // in the array and remove it, yes?
-                // correct
-                // I think this will work to get the link out but let me test it rq
-                let link = message.content.substring("!removegif".length + 1);
+                const approve = message.reply(`Are you sure?`);
                 
+                message.channel.send(approve) .then (() => { approve.react(`✅`)})
+                    .then((message) => {
+                        console.log(`[INF] Sent approval message`);
+                        const filter = (reaction, reactor) => { return reaction.emoji.name === `✅`};
+                        const collector = message.createReactionCollector(filter, { time: 100000 /*?*/ });
+                        collector.on('collect', (reaction) => {
+                            console.log(`[INF] Collected reaction ${reaction.name}`);
+                            
+                            const link = message.content.substring("!removegif".length + 1);
+                            rankgifs = rankgifs.filter((item) => { link.trim() !== item.trim() });
+
+                            Json.writeFile('./rankgifs.json', { gifs: rankgifs }, (error) => {
+                                console.error(`Failed to write rankgifs file: ${error}`)
+                            });
+                        });
+                    });
+                    // Let's try it !!
+                // (we'll need this later)
+                // So I THINK this massive monstrosity will do what it's supposed to
+                // then let's test, create json file
+                // happens to me sometimes
+                // let's fucking gooo!
+                // So now we need a reaction collector i suppose
+                // Going to put some extra console.logs in here for sanity's sake
+                // holy shit i can't type today god damn
+                // You're totally right
+                // earning your pay :P
+                // well that's my work as a observer
+                // syntax :P
+                // wait we also should update showall so it also shows gifs from .json file too
             }
         }
         // it's broken? so should we fix it?
