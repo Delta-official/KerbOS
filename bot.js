@@ -5,7 +5,7 @@ const GOOD_POSTER_RANK_ID = '614147636135723021';
 const STRATZ_SERVER_ID = "425119272713322497";
 const OWNER_ID = "508632222245322793"
 
-const ADMIN_PERMISSIONS = new Permissions([
+const ADMIN_PERMISSIONS = [
     'MANAGE_ROLES', 
     'MANAGE_CHANNELS', 
     'BAN_MEMBERS', 
@@ -13,7 +13,7 @@ const ADMIN_PERMISSIONS = new Permissions([
     'MANAGE_GUILD',
     'VIEW_AUDIT_LOG',
     'MANAGE_MESSAGES',
-]);
+];
 
 let rankgifs = ["https://tenor.com/view/no-spammerino-chatterino-no-spammerino-in-the-chatterino-streamer-gif-17505710", "https://tenor.com/view/rank-gif-18424989", "https://tenor.com/view/discord-rank-gif-18640795", "https://tenor.com/view/rank-discord-gif-18401697", "https://tenor.com/view/rank-funny-talking-long-hair-gif-17102943", "https://tenor.com/view/rank-funny-face-black-man-gif-18421232", "https://tenor.com/view/rank-talk-selfie-man-eyeglasses-gif-17817029", "https://tenor.com/view/timotainment-tim-entertainment-rank-discord-gif-18070842", "https://cdn.discordapp.com/attachments/624983172387569695/744758538299113472/rank.gif", "https://thumbs.gfycat.com/PlumpClassicBrownbutterfly-size_restricted.gif"]
 const client = new Discord.Client();
