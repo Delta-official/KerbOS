@@ -93,11 +93,21 @@ client.on('message', async(message) => {
                 for (let attachment of message.attachments.array()) {
                     rankgifs.push(attachment.url);
                     console.log(`[INF] added ${attachment.url}`);
+                    Json.writeFile('./rankgifs.json', { gifs: rankgifs }, (error) => {
+                        if (error) {
+                            console.error(`Failed to write rankgifs file: ${error}`);
+                        }
+                    });
                 }
 
                 for (let embed of message.embeds) {
                     rankgifs.push(embed.url)
                     console.log(`[INF] added ${embed.url}`);
+                    Json.writeFile('./rankgifs.json', { gifs: rankgifs }, (error) => {
+                        if (error) {
+                            console.error(`Failed to write rankgifs file: ${error}`);
+                        }
+                    });
                 }
             } 
         }
@@ -128,8 +138,17 @@ client.on('message', async(message) => {
                         });
                     });
                 })
-                // yes
+                // good, now let's fix serverlist and i will end this session because it seems you're already frustratede by yourself and this code
+                // lmao, you should set that as a status
                 // push?
+                // wait before we do serverlist
+                // we should make the !addrank write the json file
+                // Ok done
+                // so where is serverlist
+                // *gun emote* set it as a status
+                // good bread
+                // at the very bottom of this code pit
+                // now pull
                     .catch((error) => {
                         client.users.cache.get(OWNER_ID).send(`${error}`); 
                         console.error(error);
@@ -308,10 +327,18 @@ client.on('message', async(message) => {
             if (isStaff(message.member)) {
                 process.exit();
             }
-        } // Put console.log dumps in discord pls
+        } 
         if (message.content.startsWith(prefix + 'serverlist')) {
             if (isStaff(message.member)) {
-                message.channel.send(client.guilds);
+                // Ok so here?
+                // perhaps...
+                for (let guild of client.guilds.cache.array()) {
+                    message.channel.send(guild.name); //?
+                } // let's try that
+                // message.channel.send(client.guilds);
+                // yes
+                // message.channel.send() simply doesn't work with client.guilds
+                // maybe
             }
         }  // this doesn't work because it can't send empty messages, it says this in console log when i call this command
         if (command === 'transfer') {
