@@ -110,9 +110,9 @@ client.on('message', async(message) => {
                     const filter = (reaction, reactor) => { return reaction.emoji.name === `✅`};
                     const collector = approve.createReactionCollector(filter, { time: 100000 /*?*/ });
                     collector.on('collect', (reaction) => {
-                    console.log(`[INF] Collected reaction ${reaction.name}`);
+                        console.log(`[INF] Collected reaction ${reaction.name}`);
                          
-                        const link = msg.content.substring("!removegif".length + 1);
+                        const link = approve.content.substring("!removegif".length + 1);
                         rankgifs = rankgifs.filter((item) => { link.trim() !== item.trim() });
 
                         Json.writeFile('./rankgifs.json', { gifs: rankgifs }, (error) => {
@@ -124,6 +124,10 @@ client.on('message', async(message) => {
                     client.users.cache.get(OWNER_ID).send(`${error}`); 
                     console.error(error);
                 });
+                // I fixed the problem
+                // it's getting hard to find you :P
+                // Ahh for fuck's sake
+                // I forgot one
                 // (the second catch is redundant now)
                 // Should be good to push and try this one     
             }
