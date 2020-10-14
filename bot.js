@@ -48,6 +48,11 @@ client.on('ready', () => {
     // ? Not sure what you mean by this
     // I think everything's been settled
     // ok let me change invite link
+    // done, restarted
+    // ok i've pushed, now pull
+    // uh... look at logToAll
+    // i think your find and replace fucked it
+    // strange, it didn't give me invite nor error
     // we should also should change console.log { message.owner.id(blah blah blah)}
     // in the addrank or removegif there was something like that
 });
@@ -423,8 +428,10 @@ function addRankGif(gif) {
     rankgifs.push(gif);
 }
 
+// UNLIMITED RECURSIVE POWER
+// lmao, the perfect function that uses itself
 function logToAll(message) {
-    logToAll(message);
+    console.log(message);
     client.users.cache.get(OWNER_ID).send(message);
     // changing all instances
 }
