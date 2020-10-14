@@ -9,7 +9,7 @@ const Token = require('./token.js');
 // I added a library for loading JSON files 
 
 // (need this to be above the json code)
-let rankgifs = ["https://tenor.com/view/no-spammerino-chatterino-no-spammerino-in-the-chatterino-streamer-gif-17505710", "https://tenor.com/view/rank-gif-18424989", "https://tenor.com/view/discord-rank-gif-18640795", "https://tenor.com/view/rank-discord-gif-18401697", "https://tenor.com/view/rank-funny-talking-long-hair-gif-17102943", "https://tenor.com/view/rank-funny-face-black-man-gif-18421232", "https://tenor.com/view/rank-talk-selfie-man-eyeglasses-gif-17817029", "https://tenor.com/view/timotainment-tim-entertainment-rank-discord-gif-18070842", "https://cdn.discordapp.com/attachments/624983172387569695/744758538299113472/rank.gif", "https://thumbs.gfycat.com/PlumpClassicBrownbutterfly-size_restricted.gif"]
+let rankgifs = ["https://tenor.com/view/no-spammerino-chatterino-no-spammerino-in-the-chatterino-streamer-gif-17505710", "https://tenor.com/view/rank-gif-18424989", "https://tenor.com/view/discord-rank-gif-18640795", "https://tenor.com/view/rank-discord-gif-18401697", "https://tenor.com/view/rank-funny-talking-long-hair-gif-17102943", "https://tenor.com/view/rank-funny-face-black-man-gif-18421232", "https://tenor.com/view/rank-talk-selfie-man-eyeglasses-gif-17817029", "https://tenor.com/view/timotainment-tim-entertainment-rank-discord-gif-18070842", "https://cdn.discordapp.com/attachments/624983172387569695/744758538299113472/rank.gif", "https://thumbs.gfycat.com/PlumpClassicBrownbutterfly-size_restricted.gif", "https://media.discordapp.net/attachments/296056831514509312/755593395337953280/rank.gif"]
 
 // (We'll call the file "rankgifs.json", seems sensible)
 // Yes good point
@@ -110,13 +110,38 @@ client.on('message', async(message) => {
                     const filter = (reaction, reactor) => { return reaction.emoji.name === `✅`};
                     const collector = approve.createReactionCollector(filter, { time: 100000 /*?*/ });
                     collector.on('collect', (reaction) => {
-                        console.log(`[INF] Collected reaction ${reaction.name}`);
+                        // reaction.name doesn't exist, problem #1
+                        // that should work
+                        console.log(`[INF] Collected reaction ${reaction.emoji.name}`);
                          
                         const link = approve.content.substring("!removegif".length + 1);
-                        rankgifs = rankgifs.filter((item) => { link.trim() !== item.trim() });
+                        // It may have just been because i was missing the return >_<
+                        // Ok give this a push
+                        // nope
+                        // I don't need death I need answers
+                        // lmfao
+                        // pushed and it should auto pull on your side
+                        // i wanna die, i guess you want to do that too
+                        // oof
+                        rankgifs = rankgifs.filter((item) => { return link.trim() !== item.trim() });
+                        console.log(rankgifs);
 
+                        // problem #2: can't write to the json file
+                        // push pls
+                        // Yeah because it's only writing them to console
+                        // the error is literally just "null"
+                        // I can't be using this function right
+                        // wait a second... null means no error
+                        // oh my god
+                        // I'm actually mentally deficient
+                        // me too
+                        // pusled (like pushed and pulled at the same time)
+                        // i didn't recieve any failed to write errors from bot
+                        // wait... this one might be on my server's end
                         Json.writeFile('./rankgifs.json', { gifs: rankgifs }, (error) => {
-                            console.error(`Failed to write rankgifs file: ${error}`)
+                            if (error) {
+                                console.error(`Failed to write rankgifs file: ${error}`);
+                            }
                         });
                     });
                 })
@@ -124,12 +149,15 @@ client.on('message', async(message) => {
                     client.users.cache.get(OWNER_ID).send(`${error}`); 
                     console.error(error);
                 });
-                // I fixed the problem
-                // it's getting hard to find you :P
-                // Ahh for fuck's sake
-                // I forgot one
-                // (the second catch is redundant now)
-                // Should be good to push and try this one     
+                // give me a sec 
+                // sorry I'm starting to get in the middle of other things now
+                // I at least want to fix the filter nuking our rankgifs AKA our holy things and the json file
+                // K let me test this filter in the browser and see if I'm just insane or not
+                // ffs how?
+                // bread, you alive?
+                // also seems like i can push and pull at the same time so changes are synchronized
+                // yeah
+                // you are, good insane bread
             }
         }
         if (command === "showall") {
