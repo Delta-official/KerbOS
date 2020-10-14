@@ -112,6 +112,8 @@ client.on('message', async(message) => {
                     // the "reactor" variable is coming in as a User object so I think I can just .id it
                     // and I read that client.user.id is how you do that and the docs have never lied to me before
                     const filter = (reaction, reactor) => { return reaction.emoji.name === `✅` && reactor.id !== client.user.id };
+                    let collector = approve.createReactionCollector(filter, { time: 120000 });
+                    collector.on('collect', (reaction) => {
                         // reaction.name doesn't exist, problem #1
                         // that should work
                         console.log(`[INF] Collected reaction ${reaction.emoji.name}`);
@@ -124,9 +126,10 @@ client.on('message', async(message) => {
                                 console.error(`Failed to write rankgifs file: ${error}`);
                             }
                         });
-                        // this should fix
-                        // i fixed errors
+                    });
                 })
+                // yes
+                // push?
                     .catch((error) => {
                         client.users.cache.get(OWNER_ID).send(`${error}`); 
                         console.error(error);
