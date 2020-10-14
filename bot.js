@@ -77,7 +77,20 @@ client.on('message', async(message) => {
         // also i like how we pair programm, it's very fun!
         if (command === "addrank") {
             if (message.guild.id === STRATZ_SERVER_ID) {
-            setTimeout(Stratzservertimeout(), 300000);
+                if (message.author.roles.cache.has(GOOD_POSTER_RANK_ID)) {
+                    logToAll(`[INF] got addrank message from ${message.member.displayName}`);
+                    for (let attachment of message.attachments.array()) {
+                        rankgifs.push(attachment.url);
+                        logToAll(`[INF] added ${attachment.url}`);
+                    }
+                    for (let embed of message.embeds) {
+                        rankgifs.push(embed.url)
+                        logToAll(`[INF] added ${embed.url}`);
+                    }
+                } else {
+                    message.channel.send("Only good posters are allowed to add rank gifs, so post good stuff in order to add gifs")
+                    message.react("❌")
+                }
             }
             if (message.channel.id === TESTING_CHANNEL_ID) {
 
@@ -395,21 +408,6 @@ function logToAll(message) {
     console.log(message);
     client.users.cache.get(OWNER_ID).send(message);
 }
-function Stratzservertimeout() {
-if (message.author.roles.cache.has(GOOD_POSTER_RANK_ID)) {
-    logToAll(`[INF] got addrank message from ${message.member.displayName}`);
-    for (let attachment of message.attachments.array()) {
-        rankgifs.push(attachment.url);
-        logToAll(`[INF] added ${attachment.url}`);
-    }
-    for (let embed of message.embeds) {
-        rankgifs.push(embed.url)
-        logToAll(`[INF] added ${embed.url}`);
-    }
-} else {
-    message.channel.send("Only good posters are allowed to add rank gifs, so post good stuff in order to add gifs")
-    message.react("❌")
-}
-}
+
 // to people who got source code of my bot, congrats you are hackers! (or i just gave it to you for some reason)
 client.login(Token.auth); //I want to say thank you to Unknown#9817 and Breadcrumbs#7818 for helping me with this code!
