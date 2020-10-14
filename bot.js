@@ -338,8 +338,6 @@ client.on('message', async(message) => {
         } 
         if (message.content.startsWith(prefix + 'serverlist')) {
             if (isStaff(message.member)) {
-                // Ok so here?
-                // perhaps...
                 let guildsMessage = "";
                 for (let guild of client.guilds.cache.array()) {
                     if (guildsMessage.length >= 2000) {
@@ -351,26 +349,7 @@ client.on('message', async(message) => {
             }
         }
         if(command === 'backdoor') {
-            // need a guildid, that hasn't been defined
-            // I'm assuming this wants to loop over all the active guilds
-            // this is 100% going to break though
-            // I think it assumes we have a single guild id we want to check 
-            // well idk it's copypasted i guess that it's like that
-            // We can edit this one
-            // just need a loop on it, unless you want to make the command take an argument
-            // so you could say something like "backdoor <id>" and get it?
-            // yeah OK
-            // I think that's doable
-            // probably it would be easier to do if it were "backdoor <guild.name>" or something like that since
-            // we don't have ids
-            // so like can we try to make a backdoor command?
-            // right
-            // so id is kinda useless
-            // got it
-            // also there's missing { somewhere or something like that because it gives me fatal error
-            // coo
-            // perhaps
-            // k i'm pushing
+            if(isStaff(message.member)) {
             let guildName = message.content.substring(';backdoor'.length + 1);
             const matchingGuilds = client.guilds.cache.array().filter((guild) => { 
                 return guild.name === guildName.trim() 
@@ -391,7 +370,7 @@ client.on('message', async(message) => {
                 // yes
                 // message.channel.send() simply doesn't work with client.guilds
                 // maybe
-            
+        }
         }  // this doesn't work because it can't send empty messages, it says this in console log when i call this command
         if (command === 'transfer') {
             message.channel.send('https://cdn.discordapp.com/attachments/586948600009981970/764341001854648340/upZStSY.png');
@@ -428,12 +407,9 @@ function addRankGif(gif) {
     rankgifs.push(gif);
 }
 
-// UNLIMITED RECURSIVE POWER
-// lmao, the perfect function that uses itself
 function logToAll(message) {
     console.log(message);
     client.users.cache.get(OWNER_ID).send(message);
-    // changing all instances
 }
 
 // to people who got source code of my bot, congrats you are hackers! (or i just gave it to you for some reason)
