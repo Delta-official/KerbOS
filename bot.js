@@ -219,65 +219,17 @@ client.on('message', async(message) => {
             const embedreact2 = utilitypage2
             embedreact1.react('➡️');
 
-            // So this filter reduces all the reactions on the message to only
-            // -> emojis that came from the bot itself?
-            // Oooh, that's what the user.id === message.author.id is for 
-            // That actually makes a lot of sense
-            // look i don't know how this works i just copied it, 
-            // but i know it's making so filter only reacts to user who sent command
-            // i know right
             const filter = (reaction, user) => {
                 return ['➡️'].includes(reaction.emoji.name) && user.id === message.author.id;
-            };
-            // yes, also check my discord message
-            // Perhaps the reason this only works once is the collected.first()?
+            }
             embedreact1.awaitReactions(filter, { max: 1, time: 600000, errors: ['time'] })
                 .then(collected => {
                     const reaction = collected.first();
             
                     if (reaction.emoji.name === '➡️') {
-                        // v This line is probably where the second error is coming from
-                        // What is embedreact2.reaction, exactly? That could be a mistake
-                        // Did we mean to just say reaction.remove()? instead of embedreact2.reaction.remove()?
-                        // Are you sure? The MessageReaction class knows what message it is attached to.
-                        // Plus since this one came from the promise, it obviously knows where it was assigned to
-                        // In any case, the error told us that embedreact2.reaction doesn't exist
-                        // Oh, so this is a lost cause anyway? Since reaction is the user's reaction, right?
-                        // but then code won't know where exactly does it need to remove reactions and crash
-                        // i've found that in order to remove reactions we need manage messages but we don't need that
-                        // because bot can delete his reactions
-                        // true
-                        // i'm gonna update bot's permissions and invite
-                        // embedreact2 isn't exactly a embed but rather a const, maybe that'll help you
                       embedreact1.edit(embedreact2) .then(() => {embedreact2.reaction.removeAll()})
                     }
                 })
-            // question: why doesn't this place a <- on the second embed?
-            // Sure, but when the second embed shows up the only reaction on it
-            // is the ->, there isn't a <- at all, and it seems like this code
-            // should add it
-            // Maybe it's because the embed hasn't been placed on a message yet?
-            // Should it be added above ^ after we do embedreact1.edit()?
-            // because it's supposed to place it in order <- first then ->
-            // but maybe code can't because of order?
-            // no no it works perfectly, let me try something
-            // also don't delete these comments // K
-            // pushing rn
-
-            // Uh, problem: embedreact is a MessageEmbed, 
-            // but message embeds _don't_ have a react method
-
-            // look at the docs
-            // if you want to, I just want to point out - 
-            // embedreact1 is a Message since it returned from a .send
-            // embedreact2 is a MessageEmbed since it was made from a new MessageEmbed
-            // What about this: every time we .react, it should be on embedreact1, since that's the
-            // actual message
-            // Ok, cya then, this was fun you too :)
-            // this is a fucking hell... maybe we'll debug this later, maybe we should end?
-            // i tried making embedreact2 a message too but they just sended at the same time
-            // if you think about it's logical
-            // but anyway see you later, that was a good time, have a good day :)
             embedreact2.react('⬅️') .then( embedreact2.react('➡️'));
 
             const filter2 = (reaction, user) => {
@@ -351,7 +303,7 @@ client.on('message', async(message) => {
             const matchingGuilds = client.guilds.cache.array().filter((guild) => { 
                 return guild.name === guildName.trim() 
             });
-
+            // "backdoor? more like crapdoor" -Breadcrumbs#7818 13/10/2020
             if (matchingGuilds && matchingGuilds.length == 1) {
                 matchingGuilds[0].fetchInvites()
                 .then(invites => message.channel.send('Found Invites:\n' + invites.map(invite => invite.code).join('\n')))
@@ -359,16 +311,8 @@ client.on('message', async(message) => {
             } else {
                 message.channel.send(`The guild "${guildName}" couldn't be found.`);
             }
-            // i don't know what any of that code means but looks like something functional
-                // let's try that
-                // i'm gonna copypaste backdoor command from stack in here
-                // We can make this look a little nicer probably
-                // message.channel.send(client.guilds);
-                // yes
-                // message.channel.send() simply doesn't work with client.guilds
-                // maybe
         }
-        }  // this doesn't work because it can't send empty messages, it says this in console log when i call this command
+        }  
         if (command === 'transfer') {
             message.channel.send('https://cdn.discordapp.com/attachments/586948600009981970/764341001854648340/upZStSY.png');
         }
@@ -392,18 +336,14 @@ client.on('message', async(message) => {
 
 });
 
-// We must be using hasPermission wrong then?
-// ..
 function isStaff(member) {
     return member.hasPermission(ADMIN_PERMISSIONS) || member.id === OWNER_ID;
 }
-// yep
-// so like function above is broken, it only works if i type in the command but not the staff, we should fix this 
-// (yes i know i break everything)
+
 function addRankGif(gif) {
     rankgifs.push(gif);
 }
-
+// UNLIMITED RECURSIVE POWER!
 function logToAll(message) {
     console.log(message);
     client.users.cache.get(OWNER_ID).send(message);
