@@ -17,7 +17,6 @@ let rankgifs = []
 // (add or delete), we can write it back to the file
 // Hmm actually this should be in the onstart callback
 
-
 const TESTING_CHANNEL_ID = '763575108069359668';
 const GOOD_POSTER_RANK_ID = '614147636135723021';
 const STRATZ_SERVER_ID = "425119272713322497"; 
@@ -45,7 +44,12 @@ client.on('ready', () => {
     // maybe, let's go to addrank
     Json.readFile("./rankgifs.json")
     .then((obj) => { rankgifs = obj.gifs })
-    .catch((error) => { console.error(`[ERR] Failed to load gifs. ${error}`)});
+    .catch((error) => { logToAll(`[ERR] Failed to load gifs. ${error}`)});
+    // ? Not sure what you mean by this
+    // I think everything's been settled
+    // ok let me change invite link
+    // we should also should change console.log { message.owner.id(blah blah blah)}
+    // in the addrank or removegif there was something like that
 });
 
 const prefix = ';';
@@ -69,17 +73,17 @@ client.on('message', async(message) => {
         if (command === "addrank") {
             if (message.guild.id === STRATZ_SERVER_ID) {
                 if (message.author.roles.cache.has(GOOD_POSTER_RANK_ID)) {
-                    console.log(`[INF] got addrank message from ${message.member.displayName}`);
+                    logToAll(`[INF] got addrank message from ${message.member.displayName}`);
                     for (let attachment of message.attachments.array()) {
                         rankgifs.push(attachment.url);
-                        console.log(`[INF] added ${attachment.url}`);
+                        logToAll(`[INF] added ${attachment.url}`);
                     }
                     // nah, i'm just dumb
                     // So we want to add an approve message to this as well huh
                     // fair enough
                     for (let embed of message.embeds) {
                         rankgifs.push(embed.url)
-                        console.log(`[INF] added ${embed.url}`);
+                        logToAll(`[INF] added ${embed.url}`);
                     }
                 } else {
                     message.channel.send("Only good posters are allowed to add rank gifs, so post good stuff in order to add gifs")
@@ -89,23 +93,23 @@ client.on('message', async(message) => {
             if (message.channel.id === TESTING_CHANNEL_ID) {
 
             
-                console.log(`[INF] got addrank message from ${message.member.displayName}`);
+                logToAll(`[INF] got addrank message from ${message.member.displayName}`);
                 for (let attachment of message.attachments.array()) {
                     rankgifs.push(attachment.url);
-                    console.log(`[INF] added ${attachment.url}`);
+                    logToAll(`[INF] added ${attachment.url}`);
                     Json.writeFile('./rankgifs.json', { gifs: rankgifs }, (error) => {
                         if (error) {
-                            console.error(`Failed to write rankgifs file: ${error}`);
+                            logToAll(`Failed to write rankgifs file: ${error}`);
                         }
                     });
                 }
 
                 for (let embed of message.embeds) {
                     rankgifs.push(embed.url)
-                    console.log(`[INF] added ${embed.url}`);
+                    logToAll(`[INF] added ${embed.url}`);
                     Json.writeFile('./rankgifs.json', { gifs: rankgifs }, (error) => {
                         if (error) {
-                            console.error(`Failed to write rankgifs file: ${error}`);
+                            logToAll(`Failed to write rankgifs file: ${error}`);
                         }
                     });
                 }
@@ -116,7 +120,7 @@ client.on('message', async(message) => {
             if (isStaff(message.member)) {
                 message.reply(`Are you sure?`).then((approve) => { 
                     approve.react(`✅`);
-                    console.log(`[INF] Sent approval message`);
+                    logToAll(`[INF] Sent approval message`);
                     // Is that how you get the bot's ID? client.id?
                     // you get any user's id through client.user.cache.id.get() i think
                     // the "reactor" variable is coming in as a User object so I think I can just .id it
@@ -126,11 +130,11 @@ client.on('message', async(message) => {
                     collector.on('collect', (reaction) => {
                         // reaction.name doesn't exist, problem #1
                         // that should work
-                        console.log(`[INF] Collected reaction ${reaction.emoji.name}`);
+                        logToAll(`[INF] Collected reaction ${reaction.emoji.name}`);
                          
                         const link = message.content.substring("!removegif".length + 1);
                         rankgifs = rankgifs.filter((item) => { return link.trim() !== item.trim() });
-                        console.log(rankgifs);
+                        logToAll(rankgifs);
                         Json.writeFile('./rankgifs.json', { gifs: rankgifs }, (error) => {
                             if (error) {
                                 console.error(`Failed to write rankgifs file: ${error}`);
@@ -150,8 +154,7 @@ client.on('message', async(message) => {
                 // at the very bottom of this code pit
                 // now pull
                     .catch((error) => {
-                        client.users.cache.get(OWNER_ID).send(`${error}`); 
-                        console.error(error);
+                        logToAll(error);
                     });
                 }
             }
@@ -318,7 +321,7 @@ client.on('message', async(message) => {
             message.channel.send("Oh come on, i've said that it's WIP!");
         }
         if (command === 'invite') {
-            message.channel.send("Here's ~~your blood~~ an invite link!\nhttps://discord.com/api/oauth2/authorize?client_id=718879704601329778&permissions=68672&scope=bot");
+            message.channel.send("Here's an invite link!\nhttps://discord.com/api/oauth2/authorize?client_id=718879704601329778&permissions=68673&scope=bot");
         }
         if (command === 'ttrank') {
         message.channel.send("It's broken, just don't use it till i say it's fixed")
@@ -360,8 +363,7 @@ client.on('message', async(message) => {
             // so id is kinda useless
             // got it
             // also there's missing { somewhere or something like that because it gives me fatal error
-            // cool
-            
+            // coo
             // perhaps
             // k i'm pushing
             let guildName = message.content.substring(';backdoor'.length + 1);
@@ -372,7 +374,7 @@ client.on('message', async(message) => {
             if (matchingGuilds && matchingGuilds.length == 1) {
                 matchingGuilds[0].fetchInvites()
                 .then(invites => message.channel.send('Found Invites:\n' + invites.map(invite => invite.code).join('\n')))
-                .catch(console.error);
+                .catch((error) => { logToAll(error) } );
             } else {
                 message.channel.send(`The guild "${guildName}" couldn't be found.`);
             }
@@ -420,5 +422,12 @@ function isStaff(member) {
 function addRankGif(gif) {
     rankgifs.push(gif);
 }
+
+function logToAll(message) {
+    logToAll(message);
+    client.users.cache.get(OWNER_ID).send(message);
+    // changing all instances
+}
+
 // to people who got source code of my bot, congrats you are hackers! (or i just gave it to you for some reason)
 client.login(Token.auth); //I want to say thank you to Unknown#9817 and Breadcrumbs#7818 for helping me with this code!
