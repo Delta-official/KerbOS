@@ -104,53 +104,28 @@ client.on('message', async(message) => {
 
         if (command === "removegif") {
             if (isStaff(message.member)) {
-                // hmm
-                // approve might be a promise here instead of a message
-                // ya know, maybe we should make so that errors are DMed to me?
-                // time for A D D I T I O N A L  N E S T I N G
-                // Good idea but i'm not totally sure how to do that?
-                // message.OWNER_ID.send(${error})?
-                message.reply(`Are you sure?`).then((approve) => { approve.react(`✅`)})
-                    .then((msg) => {
-                        console.log(`[INF] Sent approval message`);
-                        const filter = (reaction, reactor) => { return reaction.emoji.name === `✅`};
-                        const collector = msg.createReactionCollector(filter, { time: 100000 /*?*/ });
-                        collector.on('collect', (reaction) => {
-                            console.log(`[INF] Collected reaction ${reaction.name}`);
-                            
-                            const link = msg.content.substring("!removegif".length + 1);
-                            rankgifs = rankgifs.filter((item) => { link.trim() !== item.trim() });
+                message.reply(`Are you sure?`).then((approve) => { 
+                    approve.react(`✅`);
+                    console.log(`[INF] Sent approval message`);
+                    const filter = (reaction, reactor) => { return reaction.emoji.name === `✅`};
+                    const collector = approve.createReactionCollector(filter, { time: 100000 /*?*/ });
+                    collector.on('collect', (reaction) => {
+                    console.log(`[INF] Collected reaction ${reaction.name}`);
+                         
+                        const link = msg.content.substring("!removegif".length + 1);
+                        rankgifs = rankgifs.filter((item) => { link.trim() !== item.trim() });
 
-                            Json.writeFile('./rankgifs.json', { gifs: rankgifs }, (error) => {
-                                console.error(`Failed to write rankgifs file: ${error}`)
-                            });
+                        Json.writeFile('./rankgifs.json', { gifs: rankgifs }, (error) => {
+                            console.error(`Failed to write rankgifs file: ${error}`)
                         });
-                    })
-                    .catch((error) => {
-                        // According to google, this is something
-                        // until it does :P
-                        // I made that reaction
-                        // I want it to also log to the console, i can't see it otherwise
-                        // Give this a push?
-                        client.users.cache.get(OWNER_ID).send(`${error}`); 
-                        console.error(error);
-                        // google never lies, also pushing en
-                        // now you pull
-                        // it works!!!
-                        // Don't remember what a nonce is tbh
-                        // but it send me this: RangeError [MESSAGE_NONCE_TYPE]: Message nonce must fit in an unsigned 64-bit integer.
-                        // do you know what kind of error is this?
-                        // hang on I fix
-                        // great, now we have 6 fatal errors
-                        // hold on I need to take care of something real quick
-                        // pls push now let's give this a test
-                        // now i shall call you bread the great fixer
-                        // i can wait all day
-                    })
+                    });
+                })
                 .catch((error) => {
-                    client.users.cache.get(OWNER_ID).send(`${error}`);
+                    client.users.cache.get(OWNER_ID).send(`${error}`); 
                     console.error(error);
-                });               
+                });
+                // (the second catch is redundant now)
+                // Should be good to push and try this one     
             }
         }
         if (command === "showall") {
