@@ -110,8 +110,7 @@ client.on('message', async(message) => {
                 // time for A D D I T I O N A L  N E S T I N G
                 // Good idea but i'm not totally sure how to do that?
                 // message.OWNER_ID.send(${error})?
-                message.reply(`Are you sure?`).then((approve) => {
-                    message.channel.send(approve).then((msg) => { msg.react(`✅`)})
+                message.reply(`Are you sure?`).then((approve) => { approve.react(`✅`)})
                     .then((msg) => {
                         console.log(`[INF] Sent approval message`);
                         const filter = (reaction, reactor) => { return reaction.emoji.name === `✅`};
@@ -130,39 +129,30 @@ client.on('message', async(message) => {
                     .catch((error) => {
                         // According to google, this is something
                         // until it does :P
-                        client.users.cache.get(OWNER_ID).send(`${error}`); //? // but anyone can send it, so let's try 
+                        // I made that reaction
+                        // I want it to also log to the console, i can't see it otherwise
+                        // Give this a push?
+                        client.users.cache.get(OWNER_ID).send(`${error}`); 
+                        console.error(error);
                         // google never lies, also pushing en
-                        // through onwer_id
-                        // How do we get a user given only an ID?
-                        // right, but how do we go from an ID to a user
-                        // We obviously need a user object to call .send(), so how get that
-                        // users have ids?
-                        // idk i remember reading same question on stack and it said that we can use ids for .send()
-                    });
-                })
+                        // now you pull
+                        // it works!!!
+                        // Don't remember what a nonce is tbh
+                        // but it send me this: RangeError [MESSAGE_NONCE_TYPE]: Message nonce must fit in an unsigned 64-bit integer.
+                        // do you know what kind of error is this?
+                        // hang on I fix
+                        // great, now we have 6 fatal errors
+                        // hold on I need to take care of something real quick
+                        // pls push now let's give this a test
+                        // now i shall call you bread the great fixer
+                        // i can wait all day
+                    })
                 .catch((error) => {
-                    client.users.cache.get(OWNER_ID).send(`${error}`); //?
-                });
-                // Back to this then, since i'm not sure it actually worked
-                // then let's test
-                // something's fucked up
-                // the reaction didn't add it
-                // Got an error - "can't send an empty message"
-                // *brain cells proceed to die*
-                // I think i know what's wrong...
-                // Use the callback variable instead of the capture
-                // give this one another push
-                // It's back up
-                // same error >_<
-                // puuuuuushed
-                // errors?
-                // >:(
-                
+                    client.users.cache.get(OWNER_ID).send(`${error}`);
+                    console.error(error);
+                });               
             }
         }
-        // it's broken? so should we fix it?
-        // also isStaff is a bit broken, i've also added my id so it checks it through XOR gate
-        // def
         if (command === "showall") {
             if (isStaff(message.member)) {
             message.channel.send("Showing all current rankgifs.")
