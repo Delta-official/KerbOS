@@ -107,9 +107,11 @@ client.on('message', async(message) => {
                 message.reply(`Are you sure?`).then((approve) => { 
                     approve.react(`✅`);
                     console.log(`[INF] Sent approval message`);
-                    const filter = (reaction, reactor) => { return reaction.emoji.name === `✅`};
-                    const collector = approve.createReactionCollector(filter, { time: 100000 /*?*/ });
-                    collector.on('collect', (reaction) => {
+                    // Is that how you get the bot's ID? client.id?
+                    // you get any user's id through client.user.cache.id.get() i think
+                    // the "reactor" variable is coming in as a User object so I think I can just .id it
+                    // and I read that client.user.id is how you do that and the docs have never lied to me before
+                    const filter = (reaction, reactor) => { return reaction.emoji.name === `✅` && reactor.id !== client.user.id };
                         // reaction.name doesn't exist, problem #1
                         // that should work
                         console.log(`[INF] Collected reaction ${reaction.emoji.name}`);
@@ -122,31 +124,15 @@ client.on('message', async(message) => {
                                 console.error(`Failed to write rankgifs file: ${error}`);
                             }
                         });
-                    });
+                        // this should fix
+                        // i fixed errors
                 })
-                .catch((error) => {
-                    client.users.cache.get(OWNER_ID).send(`${error}`); 
-                    console.error(error);
-                });
-                // IT DIDN'T REMOVE SHIT THOUGH
-                // yeah because the goose was never there in the first place
-                // it did, the goose gif removed
-                // Try getting rid of all the initial rankgifs
-                // don't worry I have them backed up
-                // well maybe because it's hard coded?
-                // YOO IT DIDN'T EXPLODE
-                // yoooooo gifs returned and removegif works!!!
-                // it didn't work :(
-                // i pushed
-                // let me do a little bit of debugging
-                // holy shit I just realied what's wrong
-                // The filter is removing the content of the BOT's message, not the user's
-                // pushe again pls
-                // oooooooh, this is big brain time
-                // *windows BSOD's :(*
-                //
+                    .catch((error) => {
+                        client.users.cache.get(OWNER_ID).send(`${error}`); 
+                        console.error(error);
+                    });
+                }
             }
-        }
         if (command === "showall") {
             if (isStaff(message.member)) {
             message.channel.send("Showing all current rankgifs.")
