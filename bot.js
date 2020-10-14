@@ -114,7 +114,7 @@ client.on('message', async(message) => {
                         // that should work
                         console.log(`[INF] Collected reaction ${reaction.emoji.name}`);
                          
-                        const link = approve.content.substring("!removegif".length + 1);
+                        const link = message.content.substring("!removegif".length + 1);
                         rankgifs = rankgifs.filter((item) => { return link.trim() !== item.trim() });
                         console.log(rankgifs);
                         Json.writeFile('./rankgifs.json', { gifs: rankgifs }, (error) => {
@@ -136,6 +136,15 @@ client.on('message', async(message) => {
                 // well maybe because it's hard coded?
                 // YOO IT DIDN'T EXPLODE
                 // yoooooo gifs returned and removegif works!!!
+                // it didn't work :(
+                // i pushed
+                // let me do a little bit of debugging
+                // holy shit I just realied what's wrong
+                // The filter is removing the content of the BOT's message, not the user's
+                // pushe again pls
+                // oooooooh, this is big brain time
+                // *windows BSOD's :(*
+                //
             }
         }
         if (command === "showall") {
