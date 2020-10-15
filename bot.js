@@ -337,12 +337,9 @@ client.on('message', async(message) => {
             } else {
             message.channel.send("*You need to have a Patreon or Patreon+ role in order to get Lounge Pass!*")
             }
-
-            if(message.guild.id === STRATZ_SERVER_ID) {
                 if(message.author.roles.cache.has(LP_ID)) {
-                    message.channel.send("*You already have Lounge Pass!*")
+                    message.channel.send("*You already have Lounge Pass!")
                 }
-            }
         }
    /*     if (command === '') {
             message.channel.send('');
