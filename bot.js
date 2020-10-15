@@ -16,6 +16,7 @@ let rankgifs = []
 // We'll have an array that holds the loaded gifs and whenever it changes
 // (add or delete), we can write it back to the file
 // Hmm actually this should be in the onstart callback
+const LP_ID = '438553700492115968'
 const TESTING_CHANNEL_ID = '763575108069359668';
 const GOOD_POSTER_RANK_ID = '614147636135723021';
 const STRATZ_SERVER_ID = "425119272713322497"; 
@@ -334,7 +335,13 @@ client.on('message', async(message) => {
                     message.channel.send('*Welcome to the Stratzen Lounge!*');
             }
             } else {
-            message.channel.send("*You need to have a Patreon or Patreon+ role in order to get Lounge pass!*")
+            message.channel.send("*You need to have a Patreon or Patreon+ role in order to get Lounge Pass!*")
+            }
+
+            if(message.guild.id === STRATZ_SERVER_ID) {
+                if(message.author.roles.cache.has(LP_ID)) {
+                    message.channel.send("*You already have Lounge Pass!*")
+                }
             }
         }
    /*     if (command === '') {
