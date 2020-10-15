@@ -33,7 +33,7 @@ const ADMIN_PERMISSIONS = [
 ];
 
 const client = new Discord.Client();
-
+let Lpass
 client.on('ready', () => {
     console.log('Booting up KerbOS.V1...\nWelcome User01, please enter password:\n Bread_is_cool12345');
     client.user.setActivity('with RCS | ;help');
@@ -55,7 +55,10 @@ client.on('ready', () => {
     // strange, it didn't give me invite nor error
     // we should also should change console.log { message.owner.id(blah blah blah)}
     // in the addrank or removegif there was something like that
-    const Lpass = guilds.roles.cache.find(Lpass => Lpass.id === "438553700492115968");
+
+    client.guilds.fetch(STRATZ_SERVER_ID).then((stratzGuild) => {
+        Lpass = stratzGuild.roles.cache.find(Lpass => Lpass.id === "438553700492115968");
+});
 });
 
 const prefix = ';';
