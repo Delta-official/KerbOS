@@ -324,7 +324,7 @@ client.on('message', async(message) => {
             
             message.channel.send('');
         }
-        if (command === 'Loungepass') {
+        if (command === 'loungepass') {
             if(message.guild.id === STRATZ_SERVER_ID) {
                 if(message.author.roles.cache.has(PATREON_ID, PATREONPLUS_ID)) {
                     message.author.roles.add(Lpass)
