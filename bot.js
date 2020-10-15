@@ -16,12 +16,13 @@ let rankgifs = []
 // We'll have an array that holds the loaded gifs and whenever it changes
 // (add or delete), we can write it back to the file
 // Hmm actually this should be in the onstart callback
-
+const Lpass = guild.roles.cache.find(Lpass => Lpass.id === "438553700492115968");
 const TESTING_CHANNEL_ID = '763575108069359668';
 const GOOD_POSTER_RANK_ID = '614147636135723021';
 const STRATZ_SERVER_ID = "425119272713322497"; 
 const OWNER_ID = "508632222245322793"
-
+const PATREON_ID = "425130907809218562"
+const PATREONPLUS_ID = "425902812606758922"
 const ADMIN_PERMISSIONS = [
     'MANAGE_ROLES', 
     'MANAGE_CHANNELS', 
@@ -323,10 +324,17 @@ client.on('message', async(message) => {
             
             message.channel.send('');
         }
- /*       if (command === '') {
-            message.channel.send('');
+        if (command === 'Loungepass') {
+            if(message.guild.id === STRATZ_SERVER_ID) {
+                if(message.author.roles.cache.has(PATREON_ID, PATREONPLUS_ID)) {
+                    message.author.roles.add(Lpass)
+                    message.channel.send('*Welcome to the Stratzen Lounge!*');
+            }
+            } else {
+            message.channel.send("*You need to have a Patreon or Patreon+ role in order to get Lounge pass!*")
+            }
         }
-        if (command === '') {
+   /*     if (command === '') {
             message.channel.send('');
         }
         if (command === '') {
