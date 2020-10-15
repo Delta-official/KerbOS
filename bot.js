@@ -16,7 +16,6 @@ let rankgifs = []
 // We'll have an array that holds the loaded gifs and whenever it changes
 // (add or delete), we can write it back to the file
 // Hmm actually this should be in the onstart callback
-const Lpass = guilds.roles.cache.find(Lpass => Lpass.id === "438553700492115968");
 const TESTING_CHANNEL_ID = '763575108069359668';
 const GOOD_POSTER_RANK_ID = '614147636135723021';
 const STRATZ_SERVER_ID = "425119272713322497"; 
@@ -56,6 +55,7 @@ client.on('ready', () => {
     // strange, it didn't give me invite nor error
     // we should also should change console.log { message.owner.id(blah blah blah)}
     // in the addrank or removegif there was something like that
+    const Lpass = guilds.roles.cache.find(Lpass => Lpass.id === "438553700492115968");
 });
 
 const prefix = ';';
