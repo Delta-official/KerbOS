@@ -81,6 +81,7 @@ client.on('message', async(message) => {
         // hi bread, i've addded STRATZ_SERVER_ID so we can limit certain functions to stratz's server as shown below VVV
         // also i like how we pair programm, it's very fun!
         if (command === "addrank") {
+            if(isStaff(message.member)) {
             if (message.guild.id === STRATZ_SERVER_ID) {
                 if (message.author.roles.cache.has(GOOD_POSTER_RANK_ID)) {
                     logToAll(`[INF] got addrank message from ${message.member.displayName}`);
@@ -121,8 +122,8 @@ client.on('message', async(message) => {
                     });
                 }
             } 
+          }
         }
-
         if (command === "removegif") {
             if (isStaff(message.member)) {
                 message.reply(`Are you sure?`).then((approve) => { 
@@ -330,8 +331,8 @@ client.on('message', async(message) => {
         }
         if (command === 'loungepass') {
             if(message.guild.id === STRATZ_SERVER_ID) {
-                if(message.author.roles.cache.has(PATREON_ID, PATREONPLUS_ID)) {
-                    message.author.roles.add(Lpass)
+                if(member.roles.cache.has(PATREON_ID, PATREONPLUS_ID)) {
+                    member.roles.add(Lpass)
                     message.channel.send('*Welcome to the Stratzen Lounge!*');
             }
             } else {
@@ -339,7 +340,7 @@ client.on('message', async(message) => {
             }
                 if(message.author.roles.cache.has(LP_ID)) {
                     message.channel.send("*You already have Lounge Pass!")
-                }
+                f}
         }
    /*     if (command === '') {
             message.channel.send('');
