@@ -3,7 +3,7 @@ const Json = require('jsonfile');
 const Token = require('./token.js');
 
 let rankgifs = []
-
+const JEDITOBIWAN_SERVER_ID = "357324444982837261";
 const LP_ID = '438553700492115968'
 const TESTING_CHANNEL_ID = '763575108069359668';
 const GOOD_POSTER_RANK_ID = '614147636135723021';
@@ -34,7 +34,7 @@ client.on('ready', () => {
 });
 });
 // Our entire code in a nutshell:
-// OOPSIE WOOPSIE!! Uwu We made a fucky wucky!! 
+// OOPSIE WOOPSIE!! UwU We made a fucky wucky!! 
 // A wittle fucko boingo! The code monkeys at our headquarters are working VEWY HAWD to fix this
 
 const prefix = ';';
@@ -50,10 +50,9 @@ client.on('message', async(message) => {
     if (message.content.startsWith(rankPRF)) {
         const args = message.content.toLowerCase().split(' ');
         const command = args.shift().slice(rankPRF.length);
-        if (command === "trank") {
-        message.channel.send("It's broken, just don't use it till i say it's fixed")
-        }
+
         if (command === "addrank") {
+            if(message.guild.id === STRATZ_SERVER_ID || JEDITOBIWAN_SERVER_ID) {
             if(isStaff(message.member)) {
             if (message.guild.id === STRATZ_SERVER_ID) {
                 if (message.author.roles.cache.has(GOOD_POSTER_RANK_ID)) {
@@ -97,7 +96,9 @@ client.on('message', async(message) => {
             } 
           }
         }
+        }
         if (command === "removegif") {
+            if(message.guild.id === STRATZ_SERVER_ID || JEDITOBIWAN_SERVER_ID) {
             if (isStaff(message.member)) {
                 message.reply(`Are you sure?`).then((approve) => { 
                     approve.react(`✅`);
@@ -123,13 +124,16 @@ client.on('message', async(message) => {
                     });
                 }
             }
+        }
         if (command === "showall") {
+            if(message.guild.id === STRATZ_SERVER_ID || JEDITOBIWAN_SERVER_ID) {
             if (isStaff(message.member)) {
             message.channel.send("Showing all current rankgifs.")
             for (let gif of rankgifs) {
                 message.channel.send(gif);
                 // we forgot to protect it!!!
             }
+        }
         }
         }
     }
@@ -212,10 +216,11 @@ client.on('message', async(message) => {
                 })
         }
         if (command === 'help') {
+            if(message.guild.id === STRATZ_SERVER_ID || JEDITOBIWAN_SERVER_ID) {
             const exam1Embed = new Discord.MessageEmbed()
                 .setColor('#008000')
                 .setTitle('List of commands')
-                .setAuthor("Bot created by Darkuss#9279")
+                .setAuthor("Bot created by Darkuss#9279, Breadcrumbs#7818 and Unknown#9817")
                 .addFields(
                     { name: 'help', value: 'You are reading it right now', inline: true },
                     { name: '~~utilitymods~~', value: '~~Lists utility mods~~\nCurrently upgrading', inline: true }, 
@@ -225,15 +230,32 @@ client.on('message', async(message) => {
                     { name: 'resorbcalc', value: 'Links to resonant orbit calulator', inline: true },
                     { name: 'invite', value: "Gives you bot's invite link", inline: true},
                     { name: "rank", value: "Shows your rank, use with ! as prefix", inline: true },
+                    { name: "support", value: "Gives you support / feedback server's invite link", inline: true },
                     { name: "transfer", value: "Gives you transfer window map", inline: true });
-                const infoMessage = await message.channel.send("\`\`\`css\n.Loading_Information\n\`\`\`")
+                //const infoMessage = await message.channel.send("\`\`\`css\n.Loading_Information\n\`\`\`")
 
-                async function doMessageThing() {
+                /*async function doMessageThing() {
                     await infoMessage.edit(null, exam1Embed)
-                }
-
-            client.setTimeout(doMessageThing, 1500) //what should i do with this code???
-        }
+                }*/
+            
+            //client.setTimeout(doMessageThing, 1500) //what should i do with this code???
+            } else{
+                const exam1Embed = new Discord.MessageEmbed()
+                .setColor('#008000')
+                .setTitle('List of commands')
+                .setAuthor("Bot created by Darkuss#9279, Breadcrumbs#7818 and Unknown#9817")
+                .addFields(
+                    { name: 'help', value: 'You are reading it right now', inline: true },
+                    { name: '~~utilitymods~~', value: "~~Lists utility mods currently in bot's code~~\nCurrently upgrading", inline: true }, 
+                    { name: 'transfercalc', value: 'Gives you a link to interplanetary transfer calculator', inline: true }, 
+                    { name: 'map', value: 'Gives you a link to a website containing maps of all bodies in KSP', inline: true }, 
+                    { name: 'dvmap', value: 'Gives you a ∆v map', inline: true }, 
+                    { name: 'resorbcalc', value: 'Links to resonant orbit calulator', inline: true },
+                    { name: 'invite', value: "Gives you bot's invite link", inline: true},
+                    { name: "support", value: "Gives you support / feedback server's invite link", inline: true },
+                    { name: "transfer", value: "Gives you transfer window map", inline: true });
+            }
+        } // looks like we have to fuck with filters again, great
         if (command === 'utilitymods') {
             message.channel.send("Oh come on, i've said that it's WIP!");
         }
@@ -255,7 +277,7 @@ client.on('message', async(message) => {
                     if (guildsMessage.length >= 2000) {
                         break;
                     }
-                    guildsMessage += "* " + guild.name + "\n";
+                    guildsMessage += "• " + guild.name + "\n";
                 } 
                 message.channel.send(guildsMessage);
             }
@@ -299,10 +321,10 @@ client.on('message', async(message) => {
                     message.channel.send("*You already have Lounge Pass!")
                 f}
         }
-   /*     if (command === '') {
-            message.channel.send('');
+        if (command === 'support') {
+            message.channel.send("Here's your server invite link!\nhttps://discord.gg/5Q9Mx32 ");
         }
-        if (command === '') {
+    /*    if (command === '') {
             message.channel.send('');
         } */
     }
