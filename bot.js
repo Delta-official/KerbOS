@@ -2,20 +2,8 @@ const Discord = require('discord.js');
 const Json = require('jsonfile');
 const Token = require('./token.js');
 
-// oh wait then we also need to update deletegif
-// ok
-// Let's start up here
-// We need to load a .json file that has all the rank gifs in it
-// I added a library for loading JSON files 
-
-// (need this to be above the json code)
 let rankgifs = []
 
-// (We'll call the file "rankgifs.json", seems sensible)
-// Yes good point
-// We'll have an array that holds the loaded gifs and whenever it changes
-// (add or delete), we can write it back to the file
-// Hmm actually this should be in the onstart callback
 const LP_ID = '438553700492115968'
 const TESTING_CHANNEL_ID = '763575108069359668';
 const GOOD_POSTER_RANK_ID = '614147636135723021';
@@ -38,29 +26,16 @@ let Lpass
 client.on('ready', () => {
     console.log('Booting up KerbOS.V1...\nWelcome User01, please enter password:\n Bread_is_cool12345');
     client.user.setActivity('with RCS | ;help');
-    // so i fucked up code when i added STRATZ_SERVER_ID
-    // We maybe should have a list of approved servers
-    // And add the testing one to it
-    // i made it so it checks if this is stratz's server
-    // maybe, let's go to addrank
     Json.readFile("./rankgifs.json")
     .then((obj) => { rankgifs = obj.gifs })
     .catch((error) => { logToAll(`[ERR] Failed to load gifs. ${error}`)});
-    // ? Not sure what you mean by this
-    // I think everything's been settled
-    // ok let me change invite link
-    // done, restarted
-    // ok i've pushed, now pull
-    // uh... look at logToAll
-    // i think your find and replace fucked it
-    // strange, it didn't give me invite nor error
-    // we should also should change console.log { message.owner.id(blah blah blah)}
-    // in the addrank or removegif there was something like that
-
     client.guilds.fetch(STRATZ_SERVER_ID).then((stratzGuild) => {
         Lpass = stratzGuild.roles.cache.find(Lpass => Lpass.id === "438553700492115968");
 });
 });
+// Our entire code in a nutshell:
+// OOPSIE WOOPSIE!! Uwu We made a fucky wucky!! 
+// A wittle fucko boingo! The code monkeys at our headquarters are working VEWY HAWD to fix this
 
 const prefix = ';';
 const rankPRF = "!";
@@ -78,8 +53,6 @@ client.on('message', async(message) => {
         if (command === "trank") {
         message.channel.send("It's broken, just don't use it till i say it's fixed")
         }
-        // hi bread, i've addded STRATZ_SERVER_ID so we can limit certain functions to stratz's server as shown below VVV
-        // also i like how we pair programm, it's very fun!
         if (command === "addrank") {
             if(isStaff(message.member)) {
             if (message.guild.id === STRATZ_SERVER_ID) {
@@ -129,15 +102,10 @@ client.on('message', async(message) => {
                 message.reply(`Are you sure?`).then((approve) => { 
                     approve.react(`✅`);
                     logToAll(`[INF] Sent approval message`);
-                    // Is that how you get the bot's ID? client.id?
-                    // you get any user's id through client.user.cache.id.get() i think
-                    // the "reactor" variable is coming in as a User object so I think I can just .id it
-                    // and I read that client.user.id is how you do that and the docs have never lied to me before
                     const filter = (reaction, reactor) => { return reaction.emoji.name === `✅` && reactor.id !== client.user.id };
                     let collector = approve.createReactionCollector(filter, { time: 120000 });
                     collector.on('collect', (reaction) => {
                         // reaction.name doesn't exist, problem #1
-                        // that should work
                         logToAll(`[INF] Collected reaction ${reaction.emoji.name}`);
                          
                         const link = message.content.substring("!removegif".length + 1);
@@ -150,17 +118,6 @@ client.on('message', async(message) => {
                         });
                     });
                 })
-                // good, now let's fix serverlist and i will end this session because it seems you're already frustratede by yourself and this code
-                // lmao, you should set that as a status
-                // push?
-                // wait before we do serverlist
-                // we should make the !addrank write the json file
-                // Ok done
-                // so where is serverlist
-                // *gun emote* set it as a status
-                // good bread
-                // at the very bottom of this code pit
-                // now pull
                     .catch((error) => {
                         logToAll(error);
                     });
