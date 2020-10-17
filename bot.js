@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const Json = require('jsonfile');
 const Token = require('./token.js');
-
+// wait, it's all shitty JS? always has been
 let rankgifs = []
 const JEDITOBIWAN_SERVER_ID = "357324444982837261";
 const LP_ID = '438553700492115968'
