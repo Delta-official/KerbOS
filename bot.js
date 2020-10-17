@@ -322,7 +322,7 @@ client.on('message', async(message) => {
             }
                 if(message.author.roles.cache.has(LP_ID)) {
                     message.channel.send("*You already have Lounge Pass!")
-                f}
+                }
         }
         if (command === 'support') {
             message.channel.send("Here's your server invite link!\nhttps://discord.gg/5Q9Mx32 ");
