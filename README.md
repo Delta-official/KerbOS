@@ -15,3 +15,7 @@ Below you can see information you may need:
 • Just copy this into your browser to invite our bot!: https://discord.com/api/oauth2/authorize?client_id=718879704601329778&permissions=68673&scope=bot
 
 • If you want to help me and join our team please message me in Discord: Darkuss#9279
+
+This bot was created by KerbOS development team
+
+![kerbosteamlogo3](https://user-images.githubusercontent.com/64544951/96332004-66128680-106a-11eb-876c-f2953c521e3c.png)
