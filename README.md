@@ -2,7 +2,7 @@ Hello and welcome to this ReadMe file!
 
 Me and my friend created this bot in order to help KSP players play KSP. Our bot is only 1 month old but it has a lot of great features and has good feedback!
 
-Features include: Links to many useful websites and mods, ∆v map and many more (yes i'm very lazy to list all of them, go check it out yourself since source code is open source)
+Features include: Links to many useful websites and mods, ∆v map and many more (yes i'm very lazy to list all of them, go check it out yourself since our bot is open sourced)
 
 Currently the bot is still developing but you can use it!
 
