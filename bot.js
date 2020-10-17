@@ -346,6 +346,7 @@ function logToAll(message) {
     console.log(message);
     client.users.cache.get(OWNER_ID).send(message);
 }
+// i'm hungry
 // statement below is outdated because my bot is open sourced now lmao
 // to people who got source code of my bot, congrats you are hackers! (or i just gave it to you for some reason)
 client.login(Token.auth); //I want to say thank you to Unknown#9817 and Breadcrumbs#7818 for helping me with this code!
