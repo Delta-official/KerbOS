@@ -241,7 +241,7 @@ client.on('message', async(message) => {
             //client.setTimeout(doMessageThing, 1500) //what should i do with this code???
             message.channel.send(exam1Embed)
             } else{
-                const exam1Embed = new Discord.MessageEmbed()
+                const exam2Embed = new Discord.MessageEmbed()
                 .setColor('#008000')
                 .setTitle('List of commands')
                 .setAuthor("Bot created by Darkuss#9279, Breadcrumbs#7818 and Unknown#9817")
@@ -255,7 +255,7 @@ client.on('message', async(message) => {
                     { name: 'invite', value: "Gives you bot's invite link", inline: true},
                     { name: "support", value: "Gives you support / feedback server's invite link", inline: true },
                     { name: "transfer", value: "Gives you transfer window map", inline: true });
-                message.channel.send(exam1Embed)
+                message.channel.send(exam2Embed)
             }
 
         } // looks like we have to fuck with filters again, great
