@@ -8,6 +8,8 @@ Currently the bot is still developing but you can use it!
 
 Below you can see information you may need:
 
+• If you want to help me and join our team please message me in Discord: Darkuss#9279
+
 • The bot is fully written in JS and hosted on a private server
 
 • We have a support server if you have any problems or feedback: https://discord.gg/5Q9Mx32
