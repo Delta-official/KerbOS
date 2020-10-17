@@ -285,7 +285,7 @@ client.on('message', async(message) => {
                 message.channel.send(guildsMessage);
             }
         }
-        if(command === 'backdoor') {
+        /*if(command === 'backdoor') {
             if(isStaff(message.member)) {
             let guildName = message.content.substring(';backdoor'.length + 1);
             const matchingGuilds = client.guilds.cache.array().filter((guild) => { 
@@ -300,7 +300,7 @@ client.on('message', async(message) => {
                 message.channel.send(`The guild "${guildName}" couldn't be found.`);
             }
         }
-        }  
+        }*/  
         if (command === 'transfer') {
             message.channel.send('https://cdn.discordapp.com/attachments/586948600009981970/764341001854648340/upZStSY.png');
         }
