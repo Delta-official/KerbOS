@@ -8,10 +8,11 @@ Currently the bot is still developing but you can use it!
 
 Below you can see information you may need:
 
-• If you want to help me and join our team please message me in Discord: Darkuss#9279
-
 • The bot is fully written in JS and hosted on a private server
 
 • We have a support server if you have any problems or feedback: https://discord.gg/5Q9Mx32
 
 • Just copy this into your browser to invite our bot!: https://discord.com/api/oauth2/authorize?client_id=718879704601329778&permissions=68673&scope=bot
+
+• If you want to help me and join our team please message me in Discord: Darkuss#9279
+https://cdn.discordapp.com/attachments/766936482002632726/766936610776154112/kerbosteamlogo3.png
