@@ -69,7 +69,7 @@ client.on('message', async(message) => {
                     message.channel.send("Only good posters are allowed to add rank gifs, so post good stuff in order to add gifs")
                     message.react("❌")
                 }
-            }
+            }// congrats, i broke it, apparently bot doesn't like my code
             if (message.channel.id === TESTING_CHANNEL_ID) {
 
             
