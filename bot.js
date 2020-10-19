@@ -21,6 +21,9 @@ const ADMIN_PERMISSIONS = [
     'MANAGE_MESSAGES',
 ];
 
+// IDEAS BELOW
+// change prefix to something like sudo or something like so it looks like it's a real terminal
+
 const client = new Discord.Client();
 let Lpass
 client.on('ready', () => {
