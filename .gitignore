@@ -1,5 +1,6 @@
 # Don't let the secret out!
 token.js
+ownercommands.js
 
 # Useless to be in the repo
 .DS_STORE
