@@ -29,6 +29,11 @@ const client = new Discord.Client();
 let Lpass
 client.on('ready', () => {
     console.log('Booting up KerbOS.V1...\nWelcome User01, please enter password:\n Bread_is_cool12345');
+    console.log(" _  __         _      ___  ____ ")
+    console.log("| |/ /___ _ __| |__  / _ \/ ___|")
+    console.log("| ' // _ \ '__| '_ \| | | \___ \ ")
+    console.log("| . \  __/ |  | |_) | |_| |___) |")
+    console.log("|_|\_\___|_|  |_.__/ \___/|____/ ")
     client.user.setActivity('with RCS | ;help');
     Json.readFile("./rankgifs.json")
     .then((obj) => { rankgifs = obj.gifs })
