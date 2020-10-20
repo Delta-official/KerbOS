@@ -1,3 +1,4 @@
+const fs = require("fs")
 const Discord = require('discord.js');
 const Json = require('jsonfile');
 const Token = require('./token.js');
@@ -29,6 +30,15 @@ const ADMIN_PERMISSIONS = [
 // create custom pfp for my bot
 // dump all of those consts into .json file (idea made by Klaas)
 const client = new Discord.Client();
+client.commands = new Discord.Collection();
+
+const OwnerCommands = fs.readdirSync("./Commands").filter(file => file.endsWith(".js"));
+
+for(const file of OwnerCommands) {
+    const command = require("./Commands/${file}")
+    client.commands.set(command.name, command)
+}
+
 let Lpass
 client.on('ready', () => {
     console.log('Booting up KerbOS.V1...\nWelcome User01, please enter password:\n Bread_is_cool12345');
@@ -319,22 +329,6 @@ client.on('message', async(message) => {
                 message.channel.send(guildsMessage);
             }
         }
-        /*if(command === 'backdoor') {
-            if(IsOwner(message.member)) {
-            let guildName = message.content.substring(';backdoor'.length + 1);
-            const matchingGuilds = client.guilds.cache.array().filter((guild) => { 
-                return guild.name === guildName.trim() 
-            });
-            // "backdoor? more like crapdoor" -Breadcrumbs#7818 13/10/2020
-            if (matchingGuilds && matchingGuilds.length == 1) {
-                matchingGuilds[0].fetchInvites()
-                .then(invites => message.channel.send('Found Invites:\n' + invites.map(invite => invite.code).join('\n')))
-                .catch((error) => { logToAll(error) } );
-            } else {
-                message.channel.send(`The guild "${guildName}" couldn't be found.`);
-            }
-        }
-        }*/  
         if (command === 'transfer') {
             message.channel.send('https://cdn.discordapp.com/attachments/586948600009981970/764341001854648340/upZStSY.png');
         }
