@@ -3,6 +3,8 @@ const Json = require('jsonfile');
 const Token = require('./token.js');
 // wait, it's all shitty JS? always has been
 let rankgifs = []
+const NEWS_ID = "527010080948879387"
+const LORD_ID = "196749490034573312"
 const JEDITOBIWAN_SERVER_ID = "357324444982837261";
 const OWNER2_ID = "223524655389081600"
 const LP_ID = '438553700492115968'
@@ -41,7 +43,20 @@ client.on('ready', () => {
     .catch((error) => { logToAll(`[ERR] Failed to load gifs. ${error}`)});
     client.guilds.fetch(STRATZ_SERVER_ID).then((stratzGuild) => {
         Lpass = stratzGuild.roles.cache.find(Lpass => Lpass.id === "438553700492115968");
+    });
 });
+
+client.on("presenceUpdate", (oldPresence, newPresence) => {
+    if(newPresence.user.id === LORD_ID) {
+    if(newPresence.guild.id === NEWS_ID.guild.id) {
+    if (!newPresence.activities) return false;
+    newPresence.activities.forEach(activity => {
+        if (activity.type == "STREAMING") {
+            console.log(`Stratzenblitz is streaming at ${activity.url}!`);
+        };
+    });
+   }
+ }
 });
 // Our entire code in a nutshell:
 // OOPSIE WOOPSIE!! UwU We made a fucky wucky!! 
