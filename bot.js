@@ -27,6 +27,7 @@ const ADMIN_PERMISSIONS = [
 // IDEAS BELOW:
 // change prefix to something like sudo or something like (idk i don't use terminal that often) so it looks like it's a real terminal
 // create custom pfp for my bot
+// dump all of those consts into .json file (idea made by Klaas)
 const client = new Discord.Client();
 let Lpass
 client.on('ready', () => {
