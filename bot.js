@@ -29,10 +29,12 @@ const client = new Discord.Client();
 let Lpass
 client.on('ready', () => {
     console.log('Booting up KerbOS.V1...\nWelcome User01, please enter password:\n Bread_is_cool12345');
-    console.log(" _  __         _      ___  ____ \n| |/ /___ _ __| |__  / _ \/ ___|\n| ' // _ \ '__| '_ \| | | \___ \\n| . \  __/ |  | |_) | |_| |___) |\n|_|\_\___|_|  |_.__/ \___/|____/")
-    console.log(" ")
-    console.log("")
-    console.log(" ")
+    //  _  __         _      ____   _____      
+    // | |/ /        | |    / __ \ / ____|  
+    // | ' / ___ _ __| |__ | |  | | (___      
+    // |  < / _ \ '__| '_ \| |  | |\___ \        
+    // | . \  __/ |  | |_) | |__| |____) |        
+    // |_|\_\___|_|  |_.__/ \____/|_____/         
     client.user.setActivity('with RCS | ;help');
     Json.readFile("./rankgifs.json")
     .then((obj) => { rankgifs = obj.gifs })
