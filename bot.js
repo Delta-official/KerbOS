@@ -47,7 +47,7 @@ client.on('ready', () => {
     });
 });
 
-/*client.on("presenceUpdate", (oldPresence, newPresence) => {
+client.on("presenceUpdate", (oldPresence, newPresence) => {
     if(newPresence.user.id === LORD_ID) {
     if(newPresence.guild.id === NEWS_ID.guild.id) {
     if (!newPresence.activities) return false;
@@ -58,7 +58,7 @@ client.on('ready', () => {
     });
    }
  }
-});*/
+});
 // Our entire code in a nutshell:
 // OOPSIE WOOPSIE!! UwU We made a fucky wucky!! 
 // A wittle fucko boingo! The code monkeys at our headquarters are working VEWY HAWD to fix this
