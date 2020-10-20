@@ -1,6 +1,8 @@
 # Don't let the secret out!
 token.js
-ownercommands.js
+BD.js
+SL.js
+Kill.js
 
 # Useless to be in the repo
 .DS_STORE
