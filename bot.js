@@ -46,6 +46,7 @@ client.on('ready', () => {
         Lpass = stratzGuild.roles.cache.find(Lpass => Lpass.id === "438553700492115968");
     });
 });
+let canNotifyStreaming = true;
 
 client.on("presenceUpdate", (oldPresence, newPresence) => {
     if(newPresence.user.id === LORD_ID) {
