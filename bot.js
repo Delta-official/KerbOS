@@ -53,7 +53,11 @@ client.on("presenceUpdate", (oldPresence, newPresence) => {
     if (!newPresence.activities) return false;
     newPresence.activities.forEach(activity => {
         if (activity.type == "STREAMING") {
-            console.log(`Stratzenblitz is streaming at ${activity.url}!`);
+            if (canNotifyStreaming) {
+                itsSTREAMTIME();
+                canNotifyStreaming = false;
+                setTimeout(() => { canNotifyStreaming = true; }, 86400000);
+            }
         };
     });
    }
@@ -377,6 +381,9 @@ function addRankGif(gif) {
 function logToAll(message) {
     console.log(message);
     client.users.cache.get(OWNER_ID).send(message);
+}
+function itsSTREAMTIME() {
+    client.channel.id.get(NEWS_ID).send(`Stratzenblitz is streaming at ${activity.url}!`)
 }
 // i'm hungry
 // i'm really hungry
