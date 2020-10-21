@@ -60,7 +60,7 @@ let canNotifyStreaming = true;
 
 client.on("presenceUpdate", (oldPresence, newPresence) => {
     if(newPresence.user.id === LORD_ID) {
-    if(newPresence.guild.id === NEWS_ID.channel.guild.id) {
+    if(newPresence.guild.id === NEWS_ID.guild.id) {
     if (!newPresence.activities) return false;
     newPresence.activities.forEach(activity => {
         if (activity.type == "STREAMING") {
