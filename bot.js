@@ -60,7 +60,7 @@ let canNotifyStreaming = true;
 
 client.on("presenceUpdate", (oldPresence, newPresence) => {
     if(newPresence.user.id === LORD_ID) {
-    if(newPresence.guild.id === NEWS_ID.guild.id) {
+    if(newPresence.guild.id === NEWS_ID.channel.guild.id) {
     if (!newPresence.activities) return false;
     newPresence.activities.forEach(activity => {
         if (activity.type == "STREAMING") {
@@ -317,18 +317,6 @@ client.on('message', async(message) => {
                 process.exit();
             }
         } 
-        if (message.content.startsWith(prefix + 'serverlist')) {
-            if (IsOwner(message.member)) {
-                let guildsMessage = "";
-                for (let guild of client.guilds.cache.array()) {
-                    if (guildsMessage.length >= 2000) {
-                        break;
-                    }
-                    guildsMessage += "• " + guild.name + "\n";
-                } 
-                message.channel.send(guildsMessage);
-            }
-        }
         if (command === 'transfer') {
             message.channel.send('https://cdn.discordapp.com/attachments/586948600009981970/764341001854648340/upZStSY.png');
         }
