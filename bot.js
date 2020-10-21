@@ -181,7 +181,7 @@ client.on('message', async(message) => {
             message.channel.send("Showing all current rankgifs.")
             for (let gif of rankgifs) {
                 message.channel.send(gif);
-                // we forgot to protect it!!!
+                // 7355608
             }
         }
         }
@@ -349,9 +349,9 @@ client.on('message', async(message) => {
         if (command === 'support') {
             message.channel.send("Here's your server invite link!\nhttps://discord.gg/5Q9Mx32 ");
         }
-    /*    if (command === '') {
-            message.channel.send('');
-        } */
+        if (command === 'nails') {
+            message.channel.send('"take care of your fucking nails stratz" -Dash');
+        } 
     }
 
 });
