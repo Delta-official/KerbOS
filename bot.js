@@ -69,7 +69,7 @@ client.on("presenceUpdate", (oldPresence, newPresence) => {
                     itsYOUTUBESTREAMTIME();
                     canNotifyStreaming = false;
                     setTimeout(() => { canNotifyStreaming = true; }, 86400000);
-                } else{
+                } else if(activity.url.startsWith("www.twitch.tv")) {
                     itsSTREAMTIME();
                     canNotifyStreaming = false;
                     setTimeout(() => { canNotifyStreaming = true; }, 86400000);
