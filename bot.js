@@ -65,9 +65,15 @@ client.on("presenceUpdate", (oldPresence, newPresence) => {
     newPresence.activities.forEach(activity => {
         if (activity.type == "STREAMING") {
             if (canNotifyStreaming) {
-                itsSTREAMTIME();
-                canNotifyStreaming = false;
-                setTimeout(() => { canNotifyStreaming = true; }, 86400000);
+                if(activity.url.startsWith("www.youtube.com")) {
+                    itsYOUTUBESTREAMTIME();
+                    canNotifyStreaming = false;
+                    setTimeout(() => { canNotifyStreaming = true; }, 86400000);
+                } else{
+                    itsSTREAMTIME();
+                    canNotifyStreaming = false;
+                    setTimeout(() => { canNotifyStreaming = true; }, 86400000);
+                }
             }
         };
     });
@@ -366,7 +372,10 @@ function logToAll(message) {
     client.users.cache.get(OWNER_ID).send(message);
 }
 function itsSTREAMTIME() {
-    client.channel.id.get(NEWS_ID).send(`Stratzenblitz is streaming at ${activity.url}!`)
+    client.channel.id.get(NEWS_ID).send(`Hey <@everyone>, Stratzenblitz is streaming at ${activity.url}!`)
+}
+function itsYOUTUBESTREAMTIME() {
+    client.channel.id.get(NEWS_ID).send(`Hey everyone, Stratzenblitz is streaming at ${activity.url}!`)
 }
 // i'm hungry
 // i'm really hungry
