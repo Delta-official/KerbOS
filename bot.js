@@ -352,7 +352,7 @@ client.on('message', async(message) => {
         if (command === 'nails') {
             message.channel.send('"take care of your fucking nails stratz" -Dash');
         } 
-        if(command === "phobos you're late") {
+        if(command === "phobosyou'relate") {
             message.channel.send("i am already controlling this server via bot")
         }
     }
