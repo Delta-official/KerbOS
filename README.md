@@ -18,4 +18,4 @@ Below you can see information you may need:
 
 This bot was created by KerbOS development team
 
-![kerbosteamlogo3](https://user-images.githubusercontent.com/64544951/96332004-66128680-106a-11eb-876c-f2953c521e3c.png)
+![kerbosteamlogo7f](https://user-images.githubusercontent.com/64544951/96718292-77cc9480-13b0-11eb-973a-f098ca054655.png)
