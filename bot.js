@@ -355,6 +355,11 @@ client.on('message', async(message) => {
         if(command === "i") {
             message.channel.send("I'm sorry Dave, I'm afraid i can't do that.")
         }
+        if(command === "bread") {
+            if(IsOwner(message.member)) {
+                message.channel.send("Bread can't help you, you are alone")
+            }
+        }
     }
 
 });
