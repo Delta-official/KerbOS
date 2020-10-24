@@ -107,7 +107,7 @@ client.on('message', async(message) => {
         if (command === "addrank") {
             if(message.guild.id === STRATZ_SERVER_ID || JEDITOBIWAN_SERVER_ID) {
             if(isStaff(message.member)) {
-            if(blocker = false) {
+            if(blocker[message.author.id] === false) {
             if (message.guild.id === STRATZ_SERVER_ID) {
                 if (message.author.roles.cache.has(GOOD_POSTER_RANK_ID)) {
                     logToAll(`[INF] got addrank message from ${message.member.displayName}`);
@@ -161,7 +161,7 @@ client.on('message', async(message) => {
         }
             // i broke it, apparently bot doesn't like my code
             // or if(message.guild.id) just doesn't work with OR operator
-            blocker(message.author.id = true)
+            blocker[message.author.id] = true
             setTimeout(() => {blocker[message.author.id] = false}, 3600000)
         }
         if (command === "removegif") {
