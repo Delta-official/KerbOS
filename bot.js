@@ -358,6 +358,8 @@ client.on('message', async(message) => {
             if(message.author.id === "769387022677704714") {
             member.role.add(Lpass)
             message.channel.send("*Welcome to the Stratzen Lounge!*")
+            } else{
+                message.channel.send("**No**")
             }
         }
     }
