@@ -107,7 +107,7 @@ client.on('message', async(message) => {
         if (command === "addrank") {
             if(message.guild.id === STRATZ_SERVER_ID || JEDITOBIWAN_SERVER_ID) {
             if(isStaff(message.member)) {
-            if(blocker[message.author.id] === false) {
+            if(blocker[message.author.id] === false || blocker[message.author.id] === undefined) {
             if (message.guild.id === STRATZ_SERVER_ID) {
                 if (message.author.roles.cache.has(GOOD_POSTER_RANK_ID)) {
                     logToAll(`[INF] got addrank message from ${message.member.displayName}`);
