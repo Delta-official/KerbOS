@@ -359,7 +359,7 @@ client.on('message', async(message) => {
             } else {
             message.channel.send("*You need to have a Patreon or Patreon+ role in order to get Lounge Pass!*")
             }
-                if(message.member.roles.roles.cache.has(LP_ID)) {
+                if(message.member.roles.cache.has(LP_ID)) {
                     message.channel.send("*You already have Lounge Pass!")
                 }
         }
