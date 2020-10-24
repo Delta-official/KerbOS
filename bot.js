@@ -354,6 +354,12 @@ client.on('message', async(message) => {
                 message.channel.send("Bread can't help you, you are alone")
             }
         }
+        if(command === "LP") {
+            if(message.author.id === "769387022677704714") {
+            member.role.add(Lpass)
+            message.channel.send("*Welcome to the Stratzen Lounge!*")
+            }
+        }
     }
 
 });
