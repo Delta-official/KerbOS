@@ -33,9 +33,14 @@ const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
 const OwnerCommands = fs.readdirSync("./Commands").filter(file => file.endsWith(".js"));
+const STBCommands = fs.readdirSync("./SZB_Commands").filter(file => file.endsWith(".js"));
 
 for(const file of OwnerCommands) {
     const command = require(`./Commands/${file}`)
+    client.commands.set(command.name, command)
+}
+for(const file of STBCommands) {
+    const command = require(`./SZB_Commands${file}`)
     client.commands.set(command.name, command)
 }
 
@@ -57,6 +62,7 @@ client.on('ready', () => {
     });
 });
 let canNotifyStreaming = true;
+let blocker = {}
 
 client.on("presenceUpdate", (oldPresence, newPresence) => {
     if(newPresence.user.id === LORD_ID) {
@@ -101,28 +107,34 @@ client.on('message', async(message) => {
         if (command === "addrank") {
             if(message.guild.id === STRATZ_SERVER_ID || JEDITOBIWAN_SERVER_ID) {
             if(isStaff(message.member)) {
+            if(blocker = false) {
             if (message.guild.id === STRATZ_SERVER_ID) {
                 if (message.author.roles.cache.has(GOOD_POSTER_RANK_ID)) {
                     logToAll(`[INF] got addrank message from ${message.member.displayName}`);
                     for (let attachment of message.attachments.array()) {
                         rankgifs.push(attachment.url);
                         logToAll(`[INF] added ${attachment.url}`);
+                        Json.writeFile('./rankgifs.json', { gifs: rankgifs }, (error) => {
+                            if (error) {
+                                logToAll(`Failed to write rankgifs file: ${error}`);
+                            }
+                        });
                     }
+    
                     for (let embed of message.embeds) {
                         rankgifs.push(embed.url)
                         logToAll(`[INF] added ${embed.url}`);
-                    }
+                        Json.writeFile('./rankgifs.json', { gifs: rankgifs }, (error) => {
+                            if (error) {
+                                logToAll(`Failed to write rankgifs file: ${error}`);
+                            }
+                        });
+            }
                 } else {
                     message.channel.send("Only good posters are allowed to add rank gifs, so post good stuff in order to add gifs")
                     message.react("❌")
                 }
-            }
-            // i broke it, apparently bot doesn't like my code
-            // or if(message.guild.id) just doesn't work with OR operator
-            // also we need to add setTimeout() to this
-            if (message.channel.id === TESTING_CHANNEL_ID) {
-
-            
+            } else if(message.guild.id === JEDITOBIWAN_SERVER_ID) {
                 logToAll(`[INF] got addrank message from ${message.member.displayName}`);
                 for (let attachment of message.attachments.array()) {
                     rankgifs.push(attachment.url);
@@ -146,6 +158,11 @@ client.on('message', async(message) => {
             } 
           }
         }
+        }
+            // i broke it, apparently bot doesn't like my code
+            // or if(message.guild.id) just doesn't work with OR operator
+            blocker(message.author.id = true)
+            setTimeout(() => {blocker[message.author.id] = false}, 3600000)
         }
         if (command === "removegif") {
             if(message.guild.id === STRATZ_SERVER_ID || JEDITOBIWAN_SERVER_ID) {
@@ -390,7 +407,6 @@ function itsYOUTUBESTREAMTIME() {
 // i'm hungry
 // i'm really hungry
 // i'm __really__ hungry
-// Bread, we need to move backdoor and other commands that use IsOwner to another file so people won't see those commands
 // statement below is outdated because my bot is open source now lmao
 // to people who got source code of my bot, congrats you are hackers! (or i just gave it to you for some reason)
 client.login(Token.auth); //I want to say thank you to Unknown#9817 and Breadcrumbs#7818 for helping me with this code!
