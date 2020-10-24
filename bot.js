@@ -109,7 +109,7 @@ client.on('message', async(message) => {
             if(isStaff(message.member)) {
             if(blocker[message.author.id] === false || blocker[message.author.id] === undefined) {
             if (message.guild.id === STRATZ_SERVER_ID) {
-                if (message.author.roles.cache.has(GOOD_POSTER_RANK_ID)) {
+                if (message.member.roles.cache.has(GOOD_POSTER_RANK_ID)) {
                     logToAll(`[INF] got addrank message from ${message.member.displayName}`);
                     for (let attachment of message.attachments.array()) {
                         rankgifs.push(attachment.url);
