@@ -9,7 +9,6 @@ const LORD_ID = "196749490034573312"
 const JEDITOBIWAN_SERVER_ID = "357324444982837261";
 const OWNER2_ID = "223524655389081600"
 const LP_ID = '438553700492115968'
-const TESTING_CHANNEL_ID = '763575108069359668';
 const GOOD_POSTER_RANK_ID = '614147636135723021';
 const STRATZ_SERVER_ID = "425119272713322497"; 
 const OWNER_ID = "508632222245322793"
@@ -159,8 +158,6 @@ client.on('message', async(message) => {
           }
         }
         }
-            // i broke it, apparently bot doesn't like my code
-            // or if(message.guild.id) just doesn't work with OR operator
             blocker[message.author.id] = true
             setTimeout(() => {blocker[message.author.id] = false}, 3600000)
         }
@@ -371,16 +368,7 @@ client.on('message', async(message) => {
                 message.channel.send("Bread can't help you, you are alone")
             }
         }
-        if(command === "LP") {
-            if(message.author.id === "769387022677704714") {
-            member.role.add(Lpass)
-            message.channel.send("*Welcome to the Stratzen Lounge!*")
-            } else{
-                message.channel.send("**No**")
-            }
-        }
     }
-
 });
 
 function isStaff(member) {
