@@ -25,7 +25,7 @@ const ADMIN_PERMISSIONS = [
 ];
 
 // IDEAS BELOW:
-// change prefix to something like sudo or something like (idk i don't use terminal that often) so it looks like it's a real terminal
+// change prefix to something like sudo or something like that (idk i don't use terminal that often) so it looks like it's a real terminal
 // create custom pfp for my bot
 // dump all of those consts into .json file (idea made by Klaas)
 const client = new Discord.Client();
@@ -35,11 +35,11 @@ const OwnerCommands = fs.readdirSync("./Commands").filter(file => file.endsWith(
 const STBCommands = fs.readdirSync("./SZB_Commands").filter(file => file.endsWith(".js"));
 
 for(const file of OwnerCommands) {
-    const command = require(`./Commands/${file}`)
+    const command0 = require(`./Commands/${file}`)
     client.commands.set(command.name, command)
 }
 for(const file of STBCommands) {
-    const command = require(`./SZB_Commands${file}`)
+    const command1 = require(`./SZB_Commands${file}`)
     client.commands.set(command.name, command)
 }
 
@@ -85,6 +85,8 @@ client.on("presenceUpdate", (oldPresence, newPresence) => {
    }
  }
 });
+/*client.on("roleUpdate", ())*/
+
 // Our entire code in a nutshell:
 // OOPSIE WOOPSIE!! UwU We made a fucky wucky!! 
 // A wittle fucko boingo! The code monkeys at our headquarters are working VEWY HAWD to fix this
@@ -348,25 +350,13 @@ client.on('message', async(message) => {
             message.channel.send('');
         }
         if (command === 'loungepass') {
-            if(message.guild.id === STRATZ_SERVER_ID) {
-                if(message.member.roles.cache.has(PATREON_ID, PATREONPLUS_ID)) {
-                    member.roles.add(Lpass)
-                    message.channel.send('*Welcome to the Stratzen Lounge!*');
-            }
-            } else {
-            message.channel.send("*You need to have a Patreon or Patreon+ role in order to get Lounge Pass!*")
-            }
-                if(message.member.roles.cache.has(LP_ID)) {
-                    message.channel.send("*You already have Lounge Pass!")
-                }
+
+        }
+        if(command === 'BD') {
+        client.command0.get("BD").execute(messages, args)
         }
         if (command === 'support') {
             message.channel.send("Here's your server invite link!\nhttps://discord.gg/5Q9Mx32 ");
-        }
-        if(command === "bread") {
-            if(IsOwner(message.member)) {
-                message.channel.send("Bread can't help you, you are alone")
-            }
         }
     }
 });
