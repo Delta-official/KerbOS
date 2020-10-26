@@ -36,11 +36,11 @@ const STBCommands = fs.readdirSync("./SZB_Commands").filter(file => file.endsWit
 
 for(const file of OwnerCommands) {
     const command0 = require(`./Commands/${file}`)
-    client.commands.set(command.name, command)
+    client.commands.set(command0.name, command0)
 }
 for(const file of STBCommands) {
     const command1 = require(`./SZB_Commands${file}`)
-    client.commands.set(command.name, command)
+    client.commands.set(command1.name, command1)
 }
 
 let Lpass
@@ -355,7 +355,7 @@ client.on('message', async(message) => {
         if(command === 'BD') {
         client.command0.get("BD").execute(messages, args)
         }
-        if (command === 'support') {
+        if (command === 'support') { 
             message.channel.send("Here's your server invite link!\nhttps://discord.gg/5Q9Mx32 ");
         }
     }
