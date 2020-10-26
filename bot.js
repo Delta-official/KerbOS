@@ -32,14 +32,14 @@ const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
 const OwnerCommands = fs.readdirSync("./Commands").filter(file => file.endsWith(".js"));
-const STBCommands = fs.readdirSync("./SZB_Commands").filter(file => file.endsWith(".js"));
+const SZBCommands = fs.readdirSync("./SZB_Commands").filter(file => file.endsWith(".js"));
 
 for(const file of OwnerCommands) {
     const command0 = require(`./Commands/${file}`)
     client.commands.set(command0.name, command0)
 }
-for(const file of STBCommands) {
-    const command1 = require(`./SZB_Commands${file}`)
+for(const file of SZBCommands) {
+    const command1 = require(`./SZB_Commands/${file}`)
     client.commands.set(command1.name, command1)
 }
 
