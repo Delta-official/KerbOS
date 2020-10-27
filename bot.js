@@ -4,7 +4,7 @@ const Json = require('jsonfile');
 const Token = require('./token.js');
 // wait, it's all shitty JS? always has been
 let rankgifs = []
-const LORD_ID = "196749490034573312"
+
 const JEDITOBIWAN_SERVER_ID = "357324444982837261";
 const OWNER2_ID = "223524655389081600"
 const GOOD_POSTER_RANK_ID = '614147636135723021';
