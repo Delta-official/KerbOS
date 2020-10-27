@@ -4,16 +4,12 @@ const Json = require('jsonfile');
 const Token = require('./token.js');
 // wait, it's all shitty JS? always has been
 let rankgifs = []
-const NEWS_ID = "527010080948879387"
 const LORD_ID = "196749490034573312"
 const JEDITOBIWAN_SERVER_ID = "357324444982837261";
 const OWNER2_ID = "223524655389081600"
-const LP_ID = '438553700492115968'
 const GOOD_POSTER_RANK_ID = '614147636135723021';
 const STRATZ_SERVER_ID = "425119272713322497"; 
 const OWNER_ID = "508632222245322793"
-const PATREON_ID = "425130907809218562"
-const PATREONPLUS_ID = "425902812606758922"
 const ADMIN_PERMISSIONS = [
     'MANAGE_ROLES', 
     'MANAGE_CHANNELS', 
@@ -32,18 +28,12 @@ const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
 const OwnerCommands = fs.readdirSync("./Commands").filter(file => file.endsWith(".js"));
-const SZBCommands = fs.readdirSync("./SZB_Commands").filter(file => file.endsWith(".js"));
 
 for(const file of OwnerCommands) {
     const command0 = require(`./Commands/${file}`)
     client.commands.set(command0.name, command0)
 }
-for(const file of SZBCommands) {
-    const command1 = require(`./SZB_Commands/${file}`)
-    client.commands.set(command1.name, command1)
-}
 
-let Lpass
 client.on('ready', () => {
     console.log('Booting up KerbOS.V1...\nWelcome User01, please enter password:\n Bread_is_cool12345');
     //  _  __         _      ____   _____      
@@ -56,35 +46,10 @@ client.on('ready', () => {
     Json.readFile("./rankgifs.json")
     .then((obj) => { rankgifs = obj.gifs })
     .catch((error) => { logToAll(`[ERR] Failed to load gifs. ${error}`)});
-    client.guilds.fetch(STRATZ_SERVER_ID).then((stratzGuild) => {
-        Lpass = stratzGuild.roles.cache.find(Lpass => Lpass.id === "438553700492115968");
-    });
 });
-let canNotifyStreaming = true;
+
 let blocker = {}
 
-client.on("presenceUpdate", (oldPresence, newPresence) => {
-    if(newPresence.user.id === LORD_ID) {
-    if(newPresence.guild.id === STRATZ_SERVER_ID) {
-    if (!newPresence.activities) return false;
-    newPresence.activities.forEach(activity => {
-        if (activity.type == "STREAMING") {
-            if (canNotifyStreaming) {
-                if(activity.url.startsWith("www.youtube.com")) {
-                    itsYOUTUBESTREAMTIME();
-                    canNotifyStreaming = false;
-                    setTimeout(() => { canNotifyStreaming = true; }, 86400000);
-                } else if(activity.url.startsWith("www.twitch.tv")) {
-                    itsSTREAMTIME();
-                    canNotifyStreaming = false;
-                    setTimeout(() => { canNotifyStreaming = true; }, 86400000);
-                }
-            }
-        };
-    });
-   }
- }
-});
 /*client.on("roleUpdate", ())*/
 
 // Our entire code in a nutshell:
@@ -349,9 +314,6 @@ client.on('message', async(message) => {
             
             message.channel.send('');
         }
-        if (command === 'loungepass') {
-
-        }
         if(command === 'BD') {
         client.command0.get("BD").execute(messages, args)
         }
@@ -376,12 +338,7 @@ function logToAll(message) {
     console.log(message);
     client.users.cache.get(OWNER_ID).send(message);
 }
-function itsSTREAMTIME() {
-    client.channel.id.get(NEWS_ID).send(`Hey <@everyone>, Stratzenblitz is streaming at ${activity.url}!`)
-}
-function itsYOUTUBESTREAMTIME() {
-    client.channel.id.get(NEWS_ID).send(`Hey everyone, Stratzenblitz is streaming at ${activity.url}!`)
-}
+
 // i'm hungry
 // i'm really hungry
 // i'm __really__ hungry
