@@ -329,7 +329,6 @@ function isStaff(member) {
 function IsOwner(member) {
     return member.id === OWNER_ID || OWNER2_ID;
 }
-
 function addRankGif(gif) {
     rankgifs.push(gif);
 }
