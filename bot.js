@@ -95,7 +95,7 @@ client.on('message', async(message) => {
                                 logToAll(`Failed to write rankgifs file: ${error}`);
                             }
                         });
-            }
+                }
                 } else {
                     message.channel.send("Only good posters are allowed to add rank gifs, so post good stuff in order to add gifs")
                     message.react("❌")
