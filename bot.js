@@ -34,12 +34,13 @@ for(const file of OwnerCommands) {
     client.commands.set(command0.name, command0)
 }
 
+var today = new Date();
+var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+var dateTime = date+'/ Current time:'+time;
+
 client.on('ready', () => {
     console.log('Booting up KerbOS.V1...\nWelcome User01, please enter password:\n Bread_is_cool12345');
-    var today = new Date();
-    var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
-    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    var dateTime = date+'/ Current time:'+time;
     client.users.cache.get(OWNER_ID).send(`Current date: ${dateTime}`);
     //  _  __         _      ____   _____      
     // | |/ /        | |    / __ \ / ____|  
