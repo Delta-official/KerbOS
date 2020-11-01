@@ -72,7 +72,6 @@ client.on('message', async(message) => {
 
         if (command === "addrank") {
             if(message.guild.id === STRATZ_SERVER_ID || JEDITOBIWAN_SERVER_ID) {
-            if(isStaff(message.member)) {
             if(blocker[message.author.id] === false || blocker[message.author.id] === undefined) {
             if (message.guild.id === STRATZ_SERVER_ID) {
                 if (message.member.roles.cache.has(GOOD_POSTER_RANK_ID)) {
@@ -123,7 +122,6 @@ client.on('message', async(message) => {
                 }
             } 
           }
-        }
         }
             blocker[message.author.id] = true
             setTimeout(() => {blocker[message.author.id] = false}, 3600000)
