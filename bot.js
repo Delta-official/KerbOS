@@ -318,6 +318,11 @@ client.on('message', async(message) => {
         if (command === 'support') { 
             message.channel.send("Here's your server invite link!\nhttps://discord.gg/5Q9Mx32 ");
         }
+        if(command === 'RJN_RL') {
+            if(IsOwner(message.member)) {
+                
+            }
+        }
     }
 });
 
