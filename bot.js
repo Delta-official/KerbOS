@@ -62,7 +62,7 @@ const rankPRF = "!";
 client.on('message', async(message) => {
     if (message.author.bot) return;
     
-    if (message.content.match(/^[^\w\s0-9]rank/)) {
+    if (message.content.match(/^[^\w\s0-9]rank/ || /^[^\w\s0-9]xp/)) {
         message.channel.send(rankgifs[Math.floor(Math.random() * rankgifs.length)])
     }
 
@@ -70,7 +70,7 @@ client.on('message', async(message) => {
         const args = message.content.toLowerCase().split(' ');
         const command = args.shift().slice(rankPRF.length);
 
-        if (command === "addrank" || command === "xp") {
+        if (command === "addrank") {
             if(message.guild.id === STRATZ_SERVER_ID || JEDITOBIWAN_SERVER_ID) {
             if(blocker[message.author.id] === false || blocker[message.author.id] === undefined) {
             if (message.guild.id === STRATZ_SERVER_ID) {
