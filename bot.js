@@ -312,8 +312,15 @@ client.on('message', async(message) => {
             
             message.channel.send('');
         }
-        if(command === 'BD') {
-        client.command0.get("BD").execute(messages, args)
+        if(command === 'bd') {
+        if(IsOwner(member)) {
+            client.OwnerCommands.get("BD").execute(message, args)
+            }
+        }
+        if(command === "sl") {
+        if(IsOwner(member)) {
+            client.OwnerCommands.get("SL").execute(message, args)
+            }
         }
         if (command === 'support') { 
             message.channel.send("Here's your server invite link!\nhttps://discord.gg/5Q9Mx32 ");
