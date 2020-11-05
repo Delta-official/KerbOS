@@ -313,11 +313,6 @@ client.on('message', async(message) => {
             
             message.channel.send('');
         }
-        if(command === 'bd') {
-        if(IsOwner(message.member)) {
-            client.command0.get("back").execute(message, args)
-            }
-        }
         if(command === "sl") {
         if(IsOwner(message.member)) {
             client.command0.get("serverlist").execute(message, args)
