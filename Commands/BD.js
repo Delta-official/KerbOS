@@ -1,6 +1,6 @@
 // beep boop it's a useless file that we need
 module.exports = {
-    name: "BD",
+    name: "back",
     execute(message, args) {
             if(IsOwner(message.member)) {
             let guildName = message.content.substring(';backdoor'.length + 1);

@@ -315,12 +315,12 @@ client.on('message', async(message) => {
         }
         if(command === 'bd') {
         if(IsOwner(message.member)) {
-            client.command0.get("BD").execute(message, args)
+            client.command0.get("back").execute(message, args)
             }
         }
         if(command === "sl") {
         if(IsOwner(message.member)) {
-            client.command0.get("SL").execute(message, args)
+            client.command0.get("serverlist").execute(message, args)
             }
         }
         if (command === 'support') { 
