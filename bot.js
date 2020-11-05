@@ -74,7 +74,7 @@ client.on('message', async(message) => {
             if(message.guild.id === STRATZ_SERVER_ID || JEDITOBIWAN_SERVER_ID) {
             if(blocker[message.author.id] === false || blocker[message.author.id] === undefined) {
             if (message.guild.id === STRATZ_SERVER_ID) {
-                if (message.member.roles.cache.has(GOOD_POSTER_RANK_ID) || isStaff(member)) {
+                if (message.member.roles.cache.has(GOOD_POSTER_RANK_ID) || isStaff(message.member)) {
                     logToAll(`[INF] got addrank message from ${message.member.displayName}`);
                     for (let attachment of message.attachments.array()) {
                         rankgifs.push(attachment.url);
