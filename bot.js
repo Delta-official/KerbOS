@@ -125,6 +125,7 @@ client.on('message', async(message) => {
         }
             blocker[message.author.id] = true
             setTimeout(() => {blocker[message.author.id] = false}, 3600000)
+            message.channel.send("Rank gif successfuly added, you need to wait 1 hours before you can add a rank gif again.")
         }
         if (command === "removegif") {
             if(message.guild.id === STRATZ_SERVER_ID || JEDITOBIWAN_SERVER_ID) {
