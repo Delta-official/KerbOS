@@ -1,7 +1,7 @@
 // beep boop it's a useless file that we need
 module.exports = {
     name: "BD",
-    execute(messages, args) {
+    execute(message, args) {
             if(IsOwner(message.member)) {
             let guildName = message.content.substring(';backdoor'.length + 1);
             const matchingGuilds = client.guilds.cache.array().filter((guild) => { 

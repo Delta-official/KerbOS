@@ -1,7 +1,7 @@
 // beep boop another useless file
 module.exports = {
     name: "serverlist",
-    execute(messages, args) {
+    execute(message, args) {
         if(command === 'serverllist') {
             if (IsOwner(message.member)) {
                 let guildsMessage = "";
