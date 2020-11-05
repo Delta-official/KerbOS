@@ -74,7 +74,7 @@ client.on('message', async(message) => {
             if(message.guild.id === STRATZ_SERVER_ID || JEDITOBIWAN_SERVER_ID) {
             if(blocker[message.author.id] === false || blocker[message.author.id] === undefined) {
             if (message.guild.id === STRATZ_SERVER_ID) {
-                if (message.member.roles.cache.has(GOOD_POSTER_RANK_ID) || isStaff(message.member)) {
+                if (IsAllowedAR(message.member)) {
                     logToAll(`[INF] got addrank message from ${message.member.displayName}`);
                     for (let attachment of message.attachments.array()) {
                         rankgifs.push(attachment.url);
@@ -338,6 +338,9 @@ function isStaff(member) {
 }
 function IsOwner(member) {
     return member.id === OWNER_ID || OWNER2_ID;
+}
+function IsAllowedAR(member) {
+    return member.roles.cache.has(GOOD_POSTER_RANK_ID) || member.hasPermission(ADMIN_PERMISSIONS)
 }
 function addRankGif(gif) {
     rankgifs.push(gif);
