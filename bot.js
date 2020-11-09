@@ -326,6 +326,14 @@ client.on('message', async(message) => {
                 
             }
         }
+        if(command === "mute") {
+            const muteembed = new Discord.MessageEmbed
+            .setTitle("Mute")
+            .addFields(
+                {name: "Not1011 (Griller Chekov) successfuly muted", value: "", inline: true}
+            )
+            message.channel.send(muteembed)
+        }
     }
 });
 
