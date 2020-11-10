@@ -155,7 +155,7 @@ client.on('message', async(message) => {
                 }
             }
         }
-        if (command === "showall") {
+        /*if (command === "showall") {
             if(message.guild.id === STRATZ_SERVER_ID || JEDITOBIWAN_SERVER_ID) {
             if (isStaff(message.member)) {
             message.channel.send("Showing all current rankgifs.")
@@ -165,7 +165,7 @@ client.on('message', async(message) => {
             }
         }
         }
-        }
+        }*/
     }
     if (message.content.startsWith(prefix)) {
         const args = message.content.toLowerCase().split(' ');
