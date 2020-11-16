@@ -19,6 +19,7 @@ const ADMIN_PERMISSIONS = [
     'VIEW_AUDIT_LOG',
     'MANAGE_MESSAGES',
 ];
+const RANKSERVERARRAY = [STRATZ_SERVER_ID, JEDITOBIWAN_SERVER_ID]
 
 // IDEAS BELOW:
 // change prefix to something like sudo or something like that (idk i don't use terminal that often) so it looks like it's a real terminal
@@ -71,7 +72,7 @@ client.on('message', async(message) => {
         const command = args.shift().slice(rankPRF.length);
 
         if (command === "addrank") {
-            if(message.guild.id === STRATZ_SERVER_ID || JEDITOBIWAN_SERVER_ID) {
+            if(message.guild.id === RANKSERVERARRAY) {
             if(blocker[message.author.id] === false || blocker[message.author.id] === undefined) {
             if (message.guild.id === STRATZ_SERVER_ID) {
                 if (IsAllowedAR(message.member)) {
@@ -320,19 +321,6 @@ client.on('message', async(message) => {
         }
         if (command === 'support') { 
             message.channel.send("Here's your server invite link!\nhttps://discord.gg/5Q9Mx32 ");
-        }
-        if(command === 'RJN_RL') {
-            if(IsOwner(message.member)) {
-                
-            }
-        }
-        if(command === "mute") {
-            const muteembed = new Discord.MessageEmbed
-            .setTitle("Mute")
-            .addFields(
-                {name: "Not1011 (Griller Chekov) successfuly muted", value: "", inline: true}
-            )
-            message.channel.send(muteembed)
         }
     }
 });
