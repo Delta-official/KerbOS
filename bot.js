@@ -316,7 +316,18 @@ client.on('message', async(message) => {
         }
         if(command === "sl") {
         if(IsOwner(message.member)) {
-            client.command0.get("serverlist").execute(message, args)
+            if(command === 'serverllist') {
+                if (IsOwner(message.member)) {
+                    let guildsMessage = "";
+                    for (let guild of client.guilds.cache.array()) {
+                        if (guildsMessage.length >= 2000) {
+                            break;
+                        }
+                    guildsMessage += "• " + guild.name + "\n";
+                } 
+                message.channel.send(guildsMessage);
+            }
+        }
             }
         }
         if (command === 'support') { 
