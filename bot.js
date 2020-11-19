@@ -314,8 +314,6 @@ client.on('message', async(message) => {
             
             message.channel.send('');
         }
-        if(command === "sl") {
-        if(IsOwner(message.member)) {
             if(command === 'serverllist') {
                 if (IsOwner(message.member)) {
                     let guildsMessage = "";
@@ -326,8 +324,6 @@ client.on('message', async(message) => {
                     guildsMessage += "• " + guild.name + "\n";
                 } 
                 message.channel.send(guildsMessage);
-            }
-        }
             }
         }
         if (command === 'support') { 
