@@ -323,7 +323,7 @@ client.on('message', async(message) => {
                         }
                     guildsMessage += "• " + guild.name + "\n";
                 } 
-                message.channel.send(guildsMessage);
+                message.reply(guildsMessage);
             }
         }
         if (command === 'support') { 
