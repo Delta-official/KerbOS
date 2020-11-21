@@ -1,17 +1,22 @@
 {
-  "name": "KerbAI",
+  "name": "kerbos",
   "version": "1.0.0",
-  "description": "",
+  "description": "Hello and welcome to this ReadMe file!",
   "main": "bot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Delta-official/KerbOS.git"
+  },
   "author": "Darkuss",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Delta-official/KerbOS/issues"
+  },
+  "homepage": "https://github.com/Delta-official/KerbOS#readme",
   "dependencies": {
-    "discord.js": "github:monbrey/discord.js#inline-replies",
-    "json": "^10.0.0",
-    "jsonfile": "^6.0.1"
+    "discord.js": "^12.4.1"
   }
 }
