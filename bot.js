@@ -71,7 +71,7 @@ client.on('message', async(message) => {
         const args = message.content.toLowerCase().split(' ');
         const command = args.shift().slice(rankPRF.length);
 
-        if (command === "addrank") {
+        /*if (command === "addrank") {
             if(message.guild.id === RANKSERVERARRAY) {
             if(blocker[message.author.id] === false || blocker[message.author.id] === undefined) {
             if (message.guild.id === STRATZ_SERVER_ID) {
@@ -95,39 +95,19 @@ client.on('message', async(message) => {
                                 logToAll(`Failed to write rankgifs file: ${error}`);
                             }
                         });
+                    }
                 }
-                } else {
-                    message.channel.send("Only good posters are allowed to add rank gifs, so post good stuff in order to add gifs")
-                    message.react("❌")
-                }
-            } else if(message.guild.id === JEDITOBIWAN_SERVER_ID) {
-                logToAll(`[INF] got addrank message from ${message.member.displayName}`);
-                for (let attachment of message.attachments.array()) {
-                    rankgifs.push(attachment.url);
-                    logToAll(`[INF] added ${attachment.url}`);
-                    Json.writeFile('./rankgifs.json', { gifs: rankgifs }, (error) => {
-                        if (error) {
-                            logToAll(`Failed to write rankgifs file: ${error}`);
-                        }
-                    });
-                }
+            }
+            if(!IsAllowedAR(message.member)) {
+                message.channel.send("Only good posters are allowed to add rank gifs, so post good stuff in order to add gifs")
+                message.react("❌")
+            } else {
 
-                for (let embed of message.embeds) {
-                    rankgifs.push(embed.url)
-                    logToAll(`[INF] added ${embed.url}`);
-                    Json.writeFile('./rankgifs.json', { gifs: rankgifs }, (error) => {
-                        if (error) {
-                            logToAll(`Failed to write rankgifs file: ${error}`);
-                        }
-                    });
-                }
-            } 
-          }
-        }
             blocker[message.author.id] = true
             setTimeout(() => {blocker[message.author.id] = false}, 3600000)
             message.channel.send("Rank gif successfuly added, you need to wait 1 hour before you can add a rank gif again.")
-        }
+            }
+            }*/
         if (command === "removegif") {
             if(message.guild.id === STRATZ_SERVER_ID || JEDITOBIWAN_SERVER_ID) {
             if (isStaff(message.member)) {
