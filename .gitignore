@@ -4,4 +4,4 @@ todo.md
 
 # Useless to be in the repo
 .DS_STORE
-
+node_modules
