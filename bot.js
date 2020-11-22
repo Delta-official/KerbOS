@@ -301,6 +301,7 @@ client.on('message', async(message) => {
         }
         if (message.content.startsWith(prefix + 'kill')) {
             if (IsOwner(message.member)) {
+                message.channel.send("Stopping the bot")
                 process.exit();
             }
         } 
