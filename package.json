@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Delta-official/KerbOS#readme",
   "dependencies": {
-    "discord.js": "^12.4.1"
+    "discord.js": "^12.4.1",
+    "jsonfile": "^6.1.0"
   }
 }
