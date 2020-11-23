@@ -64,6 +64,7 @@ client.on('message', async(message) => {
     if (message.author.bot) return;
     
     if (message.content.match(/^[^\w\s0-9]rank/ || /^[^\w\s0-9]xp/)) {
+        if(message.guild.id === STRATZ_SERVER_ID || message.guild.id === JEDITOBIWAN_SERVER_ID)
         message.channel.send(rankgifs[Math.floor(Math.random() * rankgifs.length)])
     }
 
@@ -111,7 +112,7 @@ client.on('message', async(message) => {
         }
         }
         if (command === "removegif") {
-            if(message.guild.id === STRATZ_SERVER_ID || JEDITOBIWAN_SERVER_ID) {
+            if(message.guild.id === STRATZ_SERVER_ID) {
             if (isStaff(message.member)) {
                 message.reply(`Are you sure?`).then((approve) => { 
                     approve.react(`✅`);
@@ -139,7 +140,7 @@ client.on('message', async(message) => {
             }
         }
         if (command === "showall") {
-            if(message.guild.id === STRATZ_SERVER_ID || JEDITOBIWAN_SERVER_ID) {
+            if(message.guild.id === STRATZ_SERVER_ID) {
             if (isStaff(message.member)) {
             message.channel.send("Showing all current rankgifs.")
             for (let gif of rankgifs) {
