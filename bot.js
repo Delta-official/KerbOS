@@ -71,8 +71,8 @@ client.on('message', async(message) => {
         const args = message.content.toLowerCase().split(' ');
         const command = args.shift().slice(rankPRF.length);
 
-        /*if (command === "addrank") {
-            if(message.guild.id === RANKSERVERARRAY) {
+        if (command === "addrank") {
+            if(message.guild.id === STRATZ_SERVER_ID) {
             if(blocker[message.author.id] === false || blocker[message.author.id] === undefined) {
             if (message.guild.id === STRATZ_SERVER_ID) {
                 if (IsAllowedAR(message.member)) {
@@ -107,7 +107,9 @@ client.on('message', async(message) => {
             setTimeout(() => {blocker[message.author.id] = false}, 3600000)
             message.channel.send("Rank gif successfuly added, you need to wait 1 hour before you can add a rank gif again.")
             }
-            }*/
+        }
+        }
+        }
         if (command === "removegif") {
             if(message.guild.id === STRATZ_SERVER_ID || JEDITOBIWAN_SERVER_ID) {
             if (isStaff(message.member)) {
