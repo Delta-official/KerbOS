@@ -298,7 +298,7 @@ client.on('message', async(message) => {
             
             message.channel.send('');
         }
-            if(command === 'serverllist') {
+            if(command === 'serverlist') {
                 if (IsOwner(message.member)) {
                     let guildsMessage = "";
                     for (let guild of client.guilds.cache.array()) {
