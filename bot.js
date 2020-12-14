@@ -65,7 +65,7 @@ client.on('message', async(message) => {
     
     if (message.content.match(/^[^\w\s0-9]rank/ || /^[^\w\s0-9]xp/)) {
         if(message.guild.id === STRATZ_SERVER_ID || message.guild.id === JEDITOBIWAN_SERVER_ID) {
-            if(message.author.id === "466407480931516416") {
+            if(message.author.id === "466407480931516416" || message.author.id === "272552743820853248") {
                 return
             } else {
                 message.channel.send(rankgifs[Math.floor(Math.random() * rankgifs.length)])
