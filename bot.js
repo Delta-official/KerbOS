@@ -31,8 +31,8 @@ client.commands = new Discord.Collection();
 const OwnerCommands = fs.readdirSync("./Commands").filter(file => file.endsWith(".js"));
 
 for(const file of OwnerCommands) {
-    const command0 = require(`./Commands/${file}`)
-    client.commands.set(command0.name, command0)
+    const command0 = require(`./Commands/${file}`);
+    client.commands.set(command0.name, command0);
 }
 
 client.on('ready', () => {
@@ -49,14 +49,9 @@ client.on('ready', () => {
     .catch((error) => { logToAll(`[ERR] Failed to load gifs. ${error}`)});
 });
 
-let blocker = {}
+let blocker = {};
+let Cooldown = {};
 
-/*client.on("roleUpdate", ())*/
-// bo
-// Our entire code in a nutshell:
-// OOPSIE WOOPSIE!! UwU We made a fucky wucky!! 
-// A wittle fucko boingo! The code monkeys at our headquarters are working VEWY HAWD to fix this
-// i'm not going to delete this
 const prefix = ';';
 const rankPRF = "!";
 
@@ -64,11 +59,10 @@ client.on('message', async(message) => {
     if (message.author.bot) return;
     
     if (message.content.match(/^[^\w\s0-9]rank/ || /^[^\w\s0-9]xp/)) {
-        if(message.guild.id === STRATZ_SERVER_ID || message.guild.id === JEDITOBIWAN_SERVER_ID) {
-            if(message.author.id === "466407480931516416" || message.author.id === "272552743820853248") {
-                return
-            } else {
-                message.channel.send(rankgifs[Math.floor(Math.random() * rankgifs.length)])
+        if(Cooldown[message.author.id] === false || Cooldown[message.author.id] === undefined) {
+            if(message.guild.id === STRATZ_SERVER_ID || message.guild.id === JEDITOBIWAN_SERVER_ID) {
+                    message.channel.send(rankgifs[Math.floor(Math.random() * rankgifs.length)]);
+                    setTimeout(() => {Cooldown[message.author.id] = false}, 30000);
             }
         }
     }
@@ -80,7 +74,6 @@ client.on('message', async(message) => {
         if (command === "addrank") {
             if(message.guild.id === STRATZ_SERVER_ID) {
             if(blocker[message.author.id] === false || blocker[message.author.id] === undefined) {
-            if (message.guild.id === STRATZ_SERVER_ID) {
                 if (IsAllowedAR(message.member)) {
                     logToAll(`[INF] got addrank message from ${message.member.displayName}`);
                     for (let attachment of message.attachments.array()) {
@@ -94,14 +87,13 @@ client.on('message', async(message) => {
                     }
     
                     for (let embed of message.embeds) {
-                        rankgifs.push(embed.url)
+                        rankgifs.push(embed.url);
                         logToAll(`[INF] added ${embed.url}`);
                         Json.writeFile('./rankgifs.json', { gifs: rankgifs }, (error) => {
                             if (error) {
                                 logToAll(`Failed to write rankgifs file: ${error}`);
                             }
                         });
-                    }
                 }
             }
             if(!IsAllowedAR(message.member)) {
@@ -111,7 +103,11 @@ client.on('message', async(message) => {
 
             blocker[message.author.id] = true
             setTimeout(() => {blocker[message.author.id] = false}, 3600000)
-            message.channel.send("Rank gif successfuly added, you need to wait 1 hour before you can add a rank gif again.")
+            /*if (!error) {
+                message.channel.send("Rank gif successfuly added, you need to wait 1 hour before you can add a rank gif again.")
+            } {
+                logToAll("Error occured, please, ")
+            }*/
             }
         }
         }
@@ -189,7 +185,7 @@ client.on('message', async(message) => {
                 { name: 'Better Time Warp', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/154935-15-bettertimewarpcontinued-customizable-time-warp-and-lossless-physics-warp/', inline: true},
                 { name: 'Hangar Extender Extended', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/162790-151-hangar-extender-extended/', inline: true},
                 )
-            // currently this is broken af, let's fix this when we finish !addrank ok?
+            
             const utilitypage2 = new Discord.MessageEmbed()
             .setColor('#63b835')
             .setTitle('List of utility mods')
@@ -199,41 +195,8 @@ client.on('message', async(message) => {
                     { name: 'KAS', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/142594-minimum-ksp-version-18-kerbal-attachment-system-kas-v17/', inline: true},
                     { name: 'Docking Port Alignment Indicator', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/40423-181-docking-port-alignment-indicator-version-685-updated-121419/', inline: true},
                     { name: 'FMRS', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/157214-19x-flight-manager-for-reusable-stages-fmrs-now-with-recoverycontroller-integration/', inline: true},
-                    { name: "Precise Editor", value: "https://forum.kerbalspaceprogram.com/index.php?/topic/184193-110x-precise-editor-1401-august-31-2020/", inline: true}
-                )
-            const embedreact1 = await message.channel.send(utilitypage1)
-            const embedreact2 = utilitypage2
-            embedreact1.react('➡️');
-
-            const filter = (reaction, user) => {
-                return ['➡️'].includes(reaction.emoji.name) && user.id === message.author.id;
-            }
-            embedreact1.awaitReactions(filter, { max: 1, time: 600000, errors: ['time'] })
-                .then(collected => {
-                    const reaction = collected.first();
+                    { name: "Precise Editor", value: "https://forum.kerbalspaceprogram.com/index.php?/topic/184193-110x-precise-editor-1401-august-31-2020/", inline: true});
             
-                    if (reaction.emoji.name === '➡️') {
-                      embedreact1.edit(embedreact2) .then(() => {embedreact2.reaction.removeAll()})
-                    }
-                })
-            embedreact2.react('⬅️') .then( embedreact2.react('➡️'));
-
-            const filter2 = (reaction, user) => {
-                return ['⬅️', '➡️'].includes(reaction.emoji.name) && user.id === message.author.id;
-            };
-            
-            embedreact2.awaitReactions(filter2, { max: 1, time: 600000, errors: ['time'] })
-                .then(collected => {
-                    const reaction = collected.first();
-            
-                    if (reaction.emoji.name === '⬅️') {
-                      embedreact2.edit(utilitypage1)
-                    }
-                    else {
-                        embedreact2.edit() .then()
-                    }
-                })
-        }
         if (command === 'help') {
             if(message.guild.id === STRATZ_SERVER_ID || JEDITOBIWAN_SERVER_ID) {
             const exam1Embed = new Discord.MessageEmbed()
@@ -251,13 +214,7 @@ client.on('message', async(message) => {
                     { name: "rank", value: "Shows your rank, use with ! as prefix", inline: true },
                     { name: "support", value: "Gives you support / feedback server's invite link", inline: true },
                     { name: "transfer", value: "Gives you transfer window map", inline: true });
-                //const infoMessage = await message.channel.send("\`\`\`css\n.Loading_Information\n\`\`\`")
-
-                /*async function doMessageThing() {
-                    await infoMessage.edit(null, exam1Embed)
-                }*/
-            
-            //client.setTimeout(doMessageThing, 1500) //what should i do with this code???
+                
             message.channel.send(exam1Embed)
             } else{
                 const exam2Embed = new Discord.MessageEmbed()
@@ -284,10 +241,7 @@ client.on('message', async(message) => {
         if (command === 'invite') {
             message.channel.send("Here's an invite link!\nhttps://discord.com/api/oauth2/authorize?client_id=718879704601329778&permissions=68673&scope=bot");
         }
-        if (command === 'ttrank') {
-        message.channel.send("It's broken, just don't use it till i say it's fixed")
-        }
-        if (message.content.startsWith(prefix + 'kill')) {
+        if (command === "kill") {
             if (IsOwner(message.member)) {
                 message.channel.send("Stopping the bot")
                 process.exit();
@@ -295,13 +249,6 @@ client.on('message', async(message) => {
         } 
         if (command === 'transfer') {
             message.channel.send('https://cdn.discordapp.com/attachments/586948600009981970/764341001854648340/upZStSY.png');
-        }
-        if (command === 'ksphelp') {
-            // i will create list of links here in an array, but i need them to check if ;ksphelp has docking
-            // or orbit at the same time
-            
-            
-            message.channel.send('');
         }
             if(command === 'serverlist') {
                 if (IsOwner(message.member)) {
@@ -319,7 +266,7 @@ client.on('message', async(message) => {
             message.channel.send("Here's your server invite link!\nhttps://discord.gg/5Q9Mx32 ");
         }
     }
-});
+}});
 
 function isStaff(member) {
     return member.hasPermission(ADMIN_PERMISSIONS) || member.id === OWNER_ID;
