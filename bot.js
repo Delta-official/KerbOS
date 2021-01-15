@@ -62,6 +62,7 @@ client.on('message', async(message) => {
         if(Cooldown[message.author.id] === false || Cooldown[message.author.id] === undefined) {
             if(message.guild.id === STRATZ_SERVER_ID || message.guild.id === JEDITOBIWAN_SERVER_ID) {
                     message.channel.send(rankgifs[Math.floor(Math.random() * rankgifs.length)]);
+                    Cooldown[message.author.id] = true
                     setTimeout(() => {Cooldown[message.author.id] = false}, 30000);
             }
         }
