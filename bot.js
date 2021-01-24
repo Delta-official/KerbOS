@@ -197,7 +197,7 @@ client.on('message', async(message) => {
                     { name: 'Docking Port Alignment Indicator', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/40423-181-docking-port-alignment-indicator-version-685-updated-121419/', inline: true},
                     { name: 'FMRS', value: 'https://forum.kerbalspaceprogram.com/index.php?/topic/157214-19x-flight-manager-for-reusable-stages-fmrs-now-with-recoverycontroller-integration/', inline: true},
                     { name: "Precise Editor", value: "https://forum.kerbalspaceprogram.com/index.php?/topic/184193-110x-precise-editor-1401-august-31-2020/", inline: true});
-            
+        }
         if (command === 'help') {
             if(message.guild.id === STRATZ_SERVER_ID || JEDITOBIWAN_SERVER_ID) {
             const exam1Embed = new Discord.MessageEmbed()
@@ -267,7 +267,7 @@ client.on('message', async(message) => {
             message.channel.send("Here's your server invite link!\nhttps://discord.gg/5Q9Mx32 ");
         }
     }
-}});
+});
 
 function isStaff(member) {
     return member.hasPermission(ADMIN_PERMISSIONS) || member.id === OWNER_ID;
