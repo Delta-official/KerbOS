@@ -2,7 +2,6 @@ const fs = require("fs")
 const Discord = require('discord.js');
 const Json = require('jsonfile');
 const Token = require('./token.js');
-// wait, it's all shitty JS? always has been
 let rankgifs = []
 
 const JEDITOBIWAN_SERVER_ID = "357324444982837261";
@@ -22,7 +21,6 @@ const ADMIN_PERMISSIONS = [
 const RANKSERVERARRAY = [STRATZ_SERVER_ID, JEDITOBIWAN_SERVER_ID]
 
 // IDEAS BELOW:
-// change prefix to something like sudo or something like that (idk i don't use terminal that often) so it looks like it's a real terminal
 // create custom pfp for my bot
 // dump all of those consts into .json file (idea made by Klaas)
 const client = new Discord.Client();
@@ -166,7 +164,6 @@ client.on('message', async(message) => {
         if (command === 'map') {
             message.channel.send('https://kerbal-maps.finitemonkeys.org');
         }
-        // don't mind me, i'm just leaving those comments because i'm bored af
         if (command === 'transfercalc') {
             message.channel.send('https://ksp.olex.biz');
         }
@@ -235,7 +232,7 @@ client.on('message', async(message) => {
                 message.channel.send(exam2Embed)
             }
 
-        } // looks like we have to fuck with filters again, great
+        } 
         if (command === 'utilitymods') {
             message.channel.send("Oh come on, i've said that it's WIP!");
         }
@@ -281,15 +278,12 @@ function IsAllowedAR(member) {
 function addRankGif(gif) {
     rankgifs.push(gif);
 }
-// UNLIMITED RECURSIVE POWER!
+
 function logToAll(message) {
     console.log(message);
     client.users.cache.get(OWNER_ID).send(message);
 }
 
-// i'm hungry
-// i'm really hungry
-// i'm __really__ hungry
 // statement below is outdated because my bot is open source now lmao
 // to people who got source code of my bot, congrats you are hackers! (or i just gave it to you for some reason)
 client.login(Token.auth); //I want to say thank you to Unknown#9817 and Breadcrumbs#7818 for helping me with this code!
